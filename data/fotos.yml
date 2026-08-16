@@ -1,0 +1,1244 @@
+# Mapa slug de evento -> fotos optimizadas en static/img/eventos/.
+# La mayoria de estas entradas vienen de tools/build_media.py (catalogo
+# historico de Instagram); las agregadas a mano con
+# tools/agregar_fotos_evento.py no tienen shortcode/origen porque no
+# vienen de un post — eso es normal, la plantilla solo usa card/full/alt.
+
+hackathon-fing-2026:
+- card: img/eventos/hackathon-fing-2026/01-card.jpg
+  full: img/eventos/hackathon-fing-2026/01-full.jpg
+  shortcode: DYpbKmgEflw
+  alt: Hackathon FING 2026 - fotografía del evento
+  origen: https://www.instagram.com/p/DYpbKmgEflw/
+- card: img/eventos/hackathon-fing-2026/02-card.jpg
+  full: img/eventos/hackathon-fing-2026/02-full.jpg
+  shortcode: DY71Ty4FpvR
+  alt: Hackathon FING 2026 - fotografía del evento
+  origen: https://www.instagram.com/p/DY71Ty4FpvR/
+conversatorio-futuros-escritos-lee-up-ieee-up:
+- card: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/01-card.jpg
+  full: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/01-full.jpg
+  shortcode: DYpzCiulLYW
+  alt: Conversatorio "Futuros Escritos" (LEE UP × IEEE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/DYpzCiulLYW/
+- card: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/02-card.jpg
+  full: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/02-full.jpg
+  shortcode: DZYA9LEFKZo
+  alt: Conversatorio "Futuros Escritos" (LEE UP × IEEE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/DZYA9LEFKZo/
+- card: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/03-card.jpg
+  full: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/03-full.jpg
+  shortcode: DYpzCiulLYW
+  alt: Conversatorio "Futuros Escritos" (LEE UP × IEEE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/DYpzCiulLYW/
+- card: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/04-card.jpg
+  full: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/04-full.jpg
+  shortcode: DZYA9LEFKZo
+  alt: Conversatorio "Futuros Escritos" (LEE UP × IEEE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/DZYA9LEFKZo/
+- card: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/05-card.jpg
+  full: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/05-full.jpg
+  shortcode: DZYA9LEFKZo
+  alt: Conversatorio "Futuros Escritos" (LEE UP × IEEE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/DZYA9LEFKZo/
+- card: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/06-card.jpg
+  full: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/06-full.jpg
+  shortcode: DZYA9LEFKZo
+  alt: Conversatorio "Futuros Escritos" (LEE UP × IEEE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/DZYA9LEFKZo/
+- card: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/07-card.jpg
+  full: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/07-full.jpg
+  shortcode: DZYA9LEFKZo
+  alt: Conversatorio "Futuros Escritos" (LEE UP × IEEE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/DZYA9LEFKZo/
+- card: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/08-card.jpg
+  full: img/eventos/conversatorio-futuros-escritos-lee-up-ieee-up/08-full.jpg
+  shortcode: DZYA9LEFKZo
+  alt: Conversatorio "Futuros Escritos" (LEE UP × IEEE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/DZYA9LEFKZo/
+semana-de-talleres-pre-hackathon-fing-2026:
+- card: img/eventos/semana-de-talleres-pre-hackathon-fing-2026/01-card.jpg
+  full: img/eventos/semana-de-talleres-pre-hackathon-fing-2026/01-full.jpg
+  shortcode: DY2uBvklGF9
+  alt: Semana de talleres pre-Hackathon FING 2026 - fotografía del evento
+  origen: https://www.instagram.com/p/DY2uBvklGF9/
+- card: img/eventos/semana-de-talleres-pre-hackathon-fing-2026/02-card.jpg
+  full: img/eventos/semana-de-talleres-pre-hackathon-fing-2026/02-full.jpg
+  shortcode: DY5y00TIgek
+  alt: Semana de talleres pre-Hackathon FING 2026 - fotografía del evento
+  origen: https://www.instagram.com/p/DY5y00TIgek/
+- card: img/eventos/semana-de-talleres-pre-hackathon-fing-2026/03-card.jpg
+  full: img/eventos/semana-de-talleres-pre-hackathon-fing-2026/03-full.jpg
+  shortcode: DY2uBvklGF9
+  alt: Semana de talleres pre-Hackathon FING 2026 - fotografía del evento
+  origen: https://www.instagram.com/p/DY2uBvklGF9/
+- card: img/eventos/semana-de-talleres-pre-hackathon-fing-2026/04-card.jpg
+  full: img/eventos/semana-de-talleres-pre-hackathon-fing-2026/04-full.jpg
+  shortcode: DY2uBvklGF9
+  alt: Semana de talleres pre-Hackathon FING 2026 - fotografía del evento
+  origen: https://www.instagram.com/p/DY2uBvklGF9/
+iart-xperience:
+- card: img/eventos/iart-xperience/01-card.jpg
+  full: img/eventos/iart-xperience/01-full.jpg
+  shortcode: DQIFhAfjllL
+  alt: IArt Xperience - fotografía del evento
+  origen: https://www.instagram.com/p/DQIFhAfjllL/
+- card: img/eventos/iart-xperience/02-card.jpg
+  full: img/eventos/iart-xperience/02-full.jpg
+  shortcode: DQIFhAfjllL
+  alt: IArt Xperience - fotografía del evento
+  origen: https://www.instagram.com/p/DQIFhAfjllL/
+- card: img/eventos/iart-xperience/03-card.jpg
+  full: img/eventos/iart-xperience/03-full.jpg
+  shortcode: DQIFhAfjllL
+  alt: IArt Xperience - fotografía del evento
+  origen: https://www.instagram.com/p/DQIFhAfjllL/
+reunion-mensual-de-ramas-septiembre-2025-con-untels:
+- card: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/01-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/01-full.jpg
+  shortcode: DO66Le_EdoB
+  alt: Reunión Mensual de Ramas - Septiembre 2025 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/DO66Le_EdoB/
+- card: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/02-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/02-full.jpg
+  shortcode: DO47N3EjIJy
+  alt: Reunión Mensual de Ramas - Septiembre 2025 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/DO47N3EjIJy/
+- card: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/03-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/03-full.jpg
+  shortcode: DO2XGr9DFtR
+  alt: Reunión Mensual de Ramas - Septiembre 2025 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/DO2XGr9DFtR/
+- card: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/04-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/04-full.jpg
+  shortcode: DO47N3EjIJy
+  alt: Reunión Mensual de Ramas - Septiembre 2025 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/DO47N3EjIJy/
+- card: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/05-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/05-full.jpg
+  shortcode: DO2XGr9DFtR
+  alt: Reunión Mensual de Ramas - Septiembre 2025 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/DO2XGr9DFtR/
+- card: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/06-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/06-full.jpg
+  shortcode: DO47N3EjIJy
+  alt: Reunión Mensual de Ramas - Septiembre 2025 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/DO47N3EjIJy/
+- card: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/07-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/07-full.jpg
+  shortcode: DO2XGr9DFtR
+  alt: Reunión Mensual de Ramas - Septiembre 2025 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/DO2XGr9DFtR/
+- card: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/08-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-septiembre-2025-con-untels/08-full.jpg
+  shortcode: DO47N3EjIJy
+  alt: Reunión Mensual de Ramas - Septiembre 2025 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/DO47N3EjIJy/
+visita-a-coca-cola-2025:
+- card: img/eventos/visita-a-coca-cola-2025/01-card.jpg
+  full: img/eventos/visita-a-coca-cola-2025/01-full.jpg
+  shortcode: DOANRBfDIb_
+  alt: Visita a Coca-Cola (2025) - fotografía del evento
+  origen: https://www.instagram.com/p/DOANRBfDIb_/
+- card: img/eventos/visita-a-coca-cola-2025/02-card.jpg
+  full: img/eventos/visita-a-coca-cola-2025/02-full.jpg
+  shortcode: DOANRBfDIb_
+  alt: Visita a Coca-Cola (2025) - fotografía del evento
+  origen: https://www.instagram.com/p/DOANRBfDIb_/
+charla-codificadas-tata-consultancy-services:
+- card: img/eventos/charla-codificadas-tata-consultancy-services/01-card.jpg
+  full: img/eventos/charla-codificadas-tata-consultancy-services/01-full.jpg
+  shortcode: DNTcIwlx2Vs
+  alt: Charla "Codificadas" (Tata Consultancy Services) - fotografía del evento
+  origen: https://www.instagram.com/p/DNTcIwlx2Vs/
+open-innovation-night-edicion-andino-labs:
+- card: img/eventos/open-innovation-night-edicion-andino-labs/01-card.jpg
+  full: img/eventos/open-innovation-night-edicion-andino-labs/01-full.jpg
+  shortcode: DK2IFMQurWA
+  alt: Open Innovation Night - edición Andino Labs - fotografía del evento
+  origen: https://www.instagram.com/p/DK2IFMQurWA/
+- card: img/eventos/open-innovation-night-edicion-andino-labs/02-card.jpg
+  full: img/eventos/open-innovation-night-edicion-andino-labs/02-full.jpg
+  shortcode: DK-UFxHywJB
+  alt: Open Innovation Night - edición Andino Labs - fotografía del evento
+  origen: https://www.instagram.com/p/DK-UFxHywJB/
+innovatech-2025:
+- card: img/eventos/innovatech-2025/01-card.jpg
+  full: img/eventos/innovatech-2025/01-full.jpg
+  shortcode: DLGqZ0kMNYQ
+  alt: Innovatech 2025 - fotografía del evento
+  origen: https://www.instagram.com/p/DLGqZ0kMNYQ/
+- card: img/eventos/innovatech-2025/02-card.jpg
+  full: img/eventos/innovatech-2025/02-full.jpg
+  shortcode: DLEXcOYs966
+  alt: Innovatech 2025 - fotografía del evento
+  origen: https://www.instagram.com/p/DLEXcOYs966/
+- card: img/eventos/innovatech-2025/03-card.jpg
+  full: img/eventos/innovatech-2025/03-full.jpg
+  shortcode: DLEXcOYs966
+  alt: Innovatech 2025 - fotografía del evento
+  origen: https://www.instagram.com/p/DLEXcOYs966/
+- card: img/eventos/innovatech-2025/04-card.jpg
+  full: img/eventos/innovatech-2025/04-full.jpg
+  shortcode: DLEXcOYs966
+  alt: Innovatech 2025 - fotografía del evento
+  origen: https://www.instagram.com/p/DLEXcOYs966/
+talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales:
+- card: img/eventos/talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales/01-card.jpg
+  full: img/eventos/talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales/01-full.jpg
+  shortcode: DJ1vL-5uvvx
+  alt: 'Talleres de vida universitaria: Notion, LinkedIn y Negocios Digitales - fotografía del evento'
+  origen: https://www.instagram.com/p/DJ1vL-5uvvx/
+- card: img/eventos/talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales/02-card.jpg
+  full: img/eventos/talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales/02-full.jpg
+  shortcode: DJ1vL-5uvvx
+  alt: 'Talleres de vida universitaria: Notion, LinkedIn y Negocios Digitales - fotografía del evento'
+  origen: https://www.instagram.com/p/DJ1vL-5uvvx/
+- card: img/eventos/talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales/03-card.jpg
+  full: img/eventos/talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales/03-full.jpg
+  shortcode: DJ1vL-5uvvx
+  alt: 'Talleres de vida universitaria: Notion, LinkedIn y Negocios Digitales - fotografía del evento'
+  origen: https://www.instagram.com/p/DJ1vL-5uvvx/
+- card: img/eventos/talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales/04-card.jpg
+  full: img/eventos/talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales/04-full.jpg
+  shortcode: DJ1vL-5uvvx
+  alt: 'Talleres de vida universitaria: Notion, LinkedIn y Negocios Digitales - fotografía del evento'
+  origen: https://www.instagram.com/p/DJ1vL-5uvvx/
+hult-prize-up-2025:
+- card: img/eventos/hult-prize-up-2025/01-card.jpg
+  full: img/eventos/hult-prize-up-2025/01-full.jpg
+  shortcode: DGbzwQBMc2N
+  alt: Hult Prize UP 2025 - fotografía del evento
+  origen: https://www.instagram.com/p/DGbzwQBMc2N/
+- card: img/eventos/hult-prize-up-2025/02-card.jpg
+  full: img/eventos/hult-prize-up-2025/02-full.jpg
+  shortcode: DGbzwQBMc2N
+  alt: Hult Prize UP 2025 - fotografía del evento
+  origen: https://www.instagram.com/p/DGbzwQBMc2N/
+- card: img/eventos/hult-prize-up-2025/03-card.jpg
+  full: img/eventos/hult-prize-up-2025/03-full.jpg
+  shortcode: DGbzwQBMc2N
+  alt: Hult Prize UP 2025 - fotografía del evento
+  origen: https://www.instagram.com/p/DGbzwQBMc2N/
+reunion-mensual-de-ramas-noviembre-2024-sede-utec:
+- card: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/01-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/01-full.jpg
+  shortcode: DCE5YL0pW38
+  alt: Reunión Mensual de Ramas - Noviembre 2024 (sede UTEC) - fotografía del evento
+  origen: https://www.instagram.com/p/DCE5YL0pW38/
+- card: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/02-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/02-full.jpg
+  shortcode: DCE5huApHBx
+  alt: Reunión Mensual de Ramas - Noviembre 2024 (sede UTEC) - fotografía del evento
+  origen: https://www.instagram.com/p/DCE5huApHBx/
+- card: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/03-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/03-full.jpg
+  shortcode: DBzOOvdSBMa
+  alt: Reunión Mensual de Ramas - Noviembre 2024 (sede UTEC) - fotografía del evento
+  origen: https://www.instagram.com/p/DBzOOvdSBMa/
+- card: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/04-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/04-full.jpg
+  shortcode: DCE5YL0pW38
+  alt: Reunión Mensual de Ramas - Noviembre 2024 (sede UTEC) - fotografía del evento
+  origen: https://www.instagram.com/p/DCE5YL0pW38/
+- card: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/05-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/05-full.jpg
+  shortcode: DCE5huApHBx
+  alt: Reunión Mensual de Ramas - Noviembre 2024 (sede UTEC) - fotografía del evento
+  origen: https://www.instagram.com/p/DCE5huApHBx/
+- card: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/06-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/06-full.jpg
+  shortcode: DCE5YL0pW38
+  alt: Reunión Mensual de Ramas - Noviembre 2024 (sede UTEC) - fotografía del evento
+  origen: https://www.instagram.com/p/DCE5YL0pW38/
+- card: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/07-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/07-full.jpg
+  shortcode: DCE5huApHBx
+  alt: Reunión Mensual de Ramas - Noviembre 2024 (sede UTEC) - fotografía del evento
+  origen: https://www.instagram.com/p/DCE5huApHBx/
+- card: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/08-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-noviembre-2024-sede-utec/08-full.jpg
+  shortcode: DCE5YL0pW38
+  alt: Reunión Mensual de Ramas - Noviembre 2024 (sede UTEC) - fotografía del evento
+  origen: https://www.instagram.com/p/DCE5YL0pW38/
+i-simulacion-historica-de-la-bolsa-de-valores:
+- card: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/01-card.jpg
+  full: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/01-full.jpg
+  shortcode: DBlwVAky-33
+  alt: I Simulación Histórica de la Bolsa de Valores - fotografía del evento
+  origen: https://www.instagram.com/p/DBlwVAky-33/
+- card: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/02-card.jpg
+  full: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/02-full.jpg
+  shortcode: DBwzkNmv4Gn
+  alt: I Simulación Histórica de la Bolsa de Valores - fotografía del evento
+  origen: https://www.instagram.com/p/DBwzkNmv4Gn/
+- card: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/03-card.jpg
+  full: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/03-full.jpg
+  shortcode: DBlwVAky-33
+  alt: I Simulación Histórica de la Bolsa de Valores - fotografía del evento
+  origen: https://www.instagram.com/p/DBlwVAky-33/
+- card: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/04-card.jpg
+  full: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/04-full.jpg
+  shortcode: DBwzkNmv4Gn
+  alt: I Simulación Histórica de la Bolsa de Valores - fotografía del evento
+  origen: https://www.instagram.com/p/DBwzkNmv4Gn/
+- card: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/05-card.jpg
+  full: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/05-full.jpg
+  shortcode: DBlwVAky-33
+  alt: I Simulación Histórica de la Bolsa de Valores - fotografía del evento
+  origen: https://www.instagram.com/p/DBlwVAky-33/
+- card: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/06-card.jpg
+  full: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/06-full.jpg
+  shortcode: DBwzkNmv4Gn
+  alt: I Simulación Histórica de la Bolsa de Valores - fotografía del evento
+  origen: https://www.instagram.com/p/DBwzkNmv4Gn/
+- card: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/07-card.jpg
+  full: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/07-full.jpg
+  shortcode: DBlwVAky-33
+  alt: I Simulación Histórica de la Bolsa de Valores - fotografía del evento
+  origen: https://www.instagram.com/p/DBlwVAky-33/
+- card: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/08-card.jpg
+  full: img/eventos/i-simulacion-historica-de-la-bolsa-de-valores/08-full.jpg
+  shortcode: DBwzkNmv4Gn
+  alt: I Simulación Histórica de la Bolsa de Valores - fotografía del evento
+  origen: https://www.instagram.com/p/DBwzkNmv4Gn/
+visita-a-bcp-y-yape:
+- card: img/eventos/visita-a-bcp-y-yape/01-card.jpg
+  full: img/eventos/visita-a-bcp-y-yape/01-full.jpg
+  shortcode: DAKm3LCsFB3
+  alt: Visita a BCP y Yape - fotografía del evento
+  origen: https://www.instagram.com/p/DAKm3LCsFB3/
+- card: img/eventos/visita-a-bcp-y-yape/02-card.jpg
+  full: img/eventos/visita-a-bcp-y-yape/02-full.jpg
+  shortcode: DAKm3LCsFB3
+  alt: Visita a BCP y Yape - fotografía del evento
+  origen: https://www.instagram.com/p/DAKm3LCsFB3/
+- card: img/eventos/visita-a-bcp-y-yape/03-card.jpg
+  full: img/eventos/visita-a-bcp-y-yape/03-full.jpg
+  shortcode: DAKm3LCsFB3
+  alt: Visita a BCP y Yape - fotografía del evento
+  origen: https://www.instagram.com/p/DAKm3LCsFB3/
+- card: img/eventos/visita-a-bcp-y-yape/04-card.jpg
+  full: img/eventos/visita-a-bcp-y-yape/04-full.jpg
+  shortcode: DAKm3LCsFB3
+  alt: Visita a BCP y Yape - fotografía del evento
+  origen: https://www.instagram.com/p/DAKm3LCsFB3/
+innovatech-2024:
+- card: img/eventos/innovatech-2024/01-card.jpg
+  full: img/eventos/innovatech-2024/01-full.jpg
+  shortcode: C6-CZzQsBTc
+  alt: Innovatech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C6-CZzQsBTc/
+- card: img/eventos/innovatech-2024/02-card.jpg
+  full: img/eventos/innovatech-2024/02-full.jpg
+  shortcode: C7R-EgCJu6r
+  alt: Innovatech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C7R-EgCJu6r/
+- card: img/eventos/innovatech-2024/03-card.jpg
+  full: img/eventos/innovatech-2024/03-full.jpg
+  shortcode: C6-CZzQsBTc
+  alt: Innovatech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C6-CZzQsBTc/
+- card: img/eventos/innovatech-2024/04-card.jpg
+  full: img/eventos/innovatech-2024/04-full.jpg
+  shortcode: C7R-EgCJu6r
+  alt: Innovatech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C7R-EgCJu6r/
+- card: img/eventos/innovatech-2024/05-card.jpg
+  full: img/eventos/innovatech-2024/05-full.jpg
+  shortcode: C6-CZzQsBTc
+  alt: Innovatech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C6-CZzQsBTc/
+- card: img/eventos/innovatech-2024/06-card.jpg
+  full: img/eventos/innovatech-2024/06-full.jpg
+  shortcode: C6-CZzQsBTc
+  alt: Innovatech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C6-CZzQsBTc/
+- card: img/eventos/innovatech-2024/07-card.jpg
+  full: img/eventos/innovatech-2024/07-full.jpg
+  shortcode: C6-CZzQsBTc
+  alt: Innovatech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C6-CZzQsBTc/
+open-innovation-night-edicion-arbitrum:
+- card: img/eventos/open-innovation-night-edicion-arbitrum/01-card.jpg
+  full: img/eventos/open-innovation-night-edicion-arbitrum/01-full.jpg
+  shortcode: C7A1x3TtuHr
+  alt: Open Innovation Night - edición Arbitrum - fotografía del evento
+  origen: https://www.instagram.com/p/C7A1x3TtuHr/
+- card: img/eventos/open-innovation-night-edicion-arbitrum/02-card.jpg
+  full: img/eventos/open-innovation-night-edicion-arbitrum/02-full.jpg
+  shortcode: C7SyuPDtNxX
+  alt: Open Innovation Night - edición Arbitrum - fotografía del evento
+  origen: https://www.instagram.com/p/C7SyuPDtNxX/
+- card: img/eventos/open-innovation-night-edicion-arbitrum/03-card.jpg
+  full: img/eventos/open-innovation-night-edicion-arbitrum/03-full.jpg
+  shortcode: C7SyuPDtNxX
+  alt: Open Innovation Night - edición Arbitrum - fotografía del evento
+  origen: https://www.instagram.com/p/C7SyuPDtNxX/
+- card: img/eventos/open-innovation-night-edicion-arbitrum/04-card.jpg
+  full: img/eventos/open-innovation-night-edicion-arbitrum/04-full.jpg
+  shortcode: C7SyuPDtNxX
+  alt: Open Innovation Night - edición Arbitrum - fotografía del evento
+  origen: https://www.instagram.com/p/C7SyuPDtNxX/
+- card: img/eventos/open-innovation-night-edicion-arbitrum/05-card.jpg
+  full: img/eventos/open-innovation-night-edicion-arbitrum/05-full.jpg
+  shortcode: C7SyuPDtNxX
+  alt: Open Innovation Night - edición Arbitrum - fotografía del evento
+  origen: https://www.instagram.com/p/C7SyuPDtNxX/
+- card: img/eventos/open-innovation-night-edicion-arbitrum/06-card.jpg
+  full: img/eventos/open-innovation-night-edicion-arbitrum/06-full.jpg
+  shortcode: C7SyuPDtNxX
+  alt: Open Innovation Night - edición Arbitrum - fotografía del evento
+  origen: https://www.instagram.com/p/C7SyuPDtNxX/
+- card: img/eventos/open-innovation-night-edicion-arbitrum/07-card.jpg
+  full: img/eventos/open-innovation-night-edicion-arbitrum/07-full.jpg
+  shortcode: C7SyuPDtNxX
+  alt: Open Innovation Night - edición Arbitrum - fotografía del evento
+  origen: https://www.instagram.com/p/C7SyuPDtNxX/
+- card: img/eventos/open-innovation-night-edicion-arbitrum/08-card.jpg
+  full: img/eventos/open-innovation-night-edicion-arbitrum/08-full.jpg
+  shortcode: C7SyuPDtNxX
+  alt: Open Innovation Night - edición Arbitrum - fotografía del evento
+  origen: https://www.instagram.com/p/C7SyuPDtNxX/
+empretech-2024:
+- card: img/eventos/empretech-2024/01-card.jpg
+  full: img/eventos/empretech-2024/01-full.jpg
+  shortcode: C69v3X1rdIn
+  alt: EmpreTech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C69v3X1rdIn/
+- card: img/eventos/empretech-2024/02-card.jpg
+  full: img/eventos/empretech-2024/02-full.jpg
+  shortcode: C69v3X1rdIn
+  alt: EmpreTech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C69v3X1rdIn/
+- card: img/eventos/empretech-2024/03-card.jpg
+  full: img/eventos/empretech-2024/03-full.jpg
+  shortcode: C69v3X1rdIn
+  alt: EmpreTech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C69v3X1rdIn/
+- card: img/eventos/empretech-2024/04-card.jpg
+  full: img/eventos/empretech-2024/04-full.jpg
+  shortcode: C69v3X1rdIn
+  alt: EmpreTech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C69v3X1rdIn/
+- card: img/eventos/empretech-2024/05-card.jpg
+  full: img/eventos/empretech-2024/05-full.jpg
+  shortcode: C69v3X1rdIn
+  alt: EmpreTech 2024 - fotografía del evento
+  origen: https://www.instagram.com/p/C69v3X1rdIn/
+l-enterprise-visita-tecnica-a-coca-cola-2024:
+- card: img/eventos/l-enterprise-visita-tecnica-a-coca-cola-2024/01-card.jpg
+  full: img/eventos/l-enterprise-visita-tecnica-a-coca-cola-2024/01-full.jpg
+  shortcode: C6_tjIHMOY-
+  alt: 'L''Enterprise: Visita técnica a Coca-Cola (2024) - fotografía del evento'
+  origen: https://www.instagram.com/p/C6_tjIHMOY-/
+- card: img/eventos/l-enterprise-visita-tecnica-a-coca-cola-2024/02-card.jpg
+  full: img/eventos/l-enterprise-visita-tecnica-a-coca-cola-2024/02-full.jpg
+  shortcode: C6_tjIHMOY-
+  alt: 'L''Enterprise: Visita técnica a Coca-Cola (2024) - fotografía del evento'
+  origen: https://www.instagram.com/p/C6_tjIHMOY-/
+- card: img/eventos/l-enterprise-visita-tecnica-a-coca-cola-2024/03-card.jpg
+  full: img/eventos/l-enterprise-visita-tecnica-a-coca-cola-2024/03-full.jpg
+  shortcode: C6_tjIHMOY-
+  alt: 'L''Enterprise: Visita técnica a Coca-Cola (2024) - fotografía del evento'
+  origen: https://www.instagram.com/p/C6_tjIHMOY-/
+l-ermit-simposio-internacional-de-ingenieria-de-negocios:
+- card: img/eventos/l-ermit-simposio-internacional-de-ingenieria-de-negocios/01-card.jpg
+  full: img/eventos/l-ermit-simposio-internacional-de-ingenieria-de-negocios/01-full.jpg
+  shortcode: C3beP6jMHMV
+  alt: L'ERMIT - Simposio Internacional de Ingeniería de Negocios - fotografía del evento
+  origen: https://www.instagram.com/p/C3beP6jMHMV/
+- card: img/eventos/l-ermit-simposio-internacional-de-ingenieria-de-negocios/02-card.jpg
+  full: img/eventos/l-ermit-simposio-internacional-de-ingenieria-de-negocios/02-full.jpg
+  shortcode: C3beP6jMHMV
+  alt: L'ERMIT - Simposio Internacional de Ingeniería de Negocios - fotografía del evento
+  origen: https://www.instagram.com/p/C3beP6jMHMV/
+talleres-de-nivelacion-en-matematicas:
+- card: img/eventos/talleres-de-nivelacion-en-matematicas/01-card.jpg
+  full: img/eventos/talleres-de-nivelacion-en-matematicas/01-full.jpg
+  shortcode: C2DgfDAv3br
+  alt: Talleres de Nivelación en Matemáticas - fotografía del evento
+  origen: https://www.instagram.com/p/C2DgfDAv3br/
+taller-de-productividad-y-organizacion:
+- card: img/eventos/taller-de-productividad-y-organizacion/01-card.jpg
+  full: img/eventos/taller-de-productividad-y-organizacion/01-full.jpg
+  shortcode: CrgqgwNpb0q
+  alt: Taller de Productividad y Organización - fotografía del evento
+  origen: https://www.instagram.com/p/CrgqgwNpb0q/
+reunion-mensual-de-ramas-marzo-2023-con-untels:
+- card: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/01-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/01-full.jpg
+  shortcode: Cq9P1JgM2IC
+  alt: Reunión Mensual de Ramas - Marzo 2023 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/Cq9P1JgM2IC/
+- card: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/02-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/02-full.jpg
+  shortcode: CqEYny0MSx3
+  alt: Reunión Mensual de Ramas - Marzo 2023 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/CqEYny0MSx3/
+- card: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/03-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/03-full.jpg
+  shortcode: Cq9P1JgM2IC
+  alt: Reunión Mensual de Ramas - Marzo 2023 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/Cq9P1JgM2IC/
+- card: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/04-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/04-full.jpg
+  shortcode: CqEYny0MSx3
+  alt: Reunión Mensual de Ramas - Marzo 2023 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/CqEYny0MSx3/
+- card: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/05-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/05-full.jpg
+  shortcode: Cq9P1JgM2IC
+  alt: Reunión Mensual de Ramas - Marzo 2023 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/Cq9P1JgM2IC/
+- card: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/06-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/06-full.jpg
+  shortcode: Cq9P1JgM2IC
+  alt: Reunión Mensual de Ramas - Marzo 2023 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/Cq9P1JgM2IC/
+- card: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/07-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/07-full.jpg
+  shortcode: Cq9P1JgM2IC
+  alt: Reunión Mensual de Ramas - Marzo 2023 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/Cq9P1JgM2IC/
+- card: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/08-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-marzo-2023-con-untels/08-full.jpg
+  shortcode: Cq9P1JgM2IC
+  alt: Reunión Mensual de Ramas - Marzo 2023 (con UNTELS) - fotografía del evento
+  origen: https://www.instagram.com/p/Cq9P1JgM2IC/
+ceremonia-de-inicio-de-ano-ieee-2023:
+- card: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/01-card.jpg
+  full: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/01-full.jpg
+  shortcode: CqJc6wpMOq4
+  alt: Ceremonia de Inicio de Año IEEE 2023 - fotografía del evento
+  origen: https://www.instagram.com/p/CqJc6wpMOq4/
+- card: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/02-card.jpg
+  full: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/02-full.jpg
+  shortcode: Cq6cPeDMJH9
+  alt: Ceremonia de Inicio de Año IEEE 2023 - fotografía del evento
+  origen: https://www.instagram.com/p/Cq6cPeDMJH9/
+- card: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/03-card.jpg
+  full: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/03-full.jpg
+  shortcode: Cq6cPeDMJH9
+  alt: Ceremonia de Inicio de Año IEEE 2023 - fotografía del evento
+  origen: https://www.instagram.com/p/Cq6cPeDMJH9/
+- card: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/04-card.jpg
+  full: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/04-full.jpg
+  shortcode: Cq6cPeDMJH9
+  alt: Ceremonia de Inicio de Año IEEE 2023 - fotografía del evento
+  origen: https://www.instagram.com/p/Cq6cPeDMJH9/
+- card: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/05-card.jpg
+  full: img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/05-full.jpg
+  shortcode: Cq6cPeDMJH9
+  alt: Ceremonia de Inicio de Año IEEE 2023 - fotografía del evento
+  origen: https://www.instagram.com/p/Cq6cPeDMJH9/
+taller-de-introduccion-a-rmarkdown:
+- card: img/eventos/taller-de-introduccion-a-rmarkdown/01-card.jpg
+  full: img/eventos/taller-de-introduccion-a-rmarkdown/01-full.jpg
+  shortcode: Cf7lEj3M-6W
+  alt: Taller de Introducción a RMarkdown - fotografía del evento
+  origen: https://www.instagram.com/p/Cf7lEj3M-6W/
+innovatec-2022:
+- card: img/eventos/innovatec-2022/01-card.jpg
+  full: img/eventos/innovatec-2022/01-full.jpg
+  shortcode: CeWXRxgrIvs
+  alt: InnovaTec 2022 - fotografía del evento
+  origen: https://www.instagram.com/p/CeWXRxgrIvs/
+- card: img/eventos/innovatec-2022/02-card.jpg
+  full: img/eventos/innovatec-2022/02-full.jpg
+  shortcode: CeAIVG7syR1
+  alt: InnovaTec 2022 - fotografía del evento
+  origen: https://www.instagram.com/p/CeAIVG7syR1/
+- card: img/eventos/innovatec-2022/03-card.jpg
+  full: img/eventos/innovatec-2022/03-full.jpg
+  shortcode: Cd9lMffsVKd
+  alt: InnovaTec 2022 - fotografía del evento
+  origen: https://www.instagram.com/p/Cd9lMffsVKd/
+organizatech:
+- card: img/eventos/organizatech/01-card.jpg
+  full: img/eventos/organizatech/01-full.jpg
+  shortcode: CVGYrWJL5ix
+  alt: OrganizaTech - fotografía del evento
+  origen: https://www.instagram.com/p/CVGYrWJL5ix/
+- card: img/eventos/organizatech/02-card.jpg
+  full: img/eventos/organizatech/02-full.jpg
+  shortcode: CVGYrWJL5ix
+  alt: OrganizaTech - fotografía del evento
+  origen: https://www.instagram.com/p/CVGYrWJL5ix/
+- card: img/eventos/organizatech/03-card.jpg
+  full: img/eventos/organizatech/03-full.jpg
+  shortcode: CVGYrWJL5ix
+  alt: OrganizaTech - fotografía del evento
+  origen: https://www.instagram.com/p/CVGYrWJL5ix/
+- card: img/eventos/organizatech/04-card.jpg
+  full: img/eventos/organizatech/04-full.jpg
+  shortcode: CVGYrWJL5ix
+  alt: OrganizaTech - fotografía del evento
+  origen: https://www.instagram.com/p/CVGYrWJL5ix/
+- card: img/eventos/organizatech/05-card.jpg
+  full: img/eventos/organizatech/05-full.jpg
+  shortcode: CVGYrWJL5ix
+  alt: OrganizaTech - fotografía del evento
+  origen: https://www.instagram.com/p/CVGYrWJL5ix/
+- card: img/eventos/organizatech/06-card.jpg
+  full: img/eventos/organizatech/06-full.jpg
+  shortcode: CVGYrWJL5ix
+  alt: OrganizaTech - fotografía del evento
+  origen: https://www.instagram.com/p/CVGYrWJL5ix/
+- card: img/eventos/organizatech/07-card.jpg
+  full: img/eventos/organizatech/07-full.jpg
+  shortcode: CVGYrWJL5ix
+  alt: OrganizaTech - fotografía del evento
+  origen: https://www.instagram.com/p/CVGYrWJL5ix/
+- card: img/eventos/organizatech/08-card.jpg
+  full: img/eventos/organizatech/08-full.jpg
+  shortcode: CVGYrWJL5ix
+  alt: OrganizaTech - fotografía del evento
+  origen: https://www.instagram.com/p/CVGYrWJL5ix/
+taller-de-ms-project:
+- card: img/eventos/taller-de-ms-project/01-card.jpg
+  full: img/eventos/taller-de-ms-project/01-full.jpg
+  shortcode: CTfto_MMK7D
+  alt: Taller de MS Project - fotografía del evento
+  origen: https://www.instagram.com/p/CTfto_MMK7D/
+ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge:
+- card: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/01-card.jpg
+  full: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/01-full.jpg
+  shortcode: CSuAOexFjNv
+  alt: IEEE HIP Challenge (Humanitarian and Inclusive Projects Challenge) - fotografía del evento
+  origen: https://www.instagram.com/p/CSuAOexFjNv/
+- card: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/02-card.jpg
+  full: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/02-full.jpg
+  shortcode: CTGMD3IssJA
+  alt: IEEE HIP Challenge (Humanitarian and Inclusive Projects Challenge) - fotografía del evento
+  origen: https://www.instagram.com/p/CTGMD3IssJA/
+- card: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/03-card.jpg
+  full: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/03-full.jpg
+  shortcode: CTIl-4_s1zm
+  alt: IEEE HIP Challenge (Humanitarian and Inclusive Projects Challenge) - fotografía del evento
+  origen: https://www.instagram.com/p/CTIl-4_s1zm/
+- card: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/04-card.jpg
+  full: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/04-full.jpg
+  shortcode: CTLPbUrMo9K
+  alt: IEEE HIP Challenge (Humanitarian and Inclusive Projects Challenge) - fotografía del evento
+  origen: https://www.instagram.com/p/CTLPbUrMo9K/
+- card: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/05-card.jpg
+  full: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/05-full.jpg
+  shortcode: CSuAOexFjNv
+  alt: IEEE HIP Challenge (Humanitarian and Inclusive Projects Challenge) - fotografía del evento
+  origen: https://www.instagram.com/p/CSuAOexFjNv/
+- card: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/06-card.jpg
+  full: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/06-full.jpg
+  shortcode: CTGMD3IssJA
+  alt: IEEE HIP Challenge (Humanitarian and Inclusive Projects Challenge) - fotografía del evento
+  origen: https://www.instagram.com/p/CTGMD3IssJA/
+- card: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/07-card.jpg
+  full: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/07-full.jpg
+  shortcode: CTIl-4_s1zm
+  alt: IEEE HIP Challenge (Humanitarian and Inclusive Projects Challenge) - fotografía del evento
+  origen: https://www.instagram.com/p/CTIl-4_s1zm/
+- card: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/08-card.jpg
+  full: img/eventos/ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge/08-full.jpg
+  shortcode: CTLPbUrMo9K
+  alt: IEEE HIP Challenge (Humanitarian and Inclusive Projects Challenge) - fotografía del evento
+  origen: https://www.instagram.com/p/CTLPbUrMo9K/
+full-day-pequenas-gigantes-wie-up:
+- card: img/eventos/full-day-pequenas-gigantes-wie-up/01-card.jpg
+  full: img/eventos/full-day-pequenas-gigantes-wie-up/01-full.jpg
+  shortcode: CSzHhW_MHY1
+  alt: Full Day "Pequeñas Gigantes" (WIE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/CSzHhW_MHY1/
+- card: img/eventos/full-day-pequenas-gigantes-wie-up/02-card.jpg
+  full: img/eventos/full-day-pequenas-gigantes-wie-up/02-full.jpg
+  shortcode: CSzHhW_MHY1
+  alt: Full Day "Pequeñas Gigantes" (WIE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/CSzHhW_MHY1/
+- card: img/eventos/full-day-pequenas-gigantes-wie-up/03-card.jpg
+  full: img/eventos/full-day-pequenas-gigantes-wie-up/03-full.jpg
+  shortcode: CSzHhW_MHY1
+  alt: Full Day "Pequeñas Gigantes" (WIE UP) - fotografía del evento
+  origen: https://www.instagram.com/p/CSzHhW_MHY1/
+reunion-mensual-de-ramas-agosto-2021:
+- card: img/eventos/reunion-mensual-de-ramas-agosto-2021/01-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-agosto-2021/01-full.jpg
+  shortcode: CTAdc75vgn5
+  alt: Reunión Mensual de Ramas - Agosto 2021 - fotografía del evento
+  origen: https://www.instagram.com/p/CTAdc75vgn5/
+- card: img/eventos/reunion-mensual-de-ramas-agosto-2021/02-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-agosto-2021/02-full.jpg
+  shortcode: CS7mmbzL5DI
+  alt: Reunión Mensual de Ramas - Agosto 2021 - fotografía del evento
+  origen: https://www.instagram.com/p/CS7mmbzL5DI/
+- card: img/eventos/reunion-mensual-de-ramas-agosto-2021/03-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-agosto-2021/03-full.jpg
+  shortcode: CTAdc75vgn5
+  alt: Reunión Mensual de Ramas - Agosto 2021 - fotografía del evento
+  origen: https://www.instagram.com/p/CTAdc75vgn5/
+- card: img/eventos/reunion-mensual-de-ramas-agosto-2021/04-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-agosto-2021/04-full.jpg
+  shortcode: CS7mmbzL5DI
+  alt: Reunión Mensual de Ramas - Agosto 2021 - fotografía del evento
+  origen: https://www.instagram.com/p/CS7mmbzL5DI/
+- card: img/eventos/reunion-mensual-de-ramas-agosto-2021/05-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-agosto-2021/05-full.jpg
+  shortcode: CTAdc75vgn5
+  alt: Reunión Mensual de Ramas - Agosto 2021 - fotografía del evento
+  origen: https://www.instagram.com/p/CTAdc75vgn5/
+- card: img/eventos/reunion-mensual-de-ramas-agosto-2021/06-card.jpg
+  full: img/eventos/reunion-mensual-de-ramas-agosto-2021/06-full.jpg
+  shortcode: CTAdc75vgn5
+  alt: Reunión Mensual de Ramas - Agosto 2021 - fotografía del evento
+  origen: https://www.instagram.com/p/CTAdc75vgn5/
+hackathon-inspire-education:
+- card: img/eventos/hackathon-inspire-education/01-card.jpg
+  full: img/eventos/hackathon-inspire-education/01-full.jpg
+  shortcode: CRkqAuQsvWC
+  alt: Hackathon "Inspire Education" - fotografía del evento
+  origen: https://www.instagram.com/p/CRkqAuQsvWC/
+talleres-sight-google-calendar-miro-y-teams:
+- card: img/eventos/talleres-sight-google-calendar-miro-y-teams/01-card.jpg
+  full: img/eventos/talleres-sight-google-calendar-miro-y-teams/01-full.jpg
+  shortcode: CJ9JhM1s7q6
+  alt: 'Talleres SIGHT: Google Calendar, Miro y Teams - fotografía del evento'
+  origen: https://www.instagram.com/p/CJ9JhM1s7q6/
+wie-yp-leadership-lab-2026:
+- card: img/eventos/wie-yp-leadership-lab-2026/01-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/01-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+- card: img/eventos/wie-yp-leadership-lab-2026/02-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/02-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+- card: img/eventos/wie-yp-leadership-lab-2026/03-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/03-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+- card: img/eventos/wie-yp-leadership-lab-2026/04-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/04-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+- card: img/eventos/wie-yp-leadership-lab-2026/05-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/05-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+- card: img/eventos/wie-yp-leadership-lab-2026/06-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/06-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+- card: img/eventos/wie-yp-leadership-lab-2026/07-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/07-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+- card: img/eventos/wie-yp-leadership-lab-2026/08-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/08-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+- card: img/eventos/wie-yp-leadership-lab-2026/09-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/09-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+- card: img/eventos/wie-yp-leadership-lab-2026/10-card.jpg
+  full: img/eventos/wie-yp-leadership-lab-2026/10-full.jpg
+  alt: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose - fotografía del evento
+stem-her-future-wie-up:
+- card: img/eventos/stem-her-future-wie-up/01-card.jpg
+  full: img/eventos/stem-her-future-wie-up/01-full.jpg
+  alt: STEM Her Future - fotografía del evento
+- card: img/eventos/stem-her-future-wie-up/02-card.jpg
+  full: img/eventos/stem-her-future-wie-up/02-full.jpg
+  alt: STEM Her Future - fotografía del evento
+- card: img/eventos/stem-her-future-wie-up/03-card.jpg
+  full: img/eventos/stem-her-future-wie-up/03-full.jpg
+  alt: STEM Her Future - fotografía del evento
+operacion-juguetes-2025:
+- card: img/eventos/operacion-juguetes-2025/01-card.jpg
+  full: img/eventos/operacion-juguetes-2025/01-full.jpg
+  alt: Operación Juguetes 2025 - fotografía del evento
+- card: img/eventos/operacion-juguetes-2025/02-card.jpg
+  full: img/eventos/operacion-juguetes-2025/02-full.jpg
+  alt: Operación Juguetes 2025 - fotografía del evento
+- card: img/eventos/operacion-juguetes-2025/03-card.jpg
+  full: img/eventos/operacion-juguetes-2025/03-full.jpg
+  alt: Operación Juguetes 2025 - fotografía del evento
+- card: img/eventos/operacion-juguetes-2025/04-card.jpg
+  full: img/eventos/operacion-juguetes-2025/04-full.jpg
+  alt: Operación Juguetes 2025 - fotografía del evento
+- card: img/eventos/operacion-juguetes-2025/05-card.jpg
+  full: img/eventos/operacion-juguetes-2025/05-full.jpg
+  alt: Operación Juguetes 2025 - fotografía del evento
+- card: img/eventos/operacion-juguetes-2025/06-card.jpg
+  full: img/eventos/operacion-juguetes-2025/06-full.jpg
+  alt: Operación Juguetes 2025 - fotografía del evento
+techxchange-2024:
+- card: img/eventos/techxchange-2024/01-card.jpg
+  full: img/eventos/techxchange-2024/01-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/02-card.jpg
+  full: img/eventos/techxchange-2024/02-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/03-card.jpg
+  full: img/eventos/techxchange-2024/03-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/04-card.jpg
+  full: img/eventos/techxchange-2024/04-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/05-card.jpg
+  full: img/eventos/techxchange-2024/05-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/06-card.jpg
+  full: img/eventos/techxchange-2024/06-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/07-card.jpg
+  full: img/eventos/techxchange-2024/07-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/08-card.jpg
+  full: img/eventos/techxchange-2024/08-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/09-card.jpg
+  full: img/eventos/techxchange-2024/09-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/10-card.jpg
+  full: img/eventos/techxchange-2024/10-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/11-card.jpg
+  full: img/eventos/techxchange-2024/11-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/12-card.jpg
+  full: img/eventos/techxchange-2024/12-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/13-card.jpg
+  full: img/eventos/techxchange-2024/13-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+- card: img/eventos/techxchange-2024/14-card.jpg
+  full: img/eventos/techxchange-2024/14-full.jpg
+  alt: TechxChange 2024 - fotografía del evento
+taller-impresion-3d-fe-y-alegria-2025:
+- card: img/eventos/taller-impresion-3d-fe-y-alegria-2025/01-card.jpg
+  full: img/eventos/taller-impresion-3d-fe-y-alegria-2025/01-full.jpg
+  alt: Taller de impresión 3D en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-impresion-3d-fe-y-alegria-2025/02-card.jpg
+  full: img/eventos/taller-impresion-3d-fe-y-alegria-2025/02-full.jpg
+  alt: Taller de impresión 3D en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-impresion-3d-fe-y-alegria-2025/03-card.jpg
+  full: img/eventos/taller-impresion-3d-fe-y-alegria-2025/03-full.jpg
+  alt: Taller de impresión 3D en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-impresion-3d-fe-y-alegria-2025/04-card.jpg
+  full: img/eventos/taller-impresion-3d-fe-y-alegria-2025/04-full.jpg
+  alt: Taller de impresión 3D en Fe y Alegría - fotografía del evento
+taller-design-thinking-fe-y-alegria-2024:
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/01-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/01-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/02-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/02-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/03-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/03-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/04-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/04-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/05-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/05-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/06-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/06-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/07-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/07-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/08-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/08-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/09-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/09-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/10-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/10-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/11-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/11-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/12-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/12-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/13-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/13-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/14-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/14-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/15-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/15-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-design-thinking-fe-y-alegria-2024/16-card.jpg
+  full: img/eventos/taller-design-thinking-fe-y-alegria-2024/16-full.jpg
+  alt: Taller-concurso de Design Thinking en Fe y Alegría - fotografía del evento
+taller-economia-circular-2024:
+- card: img/eventos/taller-economia-circular-2024/01-card.jpg
+  full: img/eventos/taller-economia-circular-2024/01-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/02-card.jpg
+  full: img/eventos/taller-economia-circular-2024/02-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/03-card.jpg
+  full: img/eventos/taller-economia-circular-2024/03-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/04-card.jpg
+  full: img/eventos/taller-economia-circular-2024/04-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/05-card.jpg
+  full: img/eventos/taller-economia-circular-2024/05-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/06-card.jpg
+  full: img/eventos/taller-economia-circular-2024/06-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/07-card.jpg
+  full: img/eventos/taller-economia-circular-2024/07-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/08-card.jpg
+  full: img/eventos/taller-economia-circular-2024/08-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/09-card.jpg
+  full: img/eventos/taller-economia-circular-2024/09-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/10-card.jpg
+  full: img/eventos/taller-economia-circular-2024/10-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/11-card.jpg
+  full: img/eventos/taller-economia-circular-2024/11-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/12-card.jpg
+  full: img/eventos/taller-economia-circular-2024/12-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/13-card.jpg
+  full: img/eventos/taller-economia-circular-2024/13-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+- card: img/eventos/taller-economia-circular-2024/14-card.jpg
+  full: img/eventos/taller-economia-circular-2024/14-full.jpg
+  alt: 'Más allá del reciclaje: un camino hacia la economía circular - fotografía del evento'
+taller-habilidades-blandas-fe-y-alegria-2024:
+- card: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/01-card.jpg
+  full: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/01-full.jpg
+  alt: Taller de habilidades blandas en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/02-card.jpg
+  full: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/02-full.jpg
+  alt: Taller de habilidades blandas en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/03-card.jpg
+  full: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/03-full.jpg
+  alt: Taller de habilidades blandas en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/04-card.jpg
+  full: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/04-full.jpg
+  alt: Taller de habilidades blandas en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/05-card.jpg
+  full: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/05-full.jpg
+  alt: Taller de habilidades blandas en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/06-card.jpg
+  full: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/06-full.jpg
+  alt: Taller de habilidades blandas en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/07-card.jpg
+  full: img/eventos/taller-habilidades-blandas-fe-y-alegria-2024/07-full.jpg
+  alt: Taller de habilidades blandas en Fe y Alegría - fotografía del evento
+taller-tinkercad-3d-fe-y-alegria-2024:
+- card: img/eventos/taller-tinkercad-3d-fe-y-alegria-2024/01-card.jpg
+  full: img/eventos/taller-tinkercad-3d-fe-y-alegria-2024/01-full.jpg
+  alt: Taller de modelado e impresión 3D con Tinkercad en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-tinkercad-3d-fe-y-alegria-2024/02-card.jpg
+  full: img/eventos/taller-tinkercad-3d-fe-y-alegria-2024/02-full.jpg
+  alt: Taller de modelado e impresión 3D con Tinkercad en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-tinkercad-3d-fe-y-alegria-2024/03-card.jpg
+  full: img/eventos/taller-tinkercad-3d-fe-y-alegria-2024/03-full.jpg
+  alt: Taller de modelado e impresión 3D con Tinkercad en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-tinkercad-3d-fe-y-alegria-2024/04-card.jpg
+  full: img/eventos/taller-tinkercad-3d-fe-y-alegria-2024/04-full.jpg
+  alt: Taller de modelado e impresión 3D con Tinkercad en Fe y Alegría - fotografía del evento
+campana-navidena-wie-2024:
+- card: img/eventos/campana-navidena-wie-2024/01-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/01-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/02-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/02-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/03-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/03-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/04-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/04-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/05-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/05-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/06-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/06-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/07-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/07-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/08-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/08-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/09-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/09-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/10-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/10-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/11-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/11-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/12-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/12-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/13-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/13-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/14-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/14-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/15-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/15-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2024/16-card.jpg
+  full: img/eventos/campana-navidena-wie-2024/16-full.jpg
+  alt: Campaña Navideña 2024 en Jicamarca - fotografía del evento
+campana-navidena-wie-2022:
+- card: img/eventos/campana-navidena-wie-2022/01-card.jpg
+  full: img/eventos/campana-navidena-wie-2022/01-full.jpg
+  alt: Campaña Navideña 2022 en Pamplona Alta - fotografía del evento
+- card: img/eventos/campana-navidena-wie-2022/02-card.jpg
+  full: img/eventos/campana-navidena-wie-2022/02-full.jpg
+  alt: Campaña Navideña 2022 en Pamplona Alta - fotografía del evento
+conversatorio-women-in-stem-2023:
+- card: img/eventos/conversatorio-women-in-stem-2023/01-card.jpg
+  full: img/eventos/conversatorio-women-in-stem-2023/01-full.jpg
+  alt: Conversatorio Women in STEM - fotografía del evento
+- card: img/eventos/conversatorio-women-in-stem-2023/02-card.jpg
+  full: img/eventos/conversatorio-women-in-stem-2023/02-full.jpg
+  alt: Conversatorio Women in STEM - fotografía del evento
+- card: img/eventos/conversatorio-women-in-stem-2023/03-card.jpg
+  full: img/eventos/conversatorio-women-in-stem-2023/03-full.jpg
+  alt: Conversatorio Women in STEM - fotografía del evento
+- card: img/eventos/conversatorio-women-in-stem-2023/04-card.jpg
+  full: img/eventos/conversatorio-women-in-stem-2023/04-full.jpg
+  alt: Conversatorio Women in STEM - fotografía del evento
+- card: img/eventos/conversatorio-women-in-stem-2023/05-card.jpg
+  full: img/eventos/conversatorio-women-in-stem-2023/05-full.jpg
+  alt: Conversatorio Women in STEM - fotografía del evento
+- card: img/eventos/conversatorio-women-in-stem-2023/06-card.jpg
+  full: img/eventos/conversatorio-women-in-stem-2023/06-full.jpg
+  alt: Conversatorio Women in STEM - fotografía del evento
+talleres-wids-datathon-2025:
+- card: img/eventos/talleres-wids-datathon-2025/01-card.jpg
+  full: img/eventos/talleres-wids-datathon-2025/01-full.jpg
+  alt: Talleres de preparación para el WiDS Datathon 2025 - fotografía del evento
+- card: img/eventos/talleres-wids-datathon-2025/02-card.jpg
+  full: img/eventos/talleres-wids-datathon-2025/02-full.jpg
+  alt: Talleres de preparación para el WiDS Datathon 2025 - fotografía del evento
+aumenta-tu-caja-de-herramientas-2023:
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/01-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/01-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/02-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/02-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/03-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/03-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/04-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/04-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/05-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/05-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/06-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/06-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/07-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/07-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/08-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/08-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/09-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/09-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/10-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/10-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/11-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/11-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/12-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/12-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/13-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/13-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/14-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/14-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/15-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/15-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/16-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/16-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/17-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/17-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/18-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/18-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/19-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/19-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/20-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/20-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/21-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/21-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/22-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/22-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+- card: img/eventos/aumenta-tu-caja-de-herramientas-2023/23-card.jpg
+  full: img/eventos/aumenta-tu-caja-de-herramientas-2023/23-full.jpg
+  alt: Aumenta tu Caja de Herramientas (segunda edición) - fotografía del evento
+guia-de-un-viajero-sostenible-2023:
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/01-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/01-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/02-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/02-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/03-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/03-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/04-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/04-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/05-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/05-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/06-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/06-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/07-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/07-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/08-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/08-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/09-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/09-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/10-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/10-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/11-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/11-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/12-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/12-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/13-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/13-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/14-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/14-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/15-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/15-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/16-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/16-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/17-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/17-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/18-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/18-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/19-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/19-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/20-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/20-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+- card: img/eventos/guia-de-un-viajero-sostenible-2023/21-card.jpg
+  full: img/eventos/guia-de-un-viajero-sostenible-2023/21-full.jpg
+  alt: Guía de un Viajero Sostenible (tercera edición) - fotografía del evento
+taller-finanzas-personales-fe-y-alegria-2024:
+- card: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/01-card.jpg
+  full: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/01-full.jpg
+  alt: Taller de finanzas personales en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/02-card.jpg
+  full: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/02-full.jpg
+  alt: Taller de finanzas personales en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/03-card.jpg
+  full: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/03-full.jpg
+  alt: Taller de finanzas personales en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/04-card.jpg
+  full: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/04-full.jpg
+  alt: Taller de finanzas personales en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/05-card.jpg
+  full: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/05-full.jpg
+  alt: Taller de finanzas personales en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/06-card.jpg
+  full: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/06-full.jpg
+  alt: Taller de finanzas personales en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/07-card.jpg
+  full: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/07-full.jpg
+  alt: Taller de finanzas personales en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/08-card.jpg
+  full: img/eventos/taller-finanzas-personales-fe-y-alegria-2024/08-full.jpg
+  alt: Taller de finanzas personales en Fe y Alegría - fotografía del evento
+taller-google-drive-fe-y-alegria-2024:
+- card: img/eventos/taller-google-drive-fe-y-alegria-2024/01-card.jpg
+  full: img/eventos/taller-google-drive-fe-y-alegria-2024/01-full.jpg
+  alt: Taller de herramientas de Google Drive en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-google-drive-fe-y-alegria-2024/02-card.jpg
+  full: img/eventos/taller-google-drive-fe-y-alegria-2024/02-full.jpg
+  alt: Taller de herramientas de Google Drive en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-google-drive-fe-y-alegria-2024/03-card.jpg
+  full: img/eventos/taller-google-drive-fe-y-alegria-2024/03-full.jpg
+  alt: Taller de herramientas de Google Drive en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-google-drive-fe-y-alegria-2024/04-card.jpg
+  full: img/eventos/taller-google-drive-fe-y-alegria-2024/04-full.jpg
+  alt: Taller de herramientas de Google Drive en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-google-drive-fe-y-alegria-2024/05-card.jpg
+  full: img/eventos/taller-google-drive-fe-y-alegria-2024/05-full.jpg
+  alt: Taller de herramientas de Google Drive en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-google-drive-fe-y-alegria-2024/06-card.jpg
+  full: img/eventos/taller-google-drive-fe-y-alegria-2024/06-full.jpg
+  alt: Taller de herramientas de Google Drive en Fe y Alegría - fotografía del evento
+- card: img/eventos/taller-google-drive-fe-y-alegria-2024/07-card.jpg
+  full: img/eventos/taller-google-drive-fe-y-alegria-2024/07-full.jpg
+  alt: Taller de herramientas de Google Drive en Fe y Alegría - fotografía del evento
+wie-panama:
+- card: img/eventos/wie-panama/01-card.jpg
+  full: img/eventos/wie-panama/01-full.jpg
+  alt: IEEE WIE International Leadership Summit 2026 (Panamá) - fotografía del evento
+- card: img/eventos/wie-panama/02-card.jpg
+  full: img/eventos/wie-panama/02-full.jpg
+  alt: IEEE WIE International Leadership Summit 2026 (Panamá) - fotografía del evento
+- card: img/eventos/wie-panama/03-card.jpg
+  full: img/eventos/wie-panama/03-full.jpg
+  alt: IEEE WIE International Leadership Summit 2026 (Panamá) - fotografía del evento
+- card: img/eventos/wie-panama/04-card.jpg
+  full: img/eventos/wie-panama/04-full.jpg
+  alt: IEEE WIE International Leadership Summit 2026 (Panamá) - fotografía del evento
+- card: img/eventos/wie-panama/05-card.jpg
+  full: img/eventos/wie-panama/05-full.jpg
+  alt: IEEE WIE International Leadership Summit 2026 (Panamá) - fotografía del evento
+lacci-2026:
+- card: img/eventos/lacci-2026/01-card.jpg
+  full: img/eventos/lacci-2026/01-full.jpg
+  alt: Afiche oficial de IEEE LACCI 2026
+sbrm-2026-guadalajara:
+- card: img/eventos/sbrm-2026-guadalajara/01-card.jpg
+  full: img/eventos/sbrm-2026-guadalajara/01-full.jpg
+  alt: Afiche oficial del SBRM 2026, Guadalajara
+ieee-rising-stars-lac-2026:
+- card: img/eventos/ieee-rising-stars-lac-2026/01-card.jpg
+  full: img/eventos/ieee-rising-stars-lac-2026/01-full.jpg
+  alt: Foto grupal de la delegación en el IEEE Rising Stars LAC 2026
+sbrm-2025-student-branch-regional-meeting:
+- card: img/eventos/sbrm-2025-student-branch-regional-meeting/01-card.jpg
+  full: img/eventos/sbrm-2025-student-branch-regional-meeting/01-full.jpg
+  alt: SBRM 2025 (Student Branch Regional Meeting) - fotografía del evento
+- card: img/eventos/sbrm-2025-student-branch-regional-meeting/02-card.jpg
+  full: img/eventos/sbrm-2025-student-branch-regional-meeting/02-full.jpg
+  alt: SBRM 2025 (Student Branch Regional Meeting) - fotografía del evento

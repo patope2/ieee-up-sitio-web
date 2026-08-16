@@ -1,0 +1,2539 @@
+# Generado por tools/parse_eventos.py desde
+# 02-ARQUITECTURA-WEB-IEEE-UP/05-raw-eventos.md
+#
+# A PARTIR DE AQUI ESTE ARCHIVO ES LA FUENTE DE VERDAD.
+# Editalo directamente para corregir datos o agregar eventos nuevos.
+# No vuelvas a correr el parser salvo que rehagas el catalogo desde cero
+# (sobreescribe todo y perderias las correcciones manuales).
+
+# --- Agregados a mano (no vienen del scrapeo de Instagram): eventos
+# internacionales proximos, para el widget "Events" de la portada.
+# `fecha_dias` / `fecha_mes_anio` / `lugar_nombre` / `lugar_ciudad_pais` son
+# campos extra solo para ese widget (calca el formato de home-template-2.html);
+# el resto del sitio sigue usando fecha_legible/ubicacion_texto como siempre.
+- slug: lacci-2026
+  titulo: 'IEEE LACCI 2026 - Latin American Conference on Computational Intelligence'
+  tipo: Ecosistema IEEE
+  etiqueta: International Conference
+  organiza: IEEE Región 9
+  organiza_texto: Comunidad internacional de investigadores y profesionales en inteligencia
+    computacional; IEEE UP es sede oficial y asume un rol protagónico en la organización local
+  escala: Región 9
+  grupo: null
+  fecha_texto: 3 al 6 de noviembre de 2026
+  fecha_orden: '2026-11-03'
+  anio: 2026
+  fecha_precision: dia
+  fecha_dias: 3-6
+  fecha_mes_anio: Noviembre 2026
+  modalidad: Presencial
+  lugar_nombre: Universidad del Pacífico
+  lugar_ciudad_pais: Lima, Perú
+  ubicacion_texto: Universidad del Pacífico, Lima, Perú
+  estado: Próximo
+  descripcion: El LACCI 2026 reunirá a la comunidad internacional de investigadores y profesionales
+    en inteligencia computacional. Este año marca un hito sumamente importante para nosotros, ya
+    que la Universidad del Pacífico tiene el honor de ser la sede oficial de este congreso. Como
+    rama estudiantil IEEE-UP, asumiremos un rol protagónico, garantizando nuestra presencia y
+    participación activa en la organización y desarrollo de todas las jornadas. Es una oportunidad
+    inmejorable para demostrar nuestro compromiso institucional, visibilizar a nuestra casa de
+    estudios y consolidar el impacto de nuestra rama desde adentro.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: Sede oficial y organización local (rol protagónico)
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces_externos:
+  - texto: Sitio oficial del evento
+    url: https://lacci2026.up.edu.pe/
+  enlaces: []
+  shortcodes: []
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: sbrm-2026-guadalajara
+  titulo: SBRM 2026 - Student Branch Regional Meeting (Guadalajara)
+  tipo: Ecosistema IEEE
+  etiqueta: Regional Delegation
+  organiza: IEEE Región 9
+  organiza_texto: IEEE Región 9, con sede en la Universidad de Guadalajara
+  escala: Región 9
+  grupo: null
+  fecha_texto: 29 al 31 de octubre de 2026
+  fecha_orden: '2026-10-29'
+  anio: 2026
+  fecha_precision: dia
+  fecha_dias: 29-31
+  fecha_mes_anio: Octubre 2026
+  modalidad: Presencial
+  lugar_nombre: Universidad de Guadalajara
+  lugar_ciudad_pais: Guadalajara, México
+  ubicacion_texto: Universidad de Guadalajara, Guadalajara, México
+  estado: Próximo
+  descripcion: Encuentro regional de las Ramas Estudiantiles IEEE de Latinoamérica. IEEE UP postula una
+    delegación para representar a la Rama y a la Universidad del Pacífico, en un programa que combina
+    formación en liderazgo y gestión, visitas técnicas a empresas y centros de investigación, competencias
+    regionales y espacios de mentoría con profesionales de toda la región.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: Delegación en postulación - convocatoria abierta a miembros hasta el 2 de agosto de 2026
+  participantes: ''
+  talleres_incluidos: Programas de liderazgo y gestión, visitas técnicas a Intel, Oracle, Micron Technology,
+    FLEX y CINVESTAV, competencias regionales, paneles con profesionales y reuniones de mentoría.
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  # El formulario real (https://forms.gle/qG3UnRWSkghexuGo8) NO se publica
+  # aqui: esta ficha es visible para todo internet y el formulario es solo
+  # para miembros de IEEE UP que postulan a la delegacion. Se comparte por
+  # canales internos; el enlace de abajo manda un correo pidiendolo. Ver la
+  # misma nota, mas detallada, en data/oportunidades.yml.
+  enlaces_externos:
+  - texto: Contáctanos para postular (hasta el 2 de agosto)
+    url: mailto:r.ieee.upacifico@gmail.com?subject=Postulaci%C3%B3n%20a%20la%20delegaci%C3%B3n%20SBRM%202026
+  enlaces: []
+  shortcodes: []
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: ieee-rising-stars-lac-2026
+  titulo: IEEE Rising Stars Latin America and Caribbean Conference 2026
+  tipo: Ecosistema IEEE
+  etiqueta: Regional Delegation
+  organiza: IEEE Región 9
+  organiza_texto: IEEE Región 9 - Rising Stars Latin America and Caribbean
+  escala: Región 9
+  grupo: null
+  fecha_texto: 4 al 6 de septiembre de 2026
+  fecha_orden: '2026-09-04'
+  anio: 2026
+  fecha_precision: dia
+  fecha_dias: 4-6
+  fecha_mes_anio: Septiembre 2026
+  modalidad: Presencial
+  lugar_nombre: Go Quito Hotel
+  lugar_ciudad_pais: Quito, Ecuador
+  ubicacion_texto: Go Quito Hotel, Quito, Ecuador
+  estado: Próximo
+  descripcion: Este encuentro internacional está diseñado para potenciar el liderazgo de los futuros
+    profesionales de la ingeniería en toda la región. Con el firme propósito de posicionar el talento
+    de la Universidad del Pacífico a nivel internacional, conformaremos una delegación oficial que
+    viajará para representarnos de manera presencial. Desde la rama IEEE-UP buscamos miembros
+    proactivos que deseen llevar el nombre de nuestra universidad en alto, expandir nuestra red de
+    contactos estratégicos y fortalecer nuestra presencia institucional en Latinoamérica.
+  ponentes:
+  - nombre: Julio Toro
+    rol: Conferencia sobre Inteligencia Artificial
+  - nombre: Dejan Milojicic
+    rol: Conferencia sobre Megatendencias
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: Delegación oficial de IEEE UP - postulación cerrada el 24 de julio de 2026
+  participantes: ''
+  talleres_incluidos: DiSC Training (liderazgo y comunicación), tracks de Transformación Digital,
+    Sostenibilidad e Ingeniería Humanitaria, Hackathon Copa AWS y espacios de networking con YP & WIE.
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: 'discrepancia de fecha de cierre: la convocatoria por WhatsApp decia 24 de julio y la
+    ficha original decia 27/07. Se publica 24 de julio. Confirmar con el equipo de Eventos.'
+  enlaces_externos:
+  - texto: Sitio oficial del evento
+    url: https://r9.ieee.org/risingstars-2026/
+  - texto: Programa preliminar
+    url: https://r9.ieee.org/risingstars-2026/preliminar-schedule/
+  enlaces: []
+  shortcodes: []
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: stem-her-future-wie-up
+  titulo: STEM Her Future
+  tipo: Impacto social
+  etiqueta: Divulgación STEM
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP, en alianza con la Universidad del Pacífico y el colegio Fe y Alegría
+  escala: null
+  grupo: WIE
+  fecha_texto: Mayo de 2026 (jornada principal el 17 de mayo; taller de Design Thinking el 22 de mayo)
+  fecha_orden: '2026-05-17'
+  anio: 2026
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Colegio Fe y Alegría
+  estado: Pasado
+  descripcion: Programa de divulgación de WIE UP dirigido a escolares de Fe y Alegría, para acercarlas
+    a la ciencia y la tecnología y mostrarles que la ingeniería también es un camino posible para ellas.
+    La jornada combinó testimonios sobre liderazgo, educación y emprendimiento con un taller de Design
+    Thinking en el que las propias estudiantes desarrollaron ideas para resolver problemas de su entorno.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: Sesión de testimonios sobre liderazgo, educación y emprendimiento; taller de Design
+    Thinking aplicado a problemas del entorno de las estudiantes.
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DYcWU2fEYsT/
+    shortcode: DYcWU2fEYsT
+    valido: true
+  - rol: Taller de Design Thinking
+    url: https://www.instagram.com/p/DYp3DosxQHQ/
+    shortcode: DYp3DosxQHQ
+    valido: true
+  shortcodes:
+  - DYcWU2fEYsT
+  - DYp3DosxQHQ
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+
+- slug: wie-panama
+  titulo: IEEE WIE International Leadership Summit 2026 (Panamá)
+  tipo: Ecosistema IEEE
+  etiqueta: International Summit
+  organiza: IEEE Región 9
+  organiza_texto: IEEE WIE Panamá, con sede en la Universidad Interamericana de Panamá
+  escala: Región 9
+  grupo: WIE
+  fecha_texto: 19 y 20 de junio de 2026
+  fecha_orden: '2026-06-19'
+  anio: 2026
+  fecha_precision: dia
+  fecha_dias: 19-20
+  fecha_mes_anio: Junio 2026
+  modalidad: Presencial
+  lugar_nombre: Universidad Interamericana de Panamá
+  lugar_ciudad_pais: Ciudad de Panamá, Panamá
+  ubicacion_texto: Universidad Interamericana de Panamá (UIP), Ciudad de Panamá
+  estado: Pasado
+  descripcion: Encuentro internacional que reunió a líderes, profesionales y estudiantes vinculadas al
+    mundo STEM para compartir experiencias, aprendizajes e iniciativas orientadas a impulsar la innovación,
+    la tecnología y el liderazgo con propósito. Dos estudiantes de la Universidad del Pacífico asistieron
+    representando a la Rama en este espacio, que promueve el talento femenino en ingeniería y fortalece
+    redes de colaboración a nivel regional.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: Representación de la Universidad del Pacífico en un encuentro internacional de liderazgo
+    femenino en STEM de la Región 9.
+  alcance: Región 9 de IEEE, con delegaciones de varios países de América Latina.
+  rol: Participación de dos estudiantes de la Rama
+  participantes: Brenda Jauregui y Andrea Flores, estudiantes de la Universidad del Pacífico.
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: 'en la publicacion de WIE Panama aparece etiquetada @andreaifloresc entre los speakers
+    agradecidos; confirmar si Andrea Flores participo tambien como ponente para poder publicarlo.'
+  enlaces: []
+  shortcodes: []
+  fotos: []
+  en_proyectos: false
+  en_logros: true
+
+- slug: wie-yp-leadership-lab-2026
+  titulo: WIE x YP Leadership Lab 2026 - Women Shaping Technology with Purpose
+  tipo: Ecosistema IEEE
+  etiqueta: IEEE WIE Day 2026
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP e IEEE Young Professionals, con capítulos profesionales y ramas estudiantiles
+    IEEE aliadas
+  escala: País
+  grupo: WIE
+  fecha_texto: 2 al 4 de julio de 2026 (sesiones virtuales el 2 y 3; encuentro presencial el sábado 4)
+  fecha_orden: '2026-07-02'
+  anio: 2026
+  fecha_precision: dia
+  modalidad: Híbrido
+  ubicacion_texto: Universidad del Pacífico, Sede Central, Auditorio Maes Heller (presencial) y Google
+    Meet (virtual)
+  estado: Pasado
+  descripcion: Encuentro organizado en el marco del IEEE WIE Day 2026 para reunir a estudiantes, jóvenes
+    profesionales, capítulos y ramas estudiantiles IEEE en torno al liderazgo con propósito en STEM. La
+    Universidad del Pacífico fue sede del encuentro presencial, que cerró con el panel central "Women
+    Shaping the Future - Liderazgo, tecnología y decisiones con propósito", en el Auditorio Maes Heller.
+  ponentes:
+  - nombre: Jessica Freundt - Director, Women in Tech LATAM
+    rol: Panel "Women Shaping the Future"
+  - nombre: Luz Herrera - Innovation Lead, Interatel Perú
+    rol: Panel "Women Shaping the Future"
+  - nombre: Maria Alejandra Cruz - Founder, Edulink
+    rol: Panel "Women Shaping the Future"
+  - nombre: Brigitte Pérez - Chair, IEEE Young Professionals Perú
+    rol: Panel "Women Shaping the Future"
+  - nombre: Yanning Romero - IEEE Young Professionals Perú
+    rol: Moderadora
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: Organización y sede del encuentro presencial
+  participantes: ''
+  talleres_incluidos: 'Ponencias virtuales sobre inteligencia artificial, ética, liderazgo e influencia
+    en STEM; panel central "Women Shaping the Future" el sábado 4 de julio a las 4:05 p.m. en el Auditorio
+    Maes Heller; stands de capítulos profesionales IEEE; certificado de participación.'
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DaVWgA9ER2s/
+    shortcode: DaVWgA9ER2s
+    valido: true
+  shortcodes:
+  - DaVWgA9ER2s
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: operacion-juguetes-2025
+  colaboracion:
+  - Proyectos UP
+  - Quri Sunqu
+  titulo: Operación Juguetes 2025
+  tipo: Impacto social
+  etiqueta: Campaña solidaria
+  organiza: IEEE UP
+  organiza_texto: Iniciativa conjunta de Proyectos UP, IEEE SIGHT UP, IEEE WIE UP y Quri Sunqu, con el
+    apoyo de Económica Perú y Fin Economics
+  escala: null
+  grupo: SIGHT
+  fecha_texto: Recolección del 20 de octubre al 28 de noviembre de 2025; entregas en diciembre de 2025
+  fecha_orden: '2025-10-20'
+  anio: 2025
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: La Ribera, Rímac, El Agustino, San Juan de Lurigancho y Jicamarca (Lima)
+  estado: Pasado
+  descripcion: Campaña navideña de recolección y entrega de juguetes para niñas y niños de comunidades
+    de Lima. La Rama instaló puntos de acopio dentro del campus y organizó las visitas de entrega, que
+    incluyeron dinámicas y juegos con las comunidades participantes.
+  ponentes: []
+  premio: ''
+  resultado: Se superó la meta de 150 regalos, con más de 200 juguetes donados, una chocolatada para 90
+    personas y 6 canastas navideñas entregadas.
+  logro_obtenido: ''
+  alcance: 'Cinco comunidades de Lima: La Ribera, Rímac, El Agustino, San Juan de Lurigancho y Jicamarca.'
+  rol: Organización conjunta y ejecución de las entregas
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: Proyectos UP, Quri Sunqu, Económica Perú, Fin Economics
+  nota_interna: ''
+  enlaces:
+  - rol: Convocatoria
+    url: https://www.instagram.com/p/DQE1A5eAF4W/
+    shortcode: DQE1A5eAF4W
+    valido: true
+  - rol: Resultados
+    url: https://www.instagram.com/p/DTY7t95DfGg/
+    shortcode: DTY7t95DfGg
+    valido: true
+  shortcodes:
+  - DQE1A5eAF4W
+  - DTY7t95DfGg
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+
+- slug: techxchange-2024
+  titulo: TechxChange 2024
+  tipo: Impacto social
+  etiqueta: Programa formativo
+  organiza: IEEE UP
+  organiza_texto: IEEE SIGHT UP, en formato multi-sede con la Universidad Nacional Mayor de San Marcos,
+    la Universidad Peruana de Ciencias Aplicadas y la Universidad Nacional de San Antonio Abad del Cusco
+  escala: País
+  grupo: SIGHT
+  fecha_texto: Desde el 20 de octubre de 2024
+  fecha_orden: '2024-10-20'
+  anio: 2024
+  fecha_precision: dia
+  modalidad: Híbrido
+  ubicacion_texto: Multi-sede - Universidad del Pacífico, UNMSM, UPC y UNSAAC
+  estado: Pasado
+  descripcion: Programa formativo de cuatro módulos sobre los Objetivos de Desarrollo Sostenible y el
+    desarrollo de proyectos tecnológicos con impacto humanitario. Combina capacitación técnica y de gestión
+    de proyectos, y culmina en una hackathon donde las mejores iniciativas acceden a opciones de financiamiento.
+  ponentes: []
+  premio: Opciones de financiamiento para las mejores iniciativas presentadas en la hackathon final.
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Cuatro universidades del país, abierto a estudiantes y jóvenes profesionales.
+  rol: Organización
+  participantes: ''
+  talleres_incluidos: Cuatro módulos sobre Objetivos de Desarrollo Sostenible, capacitación técnica y
+    gestión de proyectos, con hackathon final.
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DA2IHM6sbE0/
+    shortcode: DA2IHM6sbE0
+    valido: true
+  shortcodes:
+  - DA2IHM6sbE0
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+
+- slug: taller-design-thinking-fe-y-alegria-2024
+  titulo: Taller-concurso de Design Thinking en Fe y Alegría
+  tipo: Impacto social
+  etiqueta: Programa escolar
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP, en alianza con el colegio Fe y Alegría 17
+  escala: null
+  grupo: WIE
+  fecha_texto: Agosto a septiembre de 2024 (cierre el 4 de septiembre)
+  fecha_orden: '2024-08-17'
+  anio: 2024
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Colegio Fe y Alegría 17
+  estado: Pasado
+  descripcion: Programa en tres etapas en el que estudiantes de secundaria aprendieron la metodología
+    Design Thinking y la aplicaron a un proyecto propio. En la etapa final, cada equipo defendió su proyecto
+    en un pitch de diez minutos ante estudiantes de la Universidad del Pacífico que actuaron como jurado
+    e inversionistas, evaluando la aplicación de la metodología, la sostenibilidad financiera y el plan
+    de marketing.
+  ponentes: []
+  premio: Becas en Design Thinking para el equipo ganador.
+  resultado: El equipo ganador obtuvo becas para seguir formándose en Design Thinking.
+  logro_obtenido: ''
+  alcance: Estudiantes de secundaria del colegio Fe y Alegría 17.
+  rol: Diseño y facilitación del programa
+  participantes: ''
+  talleres_incluidos: Tres etapas - formación en la metodología, desarrollo del proyecto y pitch final
+    ante jurado.
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Cierre y resultados
+    url: https://www.instagram.com/p/C_v30c8y728/
+    shortcode: C_v30c8y728
+    valido: true
+  shortcodes:
+  - C_v30c8y728
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+
+- slug: taller-economia-circular-2024
+  titulo: 'Más allá del reciclaje: un camino hacia la economía circular'
+  tipo: Impacto social
+  etiqueta: Sostenibilidad
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP, en colaboración con Ubuntu, Centro de Ética y Gestión Sostenible de la
+    Universidad del Pacífico
+  escala: null
+  grupo: WIE
+  fecha_texto: 14 de octubre de 2024
+  fecha_orden: '2024-10-14'
+  anio: 2024
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Colegio Fe y Alegría 53
+  estado: Pasado
+  descripcion: Taller sobre economía circular dirigido a estudiantes de secundaria, orientado a que
+    entiendan el concepto más allá del reciclaje y se animen a desarrollar soluciones sostenibles con
+    impacto en sus propias comunidades.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Estudiantes de secundaria del colegio Fe y Alegría 53.
+  rol: Organización y facilitación
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: Ubuntu, Centro de Ética y Gestión Sostenible de la Universidad del Pacífico
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DBKgcz8siXg/
+    shortcode: DBKgcz8siXg
+    valido: true
+  shortcodes:
+  - DBKgcz8siXg
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: taller-habilidades-blandas-fe-y-alegria-2024
+  titulo: Taller de habilidades blandas en Fe y Alegría
+  tipo: Impacto social
+  etiqueta: Programa escolar
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP, en alianza con el Instituto Fe y Alegría 75
+  escala: null
+  grupo: WIE
+  fecha_texto: Noviembre de 2024
+  fecha_orden: '2024-11-05'
+  anio: 2024
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Instituto Fe y Alegría 75
+  estado: Pasado
+  descripcion: Jornada práctica sobre habilidades blandas con estudiantes del Instituto Fe y Alegría 75.
+    A través de dinámicas grupales trabajaron comunicación, trabajo en equipo, resolución de problemas
+    y adaptabilidad, competencias decisivas tanto en la vida académica como en la profesional.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Estudiantes del Instituto Fe y Alegría 75.
+  rol: Organización y facilitación
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DCAksLCMNAt/
+    shortcode: DCAksLCMNAt
+    valido: true
+  shortcodes:
+  - DCAksLCMNAt
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: taller-tinkercad-3d-fe-y-alegria-2024
+  titulo: Taller de modelado e impresión 3D con Tinkercad en Fe y Alegría
+  tipo: Impacto social
+  etiqueta: Divulgación técnica
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP, en alianza con el colegio Fe y Alegría 65
+  escala: null
+  grupo: WIE
+  fecha_texto: Junio de 2024
+  fecha_orden: '2024-06-15'
+  anio: 2024
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Colegio Fe y Alegría 65
+  estado: Pasado
+  descripcion: Taller práctico de modelado 3D en Tinkercad en el que los estudiantes diseñaron paso a
+    paso un llavero personalizado y después lo imprimieron con tecnología de impresión 3D, viendo su
+    propio diseño convertido en un objeto real.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Estudiantes del colegio Fe y Alegría 65.
+  rol: Organización y facilitación
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: 'WIE dictó ediciones anteriores de este taller en 2023 (Fe y Alegría) y en agosto de 2024;
+    se publica la edición documentada con fotos.'
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/C8P66S4hCfD/
+    shortcode: C8P66S4hCfD
+    valido: true
+  shortcodes:
+  - C8P66S4hCfD
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: campana-navidena-wie-2024
+  titulo: Campaña Navideña 2024 en Jicamarca
+  tipo: Impacto social
+  etiqueta: Campaña solidaria
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP, con el apoyo de Quri Sunqu, RUA PUCP y Económica Perú
+  escala: null
+  grupo: WIE
+  fecha_texto: Noviembre y diciembre de 2024
+  fecha_orden: '2024-12-25'
+  anio: 2024
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Jicamarca y otros distritos de Lima
+  estado: Pasado
+  descripcion: Campaña de recolección y entrega de regalos, libros y alimentos para niñas y niños de
+    Jicamarca. La Rama coordinó los puntos de acopio, la gestión de aliados y la jornada de entrega.
+  ponentes: []
+  premio: ''
+  resultado: Se entregaron alrededor de 266 regalos, 33 libros de plan lector y textos escolares, 100
+    sorpresas y tres cajas de panetones aportadas por las organizaciones aliadas.
+  logro_obtenido: ''
+  alcance: Niñas y niños de Jicamarca y otros distritos de Lima.
+  rol: Organización y ejecución
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: Quri Sunqu, RUA PUCP, Económica Perú
+  nota_interna: ''
+  enlaces:
+  - rol: Resultados
+    url: https://www.instagram.com/p/DELZgbxyRQY/
+    shortcode: DELZgbxyRQY
+    valido: true
+  shortcodes:
+  - DELZgbxyRQY
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+
+- slug: aumenta-tu-caja-de-herramientas-2023
+  titulo: Aumenta tu Caja de Herramientas (segunda edición)
+  tipo: Impacto social
+  etiqueta: Programa escolar
+  organiza: IEEE UP
+  organiza_texto: IEEE SIGHT UP, en alianza con el colegio Fe y Alegría 10
+  escala: null
+  grupo: SIGHT
+  fecha_texto: Octubre de 2023
+  fecha_orden: '2023-10-15'
+  anio: 2023
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Colegio Fe y Alegría 10
+  estado: Pasado
+  descripcion: Programa de alfabetización digital para estudiantes de tercero y quinto de secundaria,
+    con sesiones sucesivas sobre herramientas de Google, Miro y Canva. El objetivo es que lleguen a la
+    universidad o al trabajo con herramientas concretas para organizarse, colaborar y comunicar sus ideas.
+    El programa cerró con una premiación a los estudiantes más participativos.
+  ponentes: []
+  premio: Premios para los estudiantes destacados, aportados por la Facultad de Ingeniería de la UP y
+    Cookies M.L.
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Estudiantes de tercero y quinto de secundaria del colegio Fe y Alegría 10.
+  rol: Diseño y facilitación del programa
+  participantes: ''
+  talleres_incluidos: Herramientas de Google (Drive y Calendar), Miro y Canva, con sesión de cierre y
+    premiación.
+  becas_aliados: ''
+  auspiciadores: Facultad de Ingeniería de la Universidad del Pacífico, Cookies M.L.
+  nota_interna: ''
+  enlaces:
+  - rol: Presentación del programa
+    url: https://www.instagram.com/p/CybwnHsvi6I/
+    shortcode: CybwnHsvi6I
+    valido: true
+  - rol: Cierre y premiación
+    url: https://www.instagram.com/p/CyzZWBAsDcI/
+    shortcode: CyzZWBAsDcI
+    valido: true
+  shortcodes:
+  - CybwnHsvi6I
+  - CyzZWBAsDcI
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+
+- slug: guia-de-un-viajero-sostenible-2023
+  titulo: Guía de un Viajero Sostenible (tercera edición)
+  tipo: Impacto social
+  etiqueta: Programa escolar
+  organiza: IEEE UP
+  organiza_texto: IEEE SIGHT UP, en alianza con el colegio Fe y Alegría
+  escala: null
+  grupo: SIGHT
+  fecha_texto: Junio de 2023
+  fecha_orden: '2023-06-15'
+  anio: 2023
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Colegio Fe y Alegría
+  estado: Pasado
+  descripcion: Programa de cuatro sesiones que acerca los Objetivos de Desarrollo Sostenible a estudiantes
+    de secundaria a partir de decisiones cotidianas. Cada sesión abordó objetivos concretos, desde igualdad
+    de género y agua limpia hasta consumo responsable y acción por el clima, y el programa cerró con una
+    premiación a los participantes.
+  ponentes:
+  - nombre: Ericka Yaringaño
+    rol: Ponente
+  premio: Premios para los estudiantes participantes, con el apoyo de la Facultad de Ingeniería de la UP.
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Estudiantes de secundaria del colegio Fe y Alegría.
+  rol: Diseño y facilitación del programa
+  participantes: ''
+  talleres_incluidos: 'Cuatro sesiones sobre Objetivos de Desarrollo Sostenible: igualdad de género (ODS
+    5), agua limpia y saneamiento (ODS 6), consumo y producción sostenibles (ODS 12) y acción por el clima
+    (ODS 13).'
+  becas_aliados: ''
+  auspiciadores: Facultad de Ingeniería de la Universidad del Pacífico
+  nota_interna: ''
+  enlaces:
+  - rol: Última sesión
+    url: https://www.instagram.com/p/CuA5UakpRsI/
+    shortcode: CuA5UakpRsI
+    valido: true
+  - rol: Cierre y premiación
+    url: https://www.instagram.com/p/CuFZjTfuZWf/
+    shortcode: CuFZjTfuZWf
+    valido: true
+  shortcodes:
+  - CuA5UakpRsI
+  - CuFZjTfuZWf
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+
+- slug: taller-finanzas-personales-fe-y-alegria-2024
+  titulo: Taller de finanzas personales en Fe y Alegría
+  tipo: Impacto social
+  etiqueta: Programa escolar
+  organiza: IEEE UP
+  organiza_texto: IEEE SIGHT UP, en alianza con el Instituto Fe y Alegría 61
+  escala: null
+  grupo: SIGHT
+  fecha_texto: Mayo de 2024
+  fecha_orden: '2024-05-15'
+  anio: 2024
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Instituto Tecnológico Santa Rafaela María, Fe y Alegría 61
+  estado: Pasado
+  descripcion: Taller de educación financiera con estudiantes de Fe y Alegría 61, sobre gestión del
+    presupuesto, ahorro y control de gastos. En una segunda jornada se trabajaron además protección
+    financiera e inversiones.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Estudiantes del Instituto Fe y Alegría 61.
+  rol: Organización y facilitación
+  participantes: ''
+  talleres_incluidos: Gestión del presupuesto, ahorro y control de gastos; protección financiera e inversiones.
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/C6-GUBlMVH9/
+    shortcode: C6-GUBlMVH9
+    valido: true
+  shortcodes:
+  - C6-GUBlMVH9
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: taller-google-drive-fe-y-alegria-2024
+  titulo: Taller de herramientas de Google Drive en Fe y Alegría
+  tipo: Impacto social
+  etiqueta: Programa escolar
+  organiza: IEEE UP
+  organiza_texto: IEEE SIGHT UP, en alianza con el colegio Fe y Alegría 13
+  escala: null
+  grupo: SIGHT
+  fecha_texto: Septiembre de 2024
+  fecha_orden: '2024-09-21'
+  anio: 2024
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Colegio Fe y Alegría 13
+  estado: Pasado
+  descripcion: Taller de herramientas digitales para estudiantes de primer año de secundaria, enfocado
+    en usar Google Drive para organizar sus estudios y trabajos de forma más eficiente.
+  ponentes:
+  - nombre: Yohaira Romero
+    rol: Ponente
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Estudiantes de primer año de secundaria del colegio Fe y Alegría 13.
+  rol: Organización y facilitación
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DALmLLRJIL4/
+    shortcode: DALmLLRJIL4
+    valido: true
+  shortcodes:
+  - DALmLLRJIL4
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: campana-navidena-wie-2022
+  titulo: Campaña Navideña 2022 en Pamplona Alta
+  tipo: Impacto social
+  etiqueta: Campaña solidaria
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP
+  escala: null
+  grupo: WIE
+  fecha_texto: Diciembre de 2022
+  fecha_orden: '2022-12-25'
+  anio: 2022
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Olla Común Los Girasoles, Pamplona Alta (Lima)
+  estado: Pasado
+  descripcion: Jornada navideña con las niñas y niños de la Olla Común Los Girasoles de Pamplona Alta,
+    que combinó la entrega de obsequios y donaciones con experimentos de ciencia hechos con ellos.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Niñas y niños de la Olla Común Los Girasoles, Pamplona Alta.
+  rol: Organización y ejecución
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/Cmk1eM8oRkP/
+    shortcode: Cmk1eM8oRkP
+    valido: true
+  shortcodes:
+  - Cmk1eM8oRkP
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: conversatorio-women-in-stem-2023
+  titulo: 'Conversatorio Women in STEM'
+  tipo: Taller
+  etiqueta: Conversatorio
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP
+  escala: null
+  grupo: WIE
+  fecha_texto: 14 de junio de 2023
+  fecha_orden: '2023-06-14'
+  anio: 2023
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: ''
+  estado: Pasado
+  descripcion: Conversatorio con profesionales mujeres del ámbito STEM, que compartieron su trayectoria
+    y su experiencia con estudiantes de la Universidad del Pacífico interesadas en carreras de ciencia
+    y tecnología.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Comunidad de la Universidad del Pacífico.
+  rol: Organización
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: 'nombres de las ponentes por confirmar: el post las presenta en imagen, no en texto.'
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CtVWEC2sDe-/
+    shortcode: CtVWEC2sDe-
+    valido: true
+  shortcodes:
+  - CtVWEC2sDe-
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: talleres-wids-datathon-2025
+  titulo: Talleres de preparación para el WiDS Datathon 2025
+  tipo: Taller
+  etiqueta: Serie de talleres
+  organiza: IEEE UP
+  organiza_texto: IEEE WIE UP
+  escala: null
+  grupo: WIE
+  fecha_texto: Febrero de 2025
+  fecha_orden: '2025-02-06'
+  anio: 2025
+  fecha_precision: mes
+  modalidad: No especificada
+  ubicacion_texto: ''
+  estado: Pasado
+  descripcion: Serie de talleres de preparación para el Women in Data Science Datathon 2025, cuya edición
+    se centró en el análisis de datos aplicado al estudio del cerebro femenino. Una vía concreta para
+    que estudiantes de la Universidad del Pacífico se inicien en ciencia de datos y compitan a nivel
+    internacional.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: Estudiantes de la Universidad del Pacífico.
+  rol: Organización de la preparación
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DFvPMgCRabw/
+    shortcode: DFvPMgCRabw
+    valido: true
+  shortcodes:
+  - DFvPMgCRabw
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: taller-impresion-3d-fe-y-alegria-2025
+  titulo: Taller de impresión 3D en Fe y Alegría
+  tipo: Impacto social
+  etiqueta: Divulgación técnica
+  organiza: IEEE UP
+  organiza_texto: IEEE SIGHT UP
+  escala: null
+  grupo: SIGHT
+  fecha_texto: Diciembre de 2025
+  fecha_orden: '2025-12-17'
+  anio: 2025
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Colegio Fe y Alegría
+  estado: Pasado
+  descripcion: Taller práctico de impresión 3D con estudiantes de Fe y Alegría, donde el diseño digital
+    se convierte en objetos reales. Una sesión de intercambio y práctica para acercar la ingeniería a
+    escolares a través de tecnología aplicada.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DSWgc5Mjc6j/
+    shortcode: DSWgc5Mjc6j
+    valido: true
+  shortcodes:
+  - DSWgc5Mjc6j
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+
+- slug: hackathon-fing-2026
+  titulo: Hackathon FING 2026
+  tipo: Competencia/Concurso
+  etiqueta: Hackathon
+  organiza: IEEE UP
+  organiza_texto: IEEE UP, como parte de la Semana de Ingeniería 2026
+  escala: null
+  grupo: null
+  fecha_texto: '29 al 31 de mayo de 2026 (mentorías: sábado 30, 3:00–6:00 p.m.)'
+  fecha_orden: '2026-05-29'
+  anio: 2026
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Presencial, con posibilidad de trabajar en la universidad durante la noche del 30 y
+    madrugada del 31
+  estado: Pasado
+  descripcion: Hackathon intensiva de fin de semana para construir, innovar y competir en equipo resolviendo
+    retos reales de ingeniería.
+  ponentes:
+  - nombre: Crafter Station, The Glitch Girls
+    rol: Mentores
+  premio: Impresora 3D para cada integrante del equipo ganador
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: confirmar equipo ganador con el equipo de Eventos antes de publicar como ficha cerrada.
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DYpbKmgEflw/
+    shortcode: DYpbKmgEflw
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DY71Ty4FpvR/
+    shortcode: DY71Ty4FpvR
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DY6QJ9jyqxG/
+    shortcode: DY6QJ9jyqxG
+    valido: true
+  shortcodes:
+  - DYpbKmgEflw
+  - DY71Ty4FpvR
+  - DY6QJ9jyqxG
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: conversatorio-futuros-escritos-lee-up-ieee-up
+  titulo: Conversatorio "Futuros Escritos" (LEE UP × IEEE UP)
+  tipo: Taller
+  etiqueta: Talk / Panel interdisciplinario
+  organiza: IEEE UP
+  organiza_texto: IEEE UP en alianza con LEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Miércoles 27 de mayo de 2026, 1:30 p.m.
+  fecha_orden: '2026-05-27'
+  anio: 2026
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Presencial - Aula I-103, Universidad del Pacífico
+  estado: Pasado
+  descripcion: Conversatorio que usó la ciencia ficción como punto de partida para reflexionar sobre inteligencia
+    artificial, ética tecnológica y el rol de la ingeniería en el futuro de la sociedad, bajo la pregunta
+    "¿vivimos en el futuro de Orwell o en la distopía de Bradbury?". Incluyó coffee break para los asistentes.
+  ponentes:
+  - nombre: Luciano Stucchi, Decano de la Facultad de Ingeniería
+    rol: Invitado especial
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DYpzCiulLYW/
+    shortcode: DYpzCiulLYW
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DYz5Hxshhon/
+    shortcode: DYz5Hxshhon
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DY0AntQzLht/
+    shortcode: DY0AntQzLht
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DY-VpEfNto_/
+    shortcode: DY-VpEfNto_
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DZYA9LEFKZo/
+    shortcode: DZYA9LEFKZo
+    valido: true
+  shortcodes:
+  - DYpzCiulLYW
+  - DYz5Hxshhon
+  - DY0AntQzLht
+  - DY-VpEfNto_
+  - DZYA9LEFKZo
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: semana-de-talleres-pre-hackathon-fing-2026
+  titulo: Semana de talleres pre-Hackathon FING 2026
+  tipo: Taller
+  etiqueta: Workshop series
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: 27–29 de mayo de 2026 (fecha de publicación de cada sesión; no se especifica horario exacto
+    de cada una)
+  fecha_orden: '2026-05-27'
+  anio: 2026
+  fecha_precision: dia
+  modalidad: Virtual
+  ubicacion_texto: Virtual (link enviado a inscritos por correo)
+  estado: Pasado
+  descripcion: Serie de 4 sesiones de preparación técnica para los equipos inscritos en la Hackathon FING
+    2026, cubriendo análisis de datos, arquitectura tecnológica, producto y uso de IA generativa.
+  ponentes:
+  - nombre: Power BI y análisis de datos - Sergio Pedro Díaz Paredes
+    rol: Sesiones y facilitadores
+  - nombre: Designing the tech stack - Anthony Iván Cuevas Paredes
+    rol: Sesiones y facilitadores
+  - nombre: Think in product & ship fast - Shiara Ruby Arauzo Dejo
+    rol: Sesiones y facilitadores
+  - nombre: Aplicación de IA Generativa - Jorge Enrique Villavicencio Antúnez
+    rol: Sesiones y facilitadores
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: 114 inscritos en la sesión "Think in Product & Ship Fast", co-organizada con Hack0 Community.
+  talleres_incluidos: 'Power BI y análisis de datos; Designing the tech stack; Think in Product & Ship
+    Fast (UX/UI y producto); Aplicación de IA Generativa.'
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces_externos:
+  - texto: 'Sesión "Think in Product & Ship Fast" en Luma'
+    url: https://luma.com/c72nth3c
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DY2uBvklGF9/
+    shortcode: DY2uBvklGF9
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DY5y00TIgek/
+    shortcode: DY5y00TIgek
+    valido: true
+  shortcodes:
+  - DY2uBvklGF9
+  - DY5y00TIgek
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: iart-xperience
+  titulo: IArt Xperience
+  tipo: Taller
+  etiqueta: Talk + Live Demo
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Viernes 24 de octubre de 2025, 3:30–5:30 p.m.
+  fecha_orden: '2025-10-24'
+  anio: 2025
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Presencial - Maes Heller, Universidad del Pacífico
+  estado: Pasado
+  descripcion: Evento que exploró la intersección entre arte e inteligencia artificial mediante charlas,
+    demostraciones en vivo y actividades interactivas, bajo la pregunta de si la IA puede ser artista
+    o solo una herramienta del talento humano. El recap incluyó entrevistas breves a los ponentes.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DQIFhAfjllL/
+    shortcode: DQIFhAfjllL
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DQIFmr4joJf/
+    shortcode: DQIFmr4joJf
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DQawCckDPwl/
+    shortcode: DQawCckDPwl
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DQiry8bjASz/
+    shortcode: DQiry8bjASz
+    valido: true
+  shortcodes:
+  - DQIFhAfjllL
+  - DQIFmr4joJf
+  - DQawCckDPwl
+  - DQiry8bjASz
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: sbrm-2025-student-branch-regional-meeting
+  titulo: SBRM 2025 (Student Branch Regional Meeting)
+  tipo: Ecosistema IEEE
+  etiqueta: Regional Delegation
+  organiza: IEEE Región 9
+  organiza_texto: IEEE Región 9 (@ieeer9sbrm)
+  escala: Región 9
+  grupo: null
+  fecha_texto: 'Octubre de 2025 (fecha de publicación: 25 oct - sin fecha exacta del encuentro)'
+  fecha_orden: '2025-10-01'
+  anio: 2025
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Uruguay
+  estado: Pasado
+  descripcion: Encuentro regional que reunió a las principales Ramas Estudiantiles IEEE de Latinoamérica
+    para evaluar proyectos de investigación, desarrollo e innovación, así como el liderazgo y la
+    participación estudiantil dentro de la red global de IEEE. IEEE UP obtuvo el reconocimiento a la
+    Mejor Delegación de Ramas, resultado de una preparación sostenida y del trabajo articulado de un
+    equipo interdisciplinario que fortaleció sus proyectos y su identidad institucional para representar
+    a la Universidad del Pacífico en un escenario internacional.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: Mejor Delegación de Ramas del SBRM Uruguay 2025, entre las Ramas Estudiantiles IEEE de
+    la región.
+  alcance: Ramas Estudiantiles IEEE de América Latina.
+  rol: Delegación premiada, bajo el liderazgo de su presidente
+  participantes: 'Delegación integrada por estudiantes de Ingeniería, Administración, Economía y Finanzas,
+    liderada por Josepablo Morán Torre (Ingeniería Empresarial), presidente de la Rama.'
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DQP-pNADYQk7VDbGHGkTS0QqgmBOvu2m7Umqn00/
+    shortcode: DQP-pNADYQk7VDbGHGkTS0QqgmBOvu2m7Umqn00
+    valido: false
+  shortcodes: []
+  fotos: []
+  en_proyectos: false
+  en_logros: true
+- slug: reunion-mensual-de-ramas-septiembre-2025-con-untels
+  titulo: Reunión Mensual de Ramas - Septiembre 2025 (con UNTELS)
+  tipo: Ecosistema IEEE
+  etiqueta: National Branch Meeting
+  organiza: IEEE Perú
+  organiza_texto: Ramas IEEE de UP, Continental y UNTELS (organización conjunta)
+  escala: País
+  grupo: null
+  fecha_texto: Sábado 27 de septiembre de 2025, 3:30–7:00 p.m.
+  fecha_orden: '2025-09-27'
+  anio: 2025
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: 'Universidad UNTELS - Villa El Salvador (Aforo: 300 personas)'
+  estado: Pasado
+  descripcion: Talleres, dinámicas y ponencias en colaboración entre tres Ramas Estudiantiles, con espacio
+    de networking.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DO66Le_EdoB/
+    shortcode: DO66Le_EdoB
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DO47N3EjIJy/
+    shortcode: DO47N3EjIJy
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DO2XGr9DFtR/
+    shortcode: DO2XGr9DFtR
+    valido: true
+  shortcodes:
+  - DO66Le_EdoB
+  - DO47N3EjIJy
+  - DO2XGr9DFtR
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: visita-a-coca-cola-2025
+  titulo: Visita a Coca-Cola (2025)
+  tipo: Visita
+  etiqueta: Site Visit
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Viernes 5 de septiembre de 2025
+  fecha_orden: '2025-09-05'
+  anio: 2025
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Presencial, transporte incluido
+  estado: Pasado
+  descripcion: Visita técnica a la planta de Coca-Cola para conocer sus procesos de producción e innovación.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DOANRBfDIb_/
+    shortcode: DOANRBfDIb_
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DOADe4qDCvl/
+    shortcode: DOADe4qDCvl
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DOQ0EVcDtnX/
+    shortcode: DOQ0EVcDtnX
+    valido: true
+  shortcodes:
+  - DOANRBfDIb_
+  - DOADe4qDCvl
+  - DOQ0EVcDtnX
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: charla-codificadas-tata-consultancy-services
+  titulo: Charla "Codificadas" (Tata Consultancy Services)
+  tipo: Taller
+  etiqueta: Talk (evento de tercero, difusión IEEE UP)
+  organiza: IEEE UP
+  organiza_texto: Career Connections UP, con difusión de IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Jueves 14 de agosto de 2025, 7:00 p.m.
+  fecha_orden: '2025-08-14'
+  anio: 2025
+  fecha_precision: dia
+  modalidad: Virtual
+  ubicacion_texto: Virtual - Microsoft Teams
+  estado: Pasado
+  descripcion: Charla sobre "Codificadas" de TCS, primer concurso de programación exclusivo para mujeres
+    en Latinoamérica.
+  ponentes:
+  - nombre: Rocío Urquiaga Chiabra, Client Partner en TCS Perú
+    rol: Ponente
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: confirmar si corresponde a Eventos propios o a una futura sección de alianzas, dado que
+    el organizador principal es un tercero.
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DNTcIwlx2Vs/
+    shortcode: DNTcIwlx2Vs
+    valido: true
+  shortcodes:
+  - DNTcIwlx2Vs
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: open-innovation-night-edicion-andino-labs
+  titulo: Open Innovation Night - edición Andino Labs
+  tipo: Taller
+  etiqueta: Talk panel + Startup demos
+  organiza: IEEE UP
+  organiza_texto: Andino Labs, en colaboración con IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Miércoles 18 de junio de 2025, 4:30–8:30 p.m.
+  fecha_orden: '2025-06-18'
+  anio: 2025
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Presencial - Universidad del Pacífico
+  estado: Pasado
+  descripcion: Noche de innovación abierta centrada en el uso empresarial de inteligencia artificial,
+    con demos en vivo y networking impulsado por IA.
+  ponentes:
+  - nombre: Aurora Otoya - Senior Product Manager Open Banking, BBVA
+    rol: Speakers
+  - nombre: Emanuel Cáceres - Gerente de Inteligencia Artificial, Pacífico Salud
+    rol: Speakers
+  - nombre: Yaudika Lema - Sub Gerenta de Innovación, Ferreycorp
+    rol: Speakers
+  - nombre: Almendra Orbegozo - Investigadora de Innovación Digital, Presidencia del Consejo de Ministros
+    rol: Speakers
+  - nombre: Francesco Ibáñez - Gerente de Gobierno de IA, Pacífico Seguros
+    rol: Speakers
+  - nombre: 'Demos de startups: Paul García (Salu), Claudio Flores (Yavendió)'
+    rol: Speakers
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DK2IFMQurWA/
+    shortcode: DK2IFMQurWA
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DK-UFxHywJB/
+    shortcode: DK-UFxHywJB
+    valido: true
+  shortcodes:
+  - DK2IFMQurWA
+  - DK-UFxHywJB
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: empretech-2025
+  titulo: EmpreTech 2025
+  tipo: Taller
+  etiqueta: Conference + Talks + Competition (evento marco; el concurso Innovatech 2025 tiene ficha propia)
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Primeras dos semanas de junio de 2025; charla destacada 24 de junio de 2025
+  fecha_orden: '2025-06-01'
+  anio: 2025
+  fecha_precision: mes
+  modalidad: Híbrido
+  ubicacion_texto: Mixta
+  estado: Pasado
+  descripcion: Evento de charlas, talleres y networking sobre tecnología empresarial y emprendimiento.
+  ponentes:
+  - nombre: James Hurtado, Yadira Condorí
+    rol: Ponentes destacados
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DKaQDCsSLz-/
+    shortcode: DKaQDCsSLz-
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DLRDL3qsY_e/
+    shortcode: DLRDL3qsY_e
+    valido: true
+  shortcodes:
+  - DKaQDCsSLz-
+  - DLRDL3qsY_e
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: innovatech-2025
+  titulo: Innovatech 2025
+  tipo: Competencia/Concurso
+  etiqueta: Entrepreneurship Competition (dentro de EmpreTech 2025)
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Junio de 2025 (fechas exactas de inscripción/concurso no especificadas)
+  fecha_orden: '2025-06-01'
+  anio: 2025
+  fecha_precision: mes
+  modalidad: No especificada
+  ubicacion_texto: No especificada
+  estado: Pasado
+  descripcion: Edición 2025 de Innovatech con un paquete robusto de becas y mentorías de aliados estratégicos.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: Giralab & Emprende Ninja (2 becas monetización de comunidades), Inspiratech (3 becas
+    No Code), Levo Learning Center (2 becas integrales + 1 media beca Power Platform PL-400/PL-900), Lead
+    UP (mentoría), Countdown Escape Room (descuentos)
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DLGqZ0kMNYQ/
+    shortcode: DLGqZ0kMNYQ
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DLEXcOYs966/
+    shortcode: DLEXcOYs966
+    valido: true
+  shortcodes:
+  - DLGqZ0kMNYQ
+  - DLEXcOYs966
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: talleres-de-vida-universitaria-notion-linkedin-y-negocios-digitales
+  titulo: 'Talleres de vida universitaria: Notion, LinkedIn y Negocios Digitales'
+  tipo: Taller
+  etiqueta: Workshop series
+  organiza: IEEE UP
+  organiza_texto: IEEE UP; el taller de Tecnología y Negocios Digitales fue dirigido por WIE
+  escala: null
+  grupo: WIE
+  fecha_texto: '19–23 de mayo de 2025 (Notion: lunes 19, 4:30–5:30 p.m.; LinkedIn: martes 20, 4:30–5:30
+    p.m.; Tecnología y Negocios Digitales: viernes 23, 2:30–4:30 p.m.)'
+  fecha_orden: '2025-05-19'
+  anio: 2025
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: No especificada
+  estado: Pasado
+  descripcion: 'Ciclo de tres talleres cortos: gestión de proyectos con Notion, marca personal en LinkedIn,
+    y tecnología aplicada a negocios digitales.'
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DJ1vL-5uvvx/
+    shortcode: DJ1vL-5uvvx
+    valido: true
+  shortcodes:
+  - DJ1vL-5uvvx
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: hult-prize-up-2025
+  titulo: Hult Prize UP 2025
+  tipo: Competencia/Concurso
+  etiqueta: Social Entrepreneurship Competition
+  organiza: IEEE UP
+  organiza_texto: Emprende UP, Facultad de Ingeniería UP, CEGES UP e IEEE UP (co-organización)
+  escala: null
+  grupo: null
+  fecha_texto: Anunciado el 23 de febrero de 2025 (fecha del evento final no especificada; es posterior
+    al proceso de ideación)
+  fecha_orden: '2025-02-23'
+  anio: 2025
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: No especificada
+  estado: Pasado
+  descripcion: Concurso de emprendimiento social con enfoque de impacto; el ganador FreshIt se impuso
+    tras un proceso de ideación y pitch.
+  ponentes: []
+  premio: ''
+  resultado: 🥇 1er lugar - FreshIt · 🥈 2do lugar - Plantzcan · 🥉 3er lugar - Mueli Pop
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: Data Science Peru, Datux Perú, Semillero de Emprendedores Perú
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DGbzwQBMc2N/
+    shortcode: DGbzwQBMc2N
+    valido: true
+  shortcodes:
+  - DGbzwQBMc2N
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+- slug: reunion-mensual-de-ramas-noviembre-2024-sede-utec
+  titulo: Reunión Mensual de Ramas - Noviembre 2024 (sede UTEC)
+  tipo: Ecosistema IEEE
+  etiqueta: National Branch Meeting
+  organiza: IEEE Perú
+  organiza_texto: Ramas IEEE (organización conjunta, sede UTEC)
+  escala: País
+  grupo: null
+  fecha_texto: Sábado 9 de noviembre de 2024, desde la 1:30 p.m.
+  fecha_orden: '2024-11-09'
+  anio: 2024
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: UTEC - Jr. Medrano Silva 165, Barranco
+  estado: Pasado
+  descripcion: Ponencias, actividades de integración y networking entre estudiantes de distintas universidades.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DCE5YL0pW38/
+    shortcode: DCE5YL0pW38
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DCE5huApHBx/
+    shortcode: DCE5huApHBx
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DBzOOvdSBMa/
+    shortcode: DBzOOvdSBMa
+    valido: true
+  shortcodes:
+  - DCE5YL0pW38
+  - DCE5huApHBx
+  - DBzOOvdSBMa
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: i-simulacion-historica-de-la-bolsa-de-valores
+  titulo: I Simulación Histórica de la Bolsa de Valores
+  tipo: Competencia/Concurso
+  etiqueta: Educational Simulation (evento de tercero, co-apoyo IEEE UP)
+  organiza: IEEE UP
+  organiza_texto: Club de Historia Económica y Empresarial UP (Club HEE UP), con apoyo de la Bolsa de
+    Valores de Lima (BVL) y la Rama Estudiantil IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Sábado 19 de octubre de 2024
+  fecha_orden: '2024-10-19'
+  anio: 2024
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Presencial
+  estado: Pasado
+  descripcion: Simulación histórica en la que los equipos gestionaron un portafolio de inversión ficticio,
+    poniendo a prueba estrategias frente a escenarios económicos cambiantes.
+  ponentes:
+  - nombre: Beatriz Rodríguez Satizábal
+    rol: Asesora académica
+  premio: ''
+  resultado: 15 equipos participantes; simulación ambientada en el Crack de 1929
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: IEEE UP participó como co-organizador de apoyo, no como organizador principal - confirmar
+    si corresponde presentarlo aquí o en Ecosistema.
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DBlwVAky-33/
+    shortcode: DBlwVAky-33
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DBwzkNmv4Gn/
+    shortcode: DBwzkNmv4Gn
+    valido: true
+  shortcodes:
+  - DBlwVAky-33
+  - DBwzkNmv4Gn
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+- slug: visita-a-bcp-y-yape
+  titulo: Visita a BCP y Yape
+  tipo: Visita
+  etiqueta: Site Visit
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Sábado 21 de septiembre de 2024
+  fecha_orden: '2024-09-21'
+  anio: 2024
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Presencial
+  estado: Pasado
+  descripcion: Visita a las instalaciones del BCP y Yape para conocer los procesos de innovación del CIX
+    y las habilidades que la empresa busca en jóvenes profesionales.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: 30 estudiantes de la Universidad del Pacífico
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/DAKm3LCsFB3/
+    shortcode: DAKm3LCsFB3
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/DAKg0qnMePU/
+    shortcode: DAKg0qnMePU
+    valido: true
+  shortcodes:
+  - DAKm3LCsFB3
+  - DAKg0qnMePU
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: innovatech-2024
+  titulo: Innovatech 2024
+  tipo: Competencia/Concurso
+  etiqueta: Entrepreneurship Competition (dentro de EmpreTech 2024)
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Inscripciones grupales hasta el 26 de mayo de 2024; final del concurso el 30 de mayo de
+    2024
+  fecha_orden: '2024-05-26'
+  anio: 2024
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: No especificada
+  estado: Pasado
+  descripcion: Concurso de emprendimiento e innovación dentro de EmpreTech 2024.
+  ponentes: []
+  premio: premio en efectivo + posibilidad de incubación en Emprende Ninja
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/C6-CZzQsBTc/
+    shortcode: C6-CZzQsBTc
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/C7R-EgCJu6r/
+    shortcode: C7R-EgCJu6r
+    valido: true
+  shortcodes:
+  - C6-CZzQsBTc
+  - C7R-EgCJu6r
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: open-innovation-night-edicion-arbitrum
+  titulo: Open Innovation Night - edición Arbitrum
+  tipo: Taller
+  etiqueta: Talk panel (dos paneles temáticos)
+  organiza: IEEE UP
+  organiza_texto: Andino Labs y Arbitrum, en colaboración con IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Martes 21 de mayo de 2024, 6:00 p.m. (ver nota de inconsistencia)
+  fecha_orden: '2024-05-21'
+  anio: 2024
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Presencial - Universidad del Pacífico
+  estado: Pasado
+  descripcion: Segunda edición del Open Innovation Night, con paneles sobre inteligencia artificial en
+    los negocios e innovación abierta para startups.
+  ponentes:
+  - nombre: Luis Cajachahua (Credicorp), Renzo Otoniel Osso Sánchez (AFP Prima), Juan José Miranda Miranda
+      (NTT Data)
+    rol: Speakers - Panel 1 (IA en los negocios)
+  - nombre: Fio Matta Alejo (Rimac Seguros), Antonio Arévalo Sánchez (Mibanco), Enrique Mejía Castillo
+      (Hermes Perú), con participación de Diego Montes Barrenechea (embajador Arbitrum Perú)
+    rol: Speakers - Panel 2 (Innovación abierta)
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: existe una mención a "17 al 19 de junio" en una publicación de otra cuenta relacionada
+    que no corresponde claramente a este evento - se usó la fecha más consistente (21 de mayo). Confirmar
+    con el equipo.
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/C7A1x3TtuHr/
+    shortcode: C7A1x3TtuHr
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/C7SyuPDtNxX/
+    shortcode: C7SyuPDtNxX
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/C7nXiP4NKi6/
+    shortcode: C7nXiP4NKi6
+    valido: true
+  shortcodes:
+  - C7A1x3TtuHr
+  - C7SyuPDtNxX
+  - C7nXiP4NKi6
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: empretech-2024
+  titulo: EmpreTech 2024
+  tipo: Taller
+  etiqueta: Conference + Talks + Competition (evento marco; el concurso Innovatech 2024 tiene ficha propia)
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Mayo de 2024 (evento de dos semanas)
+  fecha_orden: '2024-05-01'
+  anio: 2024
+  fecha_precision: mes
+  modalidad: Híbrido
+  ubicacion_texto: Mixta
+  estado: Pasado
+  descripcion: Dos semanas de charlas y talleres gratuitos sobre emprendimiento, innovación y tecnología
+    empresarial.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/C6oglfrs7EW/
+    shortcode: C6oglfrs7EW
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/C69v3X1rdIn/
+    shortcode: C69v3X1rdIn
+    valido: true
+  shortcodes:
+  - C6oglfrs7EW
+  - C69v3X1rdIn
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: l-enterprise-visita-tecnica-a-coca-cola-2024
+  titulo: 'L''Enterprise: Visita técnica a Coca-Cola (2024)'
+  tipo: Visita
+  etiqueta: Site Visit (programa "L'Enterprise", 1ra edición)
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: 'Mayo de 2024 (fecha de publicación: 15 y 30 may - sin fecha exacta del día de visita)'
+  fecha_orden: '2024-05-01'
+  anio: 2024
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Presencial
+  estado: Pasado
+  descripcion: 'Primera edición del programa "L''Enterprise": visita a la fábrica de Coca-Cola para conocer
+    procesos de producción y sostenibilidad.'
+  ponentes:
+  - nombre: Javier Wam
+    rol: Docente acompañante
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: el programa "L'Enterprise" no vuelve a mencionarse en publicaciones posteriores - confirmar
+    si continúa activo antes de presentarlo como iniciativa vigente.
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/C6_tjIHMOY-/
+    shortcode: C6_tjIHMOY-
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/C7mWduYsZSr/
+    shortcode: C7mWduYsZSr
+    valido: true
+  shortcodes:
+  - C6_tjIHMOY-
+  - C7mWduYsZSr
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: l-ermit-simposio-internacional-de-ingenieria-de-negocios
+  titulo: L'ERMIT - Simposio Internacional de Ingeniería de Negocios
+  tipo: Taller
+  etiqueta: International Symposium
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Febrero de 2024 (fecha exacta no especificada en el caption)
+  fecha_orden: '2024-02-01'
+  anio: 2024
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Presencial - Universidad del Pacífico
+  estado: Pasado
+  descripcion: Simposio internacional que reunió a estudiantes de la Alianza del Pacífico para debatir
+    tendencias en ingeniería de negocios de cara a la próxima década.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: Universidad del Pacífico y UTEC (Perú), Universidad de Valparaíso (Chile), IPN y UNAM
+    (México), Universidad de los Andes (Colombia)
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: buen candidato para destacar en Home por su alcance internacional (5 países).
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/C3YV4ZTPBWz/
+    shortcode: C3YV4ZTPBWz
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/C3beP6jMHMV/
+    shortcode: C3beP6jMHMV
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/C3gFNYTvxsr/
+    shortcode: C3gFNYTvxsr
+    valido: true
+  shortcodes:
+  - C3YV4ZTPBWz
+  - C3beP6jMHMV
+  - C3gFNYTvxsr
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: talleres-de-nivelacion-en-matematicas
+  titulo: Talleres de Nivelación en Matemáticas
+  tipo: Taller
+  etiqueta: Academic Workshop
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Enero de 2024, salón Z-202, 2:30–4:30 p.m.
+  fecha_orden: '2024-01-01'
+  anio: 2024
+  fecha_precision: mes
+  modalidad: Presencial
+  ubicacion_texto: Presencial
+  estado: Pasado
+  descripcion: Talleres de nivelación en matemáticas para estudiantes ingresantes ("cachimbos"), como
+    preparación para el semestre de verano.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/C2DgfDAv3br/
+    shortcode: C2DgfDAv3br
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/C2Z_T0NszQs/
+    shortcode: C2Z_T0NszQs
+    valido: true
+  shortcodes:
+  - C2DgfDAv3br
+  - C2Z_T0NszQs
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: taller-de-productividad-y-organizacion
+  titulo: Taller de Productividad y Organización
+  tipo: Taller
+  etiqueta: Workshop
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Viernes 28 de abril de 2023, 4:00–6:00 p.m.
+  fecha_orden: '2023-04-28'
+  anio: 2023
+  fecha_precision: dia
+  modalidad: Presencial
+  ubicacion_texto: Presencial - Aula E-306
+  estado: Pasado
+  descripcion: Taller de herramientas y técnicas de productividad de cara a los exámenes parciales.
+  ponentes:
+  - nombre: Yndira Guevara, Luciana de la Torre
+    rol: Facilitadoras invitadas
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CrgqgwNpb0q/
+    shortcode: CrgqgwNpb0q
+    valido: true
+  shortcodes:
+  - CrgqgwNpb0q
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: reunion-mensual-de-ramas-marzo-2023-con-untels
+  titulo: Reunión Mensual de Ramas - Marzo 2023 (con UNTELS)
+  tipo: Ecosistema IEEE
+  etiqueta: National Branch Meeting
+  organiza: IEEE Perú
+  organiza_texto: Ramas IEEE de UP y UNTELS
+  escala: País
+  grupo: null
+  fecha_texto: Sábado 25 de marzo de 2023, 1:30 p.m.
+  fecha_orden: '2023-03-25'
+  anio: 2023
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: Universidad del Pacífico
+  estado: Pasado
+  descripcion: Conversatorio sobre proyectos de innovación en curso en el país, incluyendo desarrollo
+    de nanosatélites.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/Cq9P1JgM2IC/
+    shortcode: Cq9P1JgM2IC
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/CqEYny0MSx3/
+    shortcode: CqEYny0MSx3
+    valido: true
+  shortcodes:
+  - Cq9P1JgM2IC
+  - CqEYny0MSx3
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: ceremonia-de-inicio-de-ano-ieee-2023
+  titulo: Ceremonia de Inicio de Año IEEE 2023
+  tipo: Ecosistema IEEE
+  etiqueta: Institutional Ceremony
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: País
+  grupo: null
+  fecha_texto: Viernes 24 de marzo de 2023, 5:00 p.m.
+  fecha_orden: '2023-03-24'
+  anio: 2023
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: Auditorio Maes Heller, Universidad del Pacífico
+  estado: Pasado
+  descripcion: Ceremonia de reconocimiento a profesores y comités del ciclo anterior, con presencia de
+    autoridades de la universidad y de IEEE Sección Perú.
+  ponentes:
+  - nombre: Óscar De Azambuja (Decano de la Facultad de Ingeniería UP), César Beltrán (Presidente de IEEE
+      Sección Perú)
+    rol: Invitados
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CqJc6wpMOq4/
+    shortcode: CqJc6wpMOq4
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/Cq6cPeDMJH9/
+    shortcode: Cq6cPeDMJH9
+    valido: true
+  shortcodes:
+  - CqJc6wpMOq4
+  - Cq6cPeDMJH9
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: taller-de-introduccion-a-rmarkdown
+  titulo: Taller de Introducción a RMarkdown
+  tipo: Taller
+  etiqueta: Technical Workshop
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Viernes 17 de septiembre (año no especificado con certeza; publicación de 12 jul 2022 -
+    ver nota)
+  fecha_orden: '2022-09-17'
+  anio: 2022
+  fecha_precision: dia
+  modalidad: Virtual
+  ubicacion_texto: Virtual
+  estado: Pasado
+  descripcion: Taller técnico sobre generación de reportes reproducibles combinando R y Python, con publicación
+    en RPubs y Netlify.
+  ponentes:
+  - nombre: Andrés Renzo Cáceres Rossi, mentor del programa R–RStudio–RMarkdown en Data Science Research
+      Peru, con experiencia dictando talleres en Bolivia, México, República Dominicana, República Checa
+      y Perú
+    rol: Ponente
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: confirmar el año exacto del taller antes de publicar la fecha.
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/Cf7lEj3M-6W/
+    shortcode: Cf7lEj3M-6W
+    valido: true
+  shortcodes:
+  - Cf7lEj3M-6W
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: innovatec-2022
+  titulo: InnovaTec 2022
+  tipo: Competencia/Concurso
+  etiqueta: Innovation Competition + Workshops
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Inscripciones del 23 de mayo al 5 de junio de 2022; concurso y talleres del 6 al 11 de
+    junio de 2022
+  fecha_orden: '2022-05-23'
+  anio: 2022
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: No especificada
+  estado: Pasado
+  descripcion: Concurso de innovación sin requisito de conocimientos previos.
+  ponentes: []
+  premio: certificados IEEE Sección Perú y premios sorpresa
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: Lean Canvas, Design Thinking, Herramientas de prototipado, UX Design
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CeWXRxgrIvs/
+    shortcode: CeWXRxgrIvs
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/CeAIVG7syR1/
+    shortcode: CeAIVG7syR1
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/Cd9lMffsVKd/
+    shortcode: Cd9lMffsVKd
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/Cd6xBF1jK1x/
+    shortcode: Cd6xBF1jK1x
+    valido: true
+  shortcodes:
+  - CeWXRxgrIvs
+  - CeAIVG7syR1
+  - Cd9lMffsVKd
+  - Cd6xBF1jK1x
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: organizatech
+  titulo: OrganizaTech
+  tipo: Taller
+  etiqueta: Workshop
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: 'Octubre de 2021 (fecha de publicación: 16 oct 2021 - sin fecha exacta de evento)'
+  fecha_orden: '2021-10-01'
+  anio: 2021
+  fecha_precision: mes
+  modalidad: Virtual
+  ubicacion_texto: Virtual
+  estado: Pasado
+  descripcion: 'Taller sobre herramientas de gestión del tiempo: Todoist, Google Calendar, OneNote, TrackingTime,
+    Notion y StayFocusd.'
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CVGYrWJL5ix/
+    shortcode: CVGYrWJL5ix
+    valido: true
+  shortcodes:
+  - CVGYrWJL5ix
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: taller-de-ms-project
+  titulo: Taller de MS Project
+  tipo: Taller
+  etiqueta: Technical Workshop (certificado)
+  organiza: IEEE UP
+  organiza_texto: IEEE UP, en coordinación con IEEE TEMS UTP e IEEE TEMS UP
+  escala: null
+  grupo: null
+  fecha_texto: Viernes 17 de septiembre de 2021, 4:00 p.m. (GMT-5)
+  fecha_orden: '2021-09-17'
+  anio: 2021
+  fecha_precision: dia
+  modalidad: Virtual
+  ubicacion_texto: Virtual - Zoom Meetings
+  estado: Pasado
+  descripcion: Taller de gestión de proyectos con MS Project, Project Server y Online. Incluyó certificación
+    gratuita.
+  ponentes:
+  - nombre: Ing. Carlos Mendoza - Scrum Master, Microsoft Certified Professional, Gerente General de Hermec
+      Solutions (Partner of the Year 2014)
+    rol: Ponente
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CTfto_MMK7D/
+    shortcode: CTfto_MMK7D
+    valido: true
+  shortcodes:
+  - CTfto_MMK7D
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: ieee-hip-challenge-humanitarian-and-inclusive-projects-challenge
+  titulo: IEEE HIP Challenge (Humanitarian and Inclusive Projects Challenge)
+  tipo: Competencia/Concurso
+  etiqueta: Innovation Challenge (proyectos, equipos de 4)
+  organiza: IEEE UP
+  organiza_texto: IEEE UP
+  escala: null
+  grupo: null
+  fecha_texto: Convocatoria hasta el 3 de septiembre de 2021
+  fecha_orden: '2021-09-03'
+  anio: 2021
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: No especificada
+  estado: Pasado
+  descripcion: Concurso de proyectos con enfoque humanitario e inclusivo, abierto a estudiantes de pregrado
+    de cualquier universidad peruana.
+  ponentes: []
+  premio: 1er lugar - 4 membresías Netzun Full Pass (2 meses) + 4 membresías IEEE anuales + certificados
+    IEEE UP/IEEE Sección Perú. 2do y 3er lugar - membresías IEEE anuales y certificados correspondientes.
+  resultado: el proyecto ganó además el 1er lugar en la categoría "Rama Estudiantil" del Concurso de Casos
+    de Éxito - Reunión Nacional de Ramas 2021 (ver ficha de Ecosistema IEEE)
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CSuAOexFjNv/
+    shortcode: CSuAOexFjNv
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/CTGMD3IssJA/
+    shortcode: CTGMD3IssJA
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/CTIl-4_s1zm/
+    shortcode: CTIl-4_s1zm
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/CTLPbUrMo9K/
+    shortcode: CTLPbUrMo9K
+    valido: true
+  shortcodes:
+  - CSuAOexFjNv
+  - CTGMD3IssJA
+  - CTIl-4_s1zm
+  - CTLPbUrMo9K
+  fotos: []
+  en_proyectos: true
+  en_logros: false
+- slug: full-day-pequenas-gigantes-wie-up
+  titulo: Full Day "Pequeñas Gigantes" (WIE UP)
+  tipo: Taller
+  etiqueta: Workshop day (empoderamiento femenino)
+  organiza: IEEE UP
+  organiza_texto: WIE UP
+  escala: null
+  grupo: WIE
+  fecha_texto: Sábado 28 de agosto de 2021
+  fecha_orden: '2021-08-28'
+  anio: 2021
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: No especificada
+  estado: Pasado
+  descripcion: Jornada de talleres sobre Excel, PowerPoint, Canva y Miro, dictados por alumnas UP.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CSzHhW_MHY1/
+    shortcode: CSzHhW_MHY1
+    valido: true
+  shortcodes:
+  - CSzHhW_MHY1
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: reunion-mensual-de-ramas-agosto-2021
+  titulo: Reunión Mensual de Ramas - Agosto 2021
+  tipo: Ecosistema IEEE
+  etiqueta: National Branch Meeting
+  organiza: IEEE UP
+  organiza_texto: Rama Estudiantil IEEE UP
+  escala: País
+  grupo: null
+  fecha_texto: Sábado 28 de agosto de 2021, 4:30 p.m.
+  fecha_orden: '2021-08-28'
+  anio: 2021
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: No especificada
+  estado: Pasado
+  descripcion: Reunión Mensual de Ramas con ponencias especializadas de docentes e investigadores.
+  ponentes:
+  - nombre: 'Christian Libaque ("Adopción tecnológica: un enfoque práctico"), Javier Díaz ("Articulación
+      del potencial agroexportador de Madre de Dios"), Álvaro Talavera ("Introducción a minería de procesos")'
+    rol: Ponentes
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CTAdc75vgn5/
+    shortcode: CTAdc75vgn5
+    valido: true
+  - rol: Publicación
+    url: https://www.instagram.com/p/CS7mmbzL5DI/
+    shortcode: CS7mmbzL5DI
+    valido: true
+  shortcodes:
+  - CTAdc75vgn5
+  - CS7mmbzL5DI
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: hackathon-inspire-education
+  titulo: Hackathon "Inspire Education"
+  tipo: Competencia/Concurso
+  etiqueta: Interuniversity Hackathon
+  organiza: IEEE Perú
+  organiza_texto: IEEE UNI, IEEE UNSAAC e IEEE UP (organización conjunta)
+  escala: null
+  grupo: null
+  fecha_texto: Hackathon del 28 de julio al 1 de agosto de 2021 (inscripciones hasta el 25 de julio)
+  fecha_orden: '2021-07-28'
+  anio: 2021
+  fecha_precision: dia
+  modalidad: No especificada
+  ubicacion_texto: No especificada
+  estado: Pasado
+  descripcion: Hackathon interuniversitaria orientada a proyectos tecnológicos que promuevan el desarrollo
+    de la educación en el Perú.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: al ser co-organizada entre tres ramas, evaluar si corresponde mejor a escala "País" dentro
+    de Ecosistema IEEE.
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CRkqAuQsvWC/
+    shortcode: CRkqAuQsvWC
+    valido: true
+  shortcodes:
+  - CRkqAuQsvWC
+  fotos: []
+  en_proyectos: false
+  en_logros: false
+- slug: concurso-de-casos-de-exito-reunion-nacional-de-ramas-2021
+  titulo: Concurso de Casos de Éxito - Reunión Nacional de Ramas 2021
+  tipo: Ecosistema IEEE
+  etiqueta: National Award
+  organiza: IEEE Perú
+  organiza_texto: IEEE Sección Perú
+  escala: País
+  grupo: null
+  fecha_texto: 'Marzo de 2021 (fecha de publicación: 7 mar - sin fecha exacta del evento nacional)'
+  fecha_orden: '2021-03-01'
+  anio: 2021
+  fecha_precision: mes
+  modalidad: No especificada
+  ubicacion_texto: ''
+  estado: Pasado
+  descripcion: Doble reconocimiento nacional para IEEE UP y WIE UP en el Concurso de Casos de Éxito de
+    la Reunión Nacional de Ramas IEEE Perú 2021.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: 🥇 1er lugar, categoría "Rama Estudiantil" - proyecto IEEE HIP Challenge (IEEE UP) ·
+    🥇 1er lugar, categoría "Grupo de Afinidad Estudiantil" - proyecto Campaña Navideña (WIE UP)
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: este registro debe enlazarse (no duplicarse) con la ficha del IEEE HIP Challenge en Competencias
+    y Concursos, según la regla de "un registro, varias vistas".
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CMIkRoasj-W/
+    shortcode: CMIkRoasj-W
+    valido: true
+  shortcodes:
+  - CMIkRoasj-W
+  fotos: []
+  en_proyectos: false
+  en_logros: true
+- slug: talleres-sight-google-calendar-miro-y-teams
+  titulo: 'Talleres SIGHT: Google Calendar, Miro y Teams'
+  tipo: Taller
+  etiqueta: Community Workshop (público general, secundaria)
+  organiza: IEEE UP
+  organiza_texto: SIGHT (grupo de afinidad de IEEE UP)
+  escala: null
+  grupo: SIGHT
+  fecha_texto: 'Enero de 2021 (fecha de publicación: 12 ene 2021 - sin fecha exacta de evento)'
+  fecha_orden: '2021-01-01'
+  anio: 2021
+  fecha_precision: mes
+  modalidad: Virtual
+  ubicacion_texto: Virtual
+  estado: Pasado
+  descripcion: Talleres gratuitos y abiertos al público general para estudiantes de 3°, 4° y 5° de secundaria
+    sobre herramientas digitales de organización y trabajo colaborativo.
+  ponentes: []
+  premio: ''
+  resultado: ''
+  logro_obtenido: ''
+  alcance: ''
+  rol: ''
+  participantes: ''
+  talleres_incluidos: ''
+  becas_aliados: ''
+  auspiciadores: ''
+  nota_interna: ''
+  enlaces:
+  - rol: Publicación
+    url: https://www.instagram.com/p/CJ9JhM1s7q6/
+    shortcode: CJ9JhM1s7q6
+    valido: true
+  shortcodes:
+  - CJ9JhM1s7q6
+  fotos: []
+  en_proyectos: false
+  en_logros: false

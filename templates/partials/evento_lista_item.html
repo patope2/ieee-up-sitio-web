@@ -1,0 +1,14 @@
+{# Fila de lista — es el `.posts ul.simple > li` del template oficial: velo,
+   filete de cierre, titulo en azul, fecha debajo en cuerpo 10 y la categoria
+   alineada a la derecha. El template la usa para noticias; aqui lista
+   eventos, que es la seccion protagonista del sitio.
+
+   Recibe: ev. Sin el <dialog> hermano (se renderiza aparte, como en la
+   ficha en mosaico). #}
+<li>
+  <button type="button" class="lista-simple__titulo" data-abre-modal="modal-{{ ev.slug }}" aria-haspopup="dialog">
+    {{ ev.titulo }}
+  </button>
+  <p class="lista-simple__fecha">{{ ev.fecha_legible }}</p>
+  <span class="lista-simple__cat">{{ ev.badge }}</span>
+</li>

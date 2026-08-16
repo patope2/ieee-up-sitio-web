@@ -1,0 +1,104 @@
+# Configuracion global del sitio. Fuente unica de la navegacion, los textos
+# institucionales y los enlaces obligatorios de IEEE.
+#
+# Los textos en INGLES de meta-navegacion y footer son obligatorios y literales
+# segun la guia de marca IEEE: NO traducirlos. El resto del sitio va en español.
+
+nombre: IEEE Universidad del Pacífico Student Branch
+nombre_corto: IEEE UP
+descripcion: >-
+  Rama Estudiantil IEEE de la Universidad del Pacífico (Lima, Perú). Talleres,
+  visitas técnicas, competencias y representación en el ecosistema IEEE.
+idioma: es
+url_base: ""          # se llena al registrar el dominio ante IEEE
+anio_copyright: 2026
+
+# --- Navegacion principal: 6 items + 1 CTA (01-sitemap-y-navegacion.md) ---
+nav:
+  - { titulo: Inicio,   url: "index.html" }
+  - { titulo: Nosotros, url: "nosotros.html" }
+  - titulo: Eventos
+    url: "eventos.html"
+    protagonista: true
+    hijos:
+      - { titulo: Talleres,                url: "eventos-talleres.html" }
+      - { titulo: Visitas,                 url: "eventos-visitas.html" }
+      - { titulo: Competencias y Concursos, url: "eventos-competencias.html" }
+      - { titulo: Impacto social,          url: "eventos-impacto-social.html" }
+      - { titulo: Ecosistema IEEE,         url: "eventos-ecosistema.html" }
+  - titulo: Grupos de Afinidad
+    url: "grupos.html"
+    hijos:
+      - { titulo: WIE,   url: "grupo-wie.html" }
+      - { titulo: SIGHT, url: "grupo-sight.html" }
+      - { titulo: CIS,   url: "grupo-cis.html" }
+  # Oportunidades es una seccion que las bases del Student Website Contest
+  # piden explicitamente (becas, travel grants, voluntariado, programas de
+  # liderazgo) y que debe alcanzarse desde el menu principal.
+  - { titulo: Oportunidades, url: "oportunidades.html" }
+  - { titulo: Proyectos, url: "proyectos.html" }
+  - { titulo: Contacto,  url: "contacto.html" }
+
+cta:
+  titulo: Únete
+  url: "unete.html"
+
+# --- Meta-navegacion corporativa obligatoria (Digital Style Guide) ---
+# El template descargado solo trae 5; la guia exige tambien Join IEEE y Donate.
+meta_nav:
+  - { titulo: "IEEE.org",                        url: "https://www.ieee.org/" }
+  - { titulo: "IEEE <em>Xplore</em> Digital Library", url: "https://ieeexplore.ieee.org/" }
+  - { titulo: "IEEE Standards",                  url: "https://standards.ieee.org/" }
+  - { titulo: "IEEE Spectrum",                   url: "https://spectrum.ieee.org/" }
+  - { titulo: "More Sites",                      url: "https://www.ieee.org/sitemap.html" }
+  - { titulo: "Join IEEE",                       url: "https://www.ieee.org/membership/join/" }
+  - { titulo: "Donate",                          url: "https://www.ieeefoundation.org/donate" }
+
+# --- Footer obligatorio ---
+# Lista requerida: Home, Contact, Accessibility, Nondiscrimination Policy,
+# IEEE Ethics Reporting, Terms & Disclosures, IEEE Privacy Policy.
+# El template traia "Sitemap" pero le faltaba "Contact".
+footer_nav:
+  - { titulo: "Home",                    url: "index.html",   externo: false }
+  - { titulo: "Contact",                 url: "contacto.html", externo: false }
+  - { titulo: "Accessibility",           url: "https://www.ieee.org/accessibility-statement.html" }
+  - { titulo: "Nondiscrimination Policy", url: "https://www.ieee.org/about/corporate/governance/p9-26.html" }
+  - { titulo: "IEEE Ethics Reporting",   url: "https://secure.ethicspoint.com/domain/media/en/gui/20410/index.html" }
+  - { titulo: "IEEE Privacy Policy",     url: "https://www.ieee.org/security_privacy.html" }
+  - { titulo: "Terms & Disclosures",     url: "https://www.ieee.org/site_terms_conditions.html" }
+
+# Textos legales literales - copiarlos tal cual, son obligatorios.
+footer_copyright: >-
+  © Copyright {anio} IEEE – All rights reserved. Use of this website signifies
+  your agreement to the IEEE Terms and Conditions.
+footer_descriptor: >-
+  A public charity, IEEE is the world's largest technical professional
+  organization dedicated to advancing technology for the benefit of humanity.
+
+# Aviso propio (no obligatorio, pero recomendado como buena practica).
+descargo: >-
+  Este sitio es mantenido por la Rama Estudiantil IEEE de la Universidad del
+  Pacífico. Su contenido refleja la actividad de la Rama y no representa
+  necesariamente la posición oficial del IEEE ni de la Universidad del Pacífico.
+
+# --- Redes propias de la rama (NO las cuentas globales de IEEE) ---
+redes:
+  - { nombre: Instagram, url: "https://www.instagram.com/re.ieeeup/", icono: "fa-instagram" }
+  - { nombre: Facebook,  url: "https://www.facebook.com/re.ieeeup", icono: "fa-facebook" }
+  - { nombre: LinkedIn,  url: "https://www.linkedin.com/company/ramaieeeup/", icono: "fa-linkedin" }
+  - { nombre: Correo,    url: "mailto:r.ieee.upacifico@gmail.com", icono: "fa-envelope" }
+
+# --- Proposito (02-wireframe-home-y-paginas-clave.md) ---
+proposito:
+  - titulo: Potencia tu perfil profesional
+    texto: >-
+      Tecnología, innovación y enfoque empresarial, conectados a la red global
+      de IEEE.
+  - titulo: De la idea al impacto
+    texto: >-
+      Llevamos propuestas a soluciones reales frente a retos tecnológicos y
+      sociales.
+  - titulo: Un espacio para crecer
+    texto: >-
+      Proponer, equivocarse, aprender: activaciones, talleres y eventos
+      liderados por los propios miembros.

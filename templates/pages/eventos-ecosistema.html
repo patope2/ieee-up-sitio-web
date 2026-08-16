@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Ecosistema IEEE - Eventos - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Participación de IEEE UP en encuentros de IEEE a nivel país, Región 9 y global.{% endblock %}
+{% block body_class %}page-eventos page-eventos-categoria{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / <a href="{{ rel }}eventos.html">Eventos</a> / Ecosistema IEEE</p>
+    <h1>Ecosistema IEEE</h1>
+    <p class="lead">
+      IEEE UP no organiza estos encuentros: participa como delegación, ponente o
+      anfitrión junto a otras Ramas, la Sección Perú, la Región 9 o IEEE Global.
+      A mayor escala, mayor peso institucional del hito.
+    </p>
+  </div>
+</div>
+
+<section class="seccion-clara">
+  <div class="container">
+  <div class="reticula">
+    <div class="reticula__principal">
+      {% include "partials/nav_eventos_tabs.html" %}
+      {% set eco = eventos_por_tipo['Ecosistema IEEE'] %}
+      {# Cada nivel abre con su propio `h3.boxed`: son subdivisiones de la
+         misma pagina, no secciones nuevas. #}
+      {% for escala in ['Global', 'Región 9', 'País'] %}
+        {% set grupo = eco | selectattr('escala', 'equalto', escala) | list %}
+        {% if grupo %}
+        <h2 class="boxed"{% if not loop.first %} style="margin-top:50px"{% endif %}><span>Nivel {{ escala }}</span></h2>
+        <ul class="eventos-grid">
+          {% for ev in grupo %}
+          <li>{% include "partials/evento_card.html" %}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      {% endfor %}
+
+      {% set sin_escala = eco | rejectattr('escala') | list %}
+      {% if sin_escala %}
+      <h2 class="boxed" style="margin-top:50px"><span>Otros</span></h2>
+      <ul class="eventos-grid">
+        {% for ev in sin_escala %}
+        <li>{% include "partials/evento_card.html" %}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if not eco %}
+      <p class="dato-pendiente">Aún no hay hitos publicados en esta categoría.</p>
+      {% endif %}
+    </div>
+    <div class="reticula__lateral">
+      {% include "partials/nav_eventos.html" %}
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

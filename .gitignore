@@ -1,0 +1,14 @@
+# dist/ es generado por `python build.py`: la fuente de verdad es
+# templates/ + data/ + static/. El despliegue lo reconstruye en cada push
+# (ver .github/workflows/azure-static-web-apps.yml), asi que no hace falta
+# versionarlo — y evita que alguien edite dist/ a mano por error (el propio
+# README lo prohibe explicitamente).
+/dist/
+
+__pycache__/
+*.pyc
+
+# Windows / editor
+.DS_Store
+Thumbs.db
+.vscode/

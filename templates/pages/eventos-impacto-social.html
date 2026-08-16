@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Impacto social - Eventos - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Proyectos humanitarios y de divulgación de IEEE SIGHT UP e IEEE WIE UP: campañas solidarias, talleres en colegios y programas de tecnología con impacto social.{% endblock %}
+{% block body_class %}page-eventos page-eventos-categoria{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / <a href="{{ rel }}eventos.html">Eventos</a> / Impacto social</p>
+    <h1>Impacto social</h1>
+    <p class="lead">
+      Proyectos con los que la Rama lleva la ingeniería fuera del campus: campañas
+      solidarias, talleres en colegios y programas de tecnología aplicada a los
+      Objetivos de Desarrollo Sostenible, liderados sobre todo por IEEE SIGHT UP
+      e IEEE WIE UP.
+    </p>
+  </div>
+</div>
+
+<section class="seccion-clara">
+  <div class="container">
+  <div class="reticula">
+    <div class="reticula__principal">
+      {% include "partials/nav_eventos_tabs.html" %}
+      {% set lista = eventos_por_tipo['Impacto social'] %}
+      <h2 class="boxed"><span>Impacto social</span></h2>
+      {% if lista %}
+      <ul class="eventos-grid">
+        {% for ev in lista %}
+        <li>{% include "partials/evento_card.html" %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="dato-pendiente">Aún no hay proyectos publicados en esta categoría.</p>
+      {% endif %}
+    </div>
+    <div class="reticula__lateral">
+      {% include "partials/nav_eventos.html" %}
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

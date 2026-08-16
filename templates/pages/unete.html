@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}Únete - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Cómo unirte a IEEE global y a IEEE Universidad del Pacífico.{% endblock %}
+{% block body_class %}page-unete{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / Únete</p>
+    <h1>Únete</h1>
+    <p class="lead">
+      Ser parte de IEEE UP te conecta con un perfil profesional más fuerte, una
+      red global de contactos y una comunidad donde proponer, equivocarte y
+      aprender construyendo cosas reales.
+    </p>
+  </div>
+</div>
+
+{% set correo = (sitio.redes | selectattr('icono', 'equalto', 'fa-envelope') | first).url %}
+
+<section class="seccion-clara">
+  <div class="container">
+  <div class="reticula">
+
+    <div class="reticula__principal">
+
+      {# El "que gano" va ANTES de pedir la accion: antes esta pagina abria
+         con los dos tramites y dejaba el motivo para el final, justo cuando
+         quien dudaba ya se habia ido. #}
+      <h2 class="boxed"><span>Qué ganas</span></h2>
+      <div class="ideas">
+        {% for bloque in sitio.proposito %}
+        <div class="reveal">
+          <h4>{{ bloque.titulo }}</h4>
+          <p>{{ bloque.texto }}</p>
+        </div>
+        {% endfor %}
+      </div>
+
+      <h2 class="boxed" style="margin-top:50px"><span>Cómo unirte, en dos pasos</span></h2>
+      <ol class="pasos">
+        <li>
+          <span class="paso__n" aria-hidden="true">1</span>
+          <div class="paso__cuerpo">
+            <h3>Asóciate a IEEE (global)</h3>
+            <p>
+              IEEE es la organización profesional técnica más grande del mundo.
+              La membresía es individual y directa con IEEE, no a través de la
+              Rama: la gestionas tú desde el sitio oficial.
+            </p>
+            <p><a class="btn btn-primary" href="https://www.ieee.org/membership/join/" target="_blank" rel="noopener">Asociarme en ieee.org</a></p>
+          </div>
+        </li>
+        <li>
+          <span class="paso__n" aria-hidden="true">2</span>
+          <div class="paso__cuerpo">
+            <h3>Súmate a la actividad de IEEE UP (local)</h3>
+            <p>
+              Con tu membresía en trámite ya puedes participar: Eventos, un Grupo
+              de Afinidad (WIE, SIGHT o CIS) o una de nuestras áreas funcionales.
+              Escríbenos y te decimos por dónde empezar según lo que te interese.
+            </p>
+            {#
+              IEEE no permite backend ni captura de datos en su hosting, asi que
+              no hay formulario propio. En vez de anunciar uno "por completar"
+              —que dejaba sin salida a quien ya habia decidido unirse— se usa un
+              `mailto:` con el asunto escrito, que hace el mismo trabajo hoy.
+            #}
+            <p><a class="btn btn-yellow" href="{{ correo }}?subject=Quiero%20unirme%20a%20IEEE%20UP">Quiero unirme a IEEE UP</a></p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 class="boxed" style="margin-top:50px"><span>Por dónde empezar</span></h2>
+      <ul class="intenciones">
+        <li>
+          <a class="intencion" href="{{ rel }}eventos.html">
+            <strong>Ir a un evento</strong>
+            <span>La forma más rápida de conocernos: los eventos son abiertos.</span>
+            <em>Ver eventos →</em>
+          </a>
+        </li>
+        <li>
+          <a class="intencion" href="{{ rel }}grupos.html">
+            <strong>Elegir un grupo</strong>
+            <span>WIE, SIGHT y CIS tienen misiones distintas. Mira cuál va contigo.</span>
+            <em>Ver grupos →</em>
+          </a>
+        </li>
+        <li>
+          <a class="intencion" href="{{ rel }}oportunidades.html">
+            <strong>Postular a una convocatoria</strong>
+            <span>Delegaciones, becas y voluntariado con plazo abierto.</span>
+            <em>Ver oportunidades →</em>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="reticula__lateral">
+      <h2 class="boxed"><span>Dónde participar</span></h2>
+      <ul class="lista-nav">
+        <li><a href="{{ rel }}eventos.html">Eventos de la Rama</a></li>
+        {% for grupo in organigrama.grupos %}
+        <li><a href="{{ rel }}grupo-{{ grupo.slug }}.html">{{ grupo.nombre }}</a></li>
+        {% endfor %}
+        <li><a href="{{ rel }}nosotros.html">Direcciones de Área</a></li>
+      </ul>
+
+      {% if oportunidades_abiertas %}
+      <h2 class="boxed" style="margin-top:50px"><span>Convocatorias vigentes</span></h2>
+      <div class="bloque-lateral">
+        <h4>{{ oportunidades_abiertas|length }} abiertas ahora</h4>
+        <p>Delegaciones, becas de aliados y voluntariado con plazo vigente para miembros de la Rama.</p>
+        <a class="btn btn-secondary btn-block" href="{{ rel }}oportunidades.html">Ver oportunidades</a>
+      </div>
+      {% endif %}
+
+      <h2 class="boxed" style="margin-top:50px"><span>¿Dudas?</span></h2>
+      <div class="bloque-lateral">
+        <h4>Escríbenos</h4>
+        <p>Resolvemos consultas sobre membresía, eventos y grupos de afinidad.</p>
+        <a class="btn btn-secondary btn-block" href="{{ rel }}contacto.html">Ir a Contacto</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+{% endblock %}

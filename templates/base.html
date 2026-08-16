@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="{{ sitio.idioma }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ sitio.nombre }}{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ sitio.descripcion }}{% endblock %}">
+
+<link rel="shortcut icon" href="{{ rel }}img/favicon.png">
+
+{#
+  NO se carga `styles.css` (tema WordPress IEEE DCI 2019) ni `tmm_style.css`
+  ni `scripts.js`. Motivo, medido: el 66% de styles.css era CSS de plugins que
+  este sitio no usa (WPBakery, Tribe Events, Team Members, buscador), y el
+  resto declaraba su tipografia bajo `#page` (especificidad de ID), lo que
+  anulaba silenciosamente ~19% de nuestro propio CSS — incluida TODA la escala
+  tipografica de los componentes y todos los indicadores de foco
+  (`:focus{outline:0!important}`). Lo que si aportaba —chrome de header/footer
+  y la familia .btn— esta portado dentro de ieee-up.css.
+  Bootstrap se conserva SOLO por su grilla (.container/.row/.col-*).
+#}
+<link rel="stylesheet" href="{{ rel }}css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ rel }}css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ rel }}css/google-fonts.css">
+<link rel="stylesheet" href="{{ rel }}css/slick.css">
+<link rel="stylesheet" href="{{ rel }}css/ieee-up.css">
+{% block head_extra %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+<div id="page" class="site">
+<a class="skip-link" href="#content">Saltar al contenido</a>
+
+<header id="header" class="site-header" role="banner">
+
+  {# --- Meta-navegacion corporativa obligatoria (Open Sans, min 12px) --- #}
+  <div id="meta-nav">
+    <div class="container">
+      <ul id="meta">
+        {% for item in sitio.meta_nav %}
+        <li><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.titulo|safe }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  {# --- Identificador del sitio (izq) + Master Brand IEEE (der) --- #}
+  <div class="container">
+    <div id="logo-search">
+
+      <div id="mobile-menu">
+        <button type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav" data-abre-nav>
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      {#
+        El identificador del sitio NO es un <h1>: cada pagina debe tener un
+        unico <h1>, que es el titulo de esa pagina.
+        Es el logo REAL de la rama (escudo UP + wordmark "IEEE Student Branch",
+        sin el kite/diamante de IEEE ni su logotipo — cumple Policy 6.3.2-C),
+        dimensionado mas grande que el Master Brand como exige la guia.
+      #}
+      <div id="logo">
+        <a href="{{ rel }}index.html" title="{{ sitio.nombre }}">
+          <img src="{{ rel }}img/logos/IEEE-UP-BLANCO.png" alt="{{ sitio.nombre }}" class="site-logo">
+        </a>
+      </div>
+
+      {#
+        Master Brand. Reglas aplicadas:
+          - variante BLANCA, reversa sobre el header oscuro (el azul se
+            reserva a ieee.org/enterprise; negra queda para fondo claro)
+          - alt exactamente "IEEE"
+          - min 100x33 px y mas chico que el identificador del sitio
+          - separado del nombre de la rama por una linea vertical (CSS)
+          - abre en la MISMA ventana (sin target="_blank")
+      #}
+      <div class="logo-ieee-block">
+        <a href="https://www.ieee.org/" id="logo-ieee">
+          <img src="{{ rel }}img/logo-ieee-white.svg" alt="IEEE" width="108" height="32">
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  {# --- Navegacion principal --- #}
+  <div id="main-nav" role="navigation" aria-label="Navegación principal">
+    <button type="button" class="nav-cerrar" aria-label="Cerrar menú" data-cierra-nav>&times;</button>
+    <div class="container">
+      <ul id="nav">
+        {% for item in sitio.nav %}
+        <li class="menu-item{% if item.get('hijos') %} menu-item-has-children{% endif %}{% if item.url == pagina_actual %} current-menu-item{% endif %}">
+          <a href="{{ rel }}{{ item.url }}"{% if item.url == pagina_actual %} aria-current="page"{% endif %}>{{ item.titulo }}</a>
+          {% if item.get('hijos') %}
+          <ul class="sub-menu">
+            {% for hijo in item.get('hijos') %}
+            <li class="menu-item"><a href="{{ rel }}{{ hijo.url }}">{{ hijo.titulo }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+        <li class="menu-item menu-item-cta">
+          <a href="{{ rel }}{{ sitio.cta.url }}" class="btn btn-yellow">{{ sitio.cta.titulo }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="nav-backdrop" data-cierra-nav></div>
+
+</header>
+
+{#
+  Lienzo nocturno compartido por TODO el sitio. Lleva la base, la trama de
+  franjas a 115° continua y las figuras (anillos y halos) ancladas al alto
+  total de la pagina, que es lo que hace que las secciones se lean como una
+  sola superficie en vez de recortes apilados.
+
+  La portada trae su propio contenedor `.portada` con estas mismas figuras
+  (las suyas van por delante del hero), asi que ahi este solo aporta la base:
+  `body.page-home` desactiva las de aqui para no dibujarlas dos veces.
+#}
+<div id="content" class="site-content lienzo">
+  <span class="portada__halo portada__halo--1" aria-hidden="true"></span>
+  <span class="portada__halo portada__halo--2" aria-hidden="true"></span>
+  <span class="portada__halo portada__halo--3" aria-hidden="true"></span>
+  <span class="portada__anillo portada__anillo--1" aria-hidden="true"></span>
+  <span class="portada__anillo portada__anillo--2" aria-hidden="true"></span>
+  <span class="portada__anillo portada__anillo--3" aria-hidden="true"></span>
+  <span class="portada__anillo portada__anillo--4" aria-hidden="true"></span>
+  {% block content %}{% endblock %}
+</div>
+
+<footer id="colophon" class="site-footer">
+  <div class="container">
+
+    {# Marca de la Rama en el pie: el sitio abre y cierra con la misma
+       identidad. Aqui NO va el Master Brand (ya esta en el header, que es
+       donde la guia lo exige); esta es la marca propia de la Rama. #}
+    <div class="footer-marca">
+      <img src="{{ rel }}img/logos/IEEE-UP-BLANCO.png" alt="{{ sitio.nombre }}" class="footer-marca__logo">
+      <div id="social-links">
+        {% for red in sitio.redes %}{% if red.url %}
+        <a href="{{ red.url }}" target="_blank" rel="noopener" aria-label="{{ red.nombre }}"><i class="fa {{ red.icono }}" aria-hidden="true"></i></a>
+        {% endif %}{% endfor %}
+      </div>
+    </div>
+
+    <ul id="menu-footer-navigation">
+      {% for item in sitio.footer_nav %}
+      {% set es_interno = item.get('externo') is false %}
+      <li><a href="{% if es_interno %}{{ rel }}{% endif %}{{ item.url }}"{% if not es_interno %} target="_blank" rel="noopener"{% endif %}>{{ item.titulo }}</a></li>
+      {% endfor %}
+    </ul>
+
+    <div class="row">
+      <div class="col-lg-9">
+        {# Textos obligatorios, literales, en ingles. No traducir. #}
+        <p>{{ sitio.footer_copyright.replace('{anio}', sitio.anio_copyright|string) }}<br>
+        {{ sitio.footer_descriptor }}</p>
+        <p>{{ sitio.descargo }}</p>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<span id="top-link-block">
+  <a href="#page"><i class="fa fa-chevron-up" aria-hidden="true"></i> Volver arriba</a>
+</span>
+
+</div><!-- #page -->
+
+<script src="{{ rel }}js/jquery.min.js"></script>
+<script src="{{ rel }}js/slick.min.js"></script>
+<script src="{{ rel }}js/ieee-up.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Competencias y Concursos - Eventos - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Hackathons, concursos de innovación y retos organizados por IEEE UP.{% endblock %}
+{% block body_class %}page-eventos page-eventos-categoria{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / <a href="{{ rel }}eventos.html">Eventos</a> / Competencias y Concursos</p>
+    <h1>Competencias y Concursos</h1>
+    <p class="lead">Hackathons, concursos de innovación y retos internos. Los que ya cerraron con resultado también forman parte de nuestro <a href="{{ rel }}proyectos.html">catálogo de Proyectos</a>.</p>
+  </div>
+</div>
+
+<section class="seccion-clara">
+  <div class="container">
+  <div class="reticula">
+    <div class="reticula__principal">
+      {% include "partials/nav_eventos_tabs.html" %}
+      {% set lista = eventos_por_tipo['Competencia/Concurso'] %}
+      <h2 class="boxed"><span>Competencias y Concursos</span></h2>
+      {% if lista %}
+      <ul class="eventos-grid">
+        {% for ev in lista %}
+        <li>{% include "partials/evento_card.html" %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="dato-pendiente">Aún no hay competencias publicados en esta categoría.</p>
+      {% endif %}
+    </div>
+    <div class="reticula__lateral">
+      {% include "partials/nav_eventos.html" %}
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

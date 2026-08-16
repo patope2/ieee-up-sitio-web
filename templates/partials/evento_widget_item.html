@@ -1,0 +1,24 @@
+{# Item del widget "Events", calcado de 01-SITIO-BASE-DESCARGADO/home-template-2.html
+   (.recent-events > ul.events > li): calendario+fecha, mapa+lugar, titulo debajo.
+   A diferencia del template original (enlazaba a una pagina de detalle), aca
+   el titulo es un boton que abre el mismo popup <dialog> que el resto del
+   sitio — no se navega a otra pagina. Recibe: ev. #}
+<li class="eventos-widget__item">
+  <button type="button" class="eventos-widget__boton" data-abre-modal="modal-{{ ev.slug }}" aria-haspopup="dialog">
+    <div class="eventos-widget__fila">
+      <div class="eventos-widget__fecha">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        <div class="eventos-widget__dias">{{ ev.fecha_dias }}</div>
+        <div class="eventos-widget__mes">{{ ev.fecha_mes_anio }}</div>
+      </div>
+      <div class="eventos-widget__loc">
+        <i class="fa fa-map-o" aria-hidden="true"></i>
+        <div class="eventos-widget__lugar">{{ ev.lugar_nombre }}</div>
+        <div class="eventos-widget__pais">{{ ev.lugar_ciudad_pais }}</div>
+      </div>
+    </div>
+    <div class="eventos-widget__titulo">{{ ev.titulo }}</div>
+  </button>
+</li>
+
+{% include "partials/evento_modal.html" %}

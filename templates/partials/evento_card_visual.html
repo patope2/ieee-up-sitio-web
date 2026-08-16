@@ -1,0 +1,41 @@
+{# Ficha de evento — es el `ul.tiled > li > .featured-image` del template
+   oficial: imagen de 278px, placa de titulo BLANCA anclada abajo a la
+   derecha al 75% del ancho, y la etiqueta de categoria asomando por encima
+   del borde de la placa.
+
+   Recibe: ev. Va sin el <dialog> hermano: slick CLONA los slides para el loop
+   infinito y un <dialog> con id unico dentro de un slide clonado produciria
+   ids duplicados en el DOM. El popup se renderiza aparte, una sola vez, via
+   partials/evento_modal.html.
+
+   Cuando el evento no tiene foto, el campo de imagen se pinta en azul IEEE
+   con la trama del template en vez de dejar un rectangulo gris vacio. #}
+<article class="evento-card reveal{% if not ev.portada %} evento-card--sin-foto{% endif %}">
+  <button type="button" class="evento-card__resumen" data-abre-modal="modal-{{ ev.slug }}" aria-haspopup="dialog">
+    <div class="evento-card__media">
+      {% if ev.portada %}
+      <img src="{{ rel }}{{ ev.portada.card }}" alt="{{ ev.portada.alt }}" loading="lazy" width="720" height="480">
+      {% endif %}
+
+      {# El badge va anclado a la foto entera (esquina superior izquierda),
+         no al panel de degradado: si quedaba dentro de `__cuerpo` se
+         posicionaba pegado al borde SUPERIOR de ese panel (que flota sobre
+         la mitad inferior de la imagen), chocando ahi con el texto propio
+         de los flyers graficos del catalogo. #}
+      <span class="badge-categoria--eyebrow">{{ ev.badge }}</span>
+
+      <div class="evento-card__cuerpo">
+        <h3 class="evento-card__titulo">{{ ev.titulo }}</h3>
+        <p class="evento-card__meta">
+          <span><i class="fa fa-calendar" aria-hidden="true"></i>{{ ev.fecha_legible }}</span>
+          {% if ev.modalidad != 'No especificada' %}
+          <span><i class="fa fa-map-o" aria-hidden="true"></i>{{ ev.modalidad }}</span>
+          {% endif %}
+          {# Quien lo hizo: la Rama, un grupo de afinidad o una colaboracion.
+             En la tarjeta va solo la etiqueta corta; el detalle esta en el popup. #}
+          <span><i class="fa fa-users" aria-hidden="true"></i>{{ ev.autoria.etiqueta }}</span>
+        </p>
+      </div>
+    </div>
+  </button>
+</article>

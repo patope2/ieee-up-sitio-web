@@ -1,0 +1,229 @@
+# Oportunidades para estudiantes y miembros de IEEE UP.
+# Fuente de verdad de la pagina Oportunidades (oportunidades.html).
+#
+# Para publicar una oportunidad nueva: copia un bloque, cambia los campos y
+# corre `python build.py`. Para cerrar una: cambia `estado` a Cerrada (no la
+# borres — el historial es la prueba de que la oportunidad es real y recurrente).
+#
+# estado:
+#   Abierta     -> postulacion vigente. Se muestra primero y con boton.
+#   Permanente  -> convocatoria recurrente, siempre vigente.
+#   Cerrada     -> edicion pasada. Queda como evidencia.
+#
+# Obligatorios: slug, titulo, categoria, estado, resumen.
+# Opcionales (si van vacios, simplemente no se muestran): financiamiento,
+# seleccion, dirigido_a, cierre_texto, url_postulacion_interna, evento_slug,
+# pendiente.
+#
+# url_postulacion_interna: el enlace REAL al formulario, para uso del equipo
+# (quien contesta el correo de "Contáctanos" lo copia de aqui). NUNCA se
+# publica en el sitio ni se le cambia el nombre a algo que suene a campo
+# publico — la plantilla (oportunidad_card.html) lo lee pero jamas lo
+# imprime como href. El sitio es publico para todo internet; el formulario
+# es solo para miembros de IEEE UP, asi que un enlace directo dejaria
+# postular (o solo curiosear) a cualquiera. En su lugar, el boton de la
+# tarjeta manda un correo pidiendo el enlace: quien responde confirma que es
+# un miembro antes de compartirlo por un canal interno.
+#
+# evento_slug enlaza con la ficha del evento en data/eventos.yml, para no
+# duplicar la informacion: un registro, varias vistas.
+
+- slug: delegacion-sbrm-2026-mexico
+  titulo: Delegación IEEE UP al SBRM 2026 (Guadalajara, México)
+  categoria: Delegación internacional
+  estado: Abierta
+  resumen: >-
+    Encuentro regional de las Ramas Estudiantiles IEEE de Latinoamérica, del 29
+    al 31 de octubre en la Universidad de Guadalajara. IEEE UP postula una
+    delegación para representar a la Rama ante las ramas de toda la región.
+  actividades:
+    - Programas de liderazgo y gestión
+    - Visitas técnicas a Intel, Oracle, Micron Technology, FLEX y CINVESTAV
+    - Competencias regionales
+    - Paneles con profesionales y reuniones de mentoría
+  incluye:
+    - Alimentación completa durante el evento
+    - Hospedaje durante las fechas del evento
+    - Registro y acceso total a actividades, talleres y visitas técnicas
+  no_incluye:
+    - Pasajes aéreos y gastos de traslado personal
+  seleccion: >-
+    Convocatoria abierta a miembros de la Rama, con proceso de selección. El
+    formulario de postulación no está publicado en este sitio — se comparte
+    por los canales internos de la Rama; escríbenos si eres miembro y quieres
+    postular.
+  dirigido_a: Miembros de IEEE UP
+  cierre_texto: Postulación abierta hasta el domingo 2 de agosto de 2026.
+  url_postulacion_interna: https://forms.gle/qG3UnRWSkghexuGo8
+  evento_slug: sbrm-2026-guadalajara
+
+- slug: convocatoria-grupos-afinidad
+  titulo: Convocatoria a los grupos de afinidad (WIE, SIGHT, CIS)
+  categoria: Convocatoria de miembros
+  estado: Permanente
+  resumen: >-
+    Cada ciclo, los grupos de afinidad de la Rama abren convocatoria para sumar
+    miembros a sus equipos de trabajo. Es la vía más directa para entrar a la
+    Rama y tomar responsabilidades reales desde el primer semestre.
+  actividades:
+    - WIE UP - equipos de Marketing, Logística y Recursos Humanos
+    - SIGHT UP - proyectos de tecnología con impacto social
+    - CIS UP - actividades de inteligencia computacional
+  incluye:
+    - Formación y acompañamiento del equipo del grupo
+    - Participación en la organización de eventos propios
+    - Acceso a las convocatorias reservadas a miembros
+  seleccion: >-
+    Postulación por formulario al inicio de cada ciclo, difundida por las redes
+    de cada grupo.
+  dirigido_a: Estudiantes de la Universidad del Pacífico
+  evento_slug: wie-yp-leadership-lab-2026
+  pendiente: >-
+    Las convocatorias se abren por ciclo. Escríbenos para saber cuál está
+    vigente ahora.
+
+- slug: voluntariado-campanas-solidarias
+  titulo: Voluntariado en campañas solidarias
+  categoria: Voluntariado
+  estado: Permanente
+  resumen: >-
+    SIGHT UP y WIE UP organizan cada año campañas de impacto social junto a
+    otras organizaciones estudiantiles. La más grande es Operación Juguetes, que
+    en 2025 superó su meta con más de 200 regalos y llegó a cinco comunidades de
+    Lima.
+  actividades:
+    - Recolección y clasificación de donaciones en el campus
+    - Visitas de entrega y dinámicas con las comunidades
+    - Talleres de divulgación técnica en colegios
+  incluye:
+    - Experiencia de campo en proyectos humanitarios IEEE
+    - Trabajo conjunto con organizaciones estudiantiles aliadas
+  seleccion: >-
+    Convocatoria abierta por campaña, difundida por las redes de la Rama.
+  dirigido_a: Miembros de IEEE UP y comunidad de la Universidad del Pacífico
+  evento_slug: operacion-juguetes-2025
+
+- slug: voluntariado-facilitadores
+  titulo: Voluntariado en las actividades de la Rama
+  categoria: Voluntariado
+  estado: Permanente
+  resumen: >-
+    Los talleres de la Rama los dictan sus propios miembros. Cada ciclo abrimos
+    convocatoria entre estudiantes para proponer y facilitar sesiones, y para
+    apoyar la operación de los eventos que coorganizamos con la Facultad.
+  actividades:
+    - Facilitar talleres propios (análisis de datos, producto, IA generativa, marca personal)
+    - Apoyo operativo en hackathons y eventos de la Facultad de Ingeniería
+    - Organización y logística de actividades de los grupos de afinidad
+  incluye:
+    - Experiencia real dictando y organizando frente a público
+    - Constancia de participación como voluntario de la Rama
+  seleccion: >-
+    Convocatoria interna entre miembros; las sesiones se eligen por propuesta y
+    los turnos de apoyo se coordinan por evento.
+  dirigido_a: Miembros de IEEE UP de cualquier carrera y ciclo
+  evento_slug: semana-de-talleres-pre-hackathon-fing-2026
+
+- slug: voluntariado-hrfest-2026
+  titulo: Voluntariado de difusión en HRFEST 2026
+  categoria: Voluntariado internacional
+  estado: Abierta
+  resumen: >-
+    HRFEST 2026 es un congreso internacional de robótica humanoide, innovación y
+    liderazgo, del 5 al 7 de noviembre en Perú, con co-patrocinio técnico de
+    IEEE Región 9 y artículos que se envían a IEEE Xplore. IEEE UP recibió una
+    invitación del profesor Christian Libaque para postular voluntarios al
+    equipo de difusión del congreso.
+  actividades:
+    - Difusión y marketing del congreso en redes
+    - Diseño de piezas gráficas (Canva u otras herramientas)
+    - Reuniones virtuales con el equipo internacional
+  incluye:
+    - Certificado de la Facultad de Ingeniería
+    - Certificación internacional de IEEE CIS
+    - Acceso a Canva Pro mientras dure el voluntariado
+    - Networking con investigadores y profesionales de todo el mundo
+  seleccion: >-
+    Postulación por formulario, no publicado en este sitio — se comparte por
+    los canales internos de la Rama. Requisitos: ser estudiante de pregrado
+    de cualquier carrera, inglés básico, disponibilidad de 3 horas semanales
+    y cumplir el 90% de las actividades propuestas.
+  dirigido_a: Estudiantes de pregrado de cualquier carrera
+  url_postulacion_interna: https://docs.google.com/forms/d/e/1FAIpQLSeKolYuy9nn_Vd3bqW8ejHf7-IMOwvl81yRBM1ai6v4keduWg/viewform
+  url_info: https://hrfest.org
+
+- slug: voluntariado-lacci-2026
+  titulo: Voluntariado en el IEEE LACCI 2026
+  categoria: Voluntariado
+  estado: Abierta
+  resumen: >-
+    Del 3 al 6 de noviembre la Universidad del Pacífico es sede del Latin
+    American Conference on Computational Intelligence, organizado por el
+    profesor Juan Lazo. El congreso reúne a expertos y asistentes
+    internacionales, y la Rama coordina un equipo de voluntarios para apoyarlo.
+  actividades:
+    - Apoyo a la organización durante las jornadas del congreso
+    - Contacto directo con expertos y asistentes internacionales
+  incluye:
+    - Experiencia de organización en un congreso internacional IEEE
+    - Ampliación de la red profesional a nivel internacional
+  seleccion: >-
+    Convocatoria interna de la Rama. Reservado a miembros IEEE.
+  dirigido_a: Miembros IEEE de la Rama
+  evento_slug: lacci-2026
+  url_info: https://lacci2026.up.edu.pe/
+  pendiente: >-
+    El grupo de voluntarios se coordina por un enlace privado que se comparte
+    solo entre miembros IEEE. Escríbenos para que te lo enviemos.
+
+- slug: becas-aliados-innovatech
+  titulo: Becas y beneficios de aliados en Innovatech
+  categoria: Becas de aliados
+  estado: Cerrada
+  resumen: >-
+    Las ediciones de Innovatech incluyen un paquete de becas y mentorías
+    aportado por aliados estratégicos, además de los premios de la competencia.
+  seleccion: >-
+    Otorgadas a los equipos participantes de la edición correspondiente.
+  cierre_texto: Edición 2025 cerrada. Las bases de la próxima edición se publican aquí.
+  evento_slug: innovatech-2025
+
+- slug: delegacion-rising-stars-2026
+  titulo: Delegación IEEE UP al IEEE Rising Stars LAC 2026
+  categoria: Delegación internacional
+  estado: Cerrada
+  resumen: >-
+    Encuentro internacional enfocado en potenciar el liderazgo de los futuros
+    profesionales de la ingeniería en la región, del 4 al 6 de septiembre en
+    Quito, Ecuador. IEEE UP conformó una delegación oficial para representar a
+    la universidad de manera presencial.
+  actividades:
+    - DiSC Training - liderazgo, comunicación y trabajo en equipo
+    - Conferencias sobre Inteligencia Artificial y Megatendencias
+    - Tracks de Transformación Digital, Sostenibilidad e Ingeniería Humanitaria
+    - Hackathon Copa AWS
+    - Networking con Young Professionals y WIE
+  incluye:
+    - 100% del costo de registro al congreso
+  seleccion: >-
+    Convocatoria abierta a miembros de la Rama, con proceso de selección.
+  cierre_texto: Postulación cerrada el 24 de julio de 2026.
+  evento_slug: ieee-rising-stars-lac-2026
+
+- slug: delegacion-sbrm-2025
+  titulo: Delegación IEEE UP al Student Branch Regional Meeting 2025
+  categoria: Delegación internacional
+  estado: Cerrada
+  resumen: >-
+    Encuentro regional de Ramas Estudiantiles IEEE de Latinoamérica, con
+    espacios de networking e intercambio entre estudiantes de la región.
+  financiamiento: >-
+    Participación cubierta con apoyo de la Universidad del Pacífico en convenio
+    con IEEE.
+  seleccion: >-
+    Convocatoria abierta a miembros de la Rama, con proceso de selección.
+  cierre_texto: Edición 2025, ya realizada.
+  evento_slug: sbrm-2025-student-branch-regional-meeting
+  pendiente: >-
+    Confirmar el detalle exacto de la cobertura de esta edición antes de
+    publicarla como referencia de lo que cubre una delegación.

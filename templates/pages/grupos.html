@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Grupos de Afinidad - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}WIE, SIGHT y CIS: los grupos de afinidad de IEEE UP.{% endblock %}
+{% block body_class %}page-grupos{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / Grupos de Afinidad</p>
+    <h1>Grupos de Afinidad</h1>
+    <p class="lead">
+      Comunidades dentro de IEEE UP con una misión propia: Women in Engineering,
+      tecnología con impacto social y computación e inteligencia artificial.
+    </p>
+  </div>
+</div>
+
+<div class="container seccion">
+  <h2 class="boxed"><span>Los tres grupos</span></h2>
+  {# Rejilla CSS, no `.row` de Bootstrap: con floats las tres tarjetas quedaban
+     de alturas distintas y la fila se leia desalineada. #}
+  <ul class="rejilla rejilla--3">
+    {% for grupo in organigrama.grupos %}
+    <li class="reveal">
+      <div class="grupo-card">
+        <span class="grupo-card__logo-chip"><img src="{{ rel }}{{ grupo.logo }}" alt="{{ grupo.nombre }}" class="grupo-card__logo"></span>
+        <h3>{{ grupo.nombre }}</h3>
+        <p class="grupo-card__mision">{{ grupo.mision }}</p>
+        <p class="grupo-card__datos">
+          <strong>{{ grupo.directiva[0].nombre }}</strong><br>
+          {{ grupo.directiva[0].cargo }} · {{ grupo.equipo|length + grupo.directiva|length }} integrantes{% if grupo.eventos %} · {{ grupo.eventos|length }} {{ 'actividad documentada' if grupo.eventos|length == 1 else 'actividades documentadas' }}{% endif %}
+        </p>
+        <p><a class="btn btn-secondary btn-block" href="{{ rel }}grupo-{{ grupo.slug }}.html">Conocer {{ grupo.nombre }}</a></p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {# --- Cierre: que hacer ahora ------------------------------------------ #}
+  <h2 class="boxed" style="margin-top:50px"><span>¿Quieres sumarte a uno?</span></h2>
+  <ul class="intenciones">
+    <li>
+      <a class="intencion" href="{{ rel }}{{ sitio.cta.url }}">
+        <strong>Únete a la Rama</strong>
+        <span>Los grupos se nutren de miembros de IEEE UP. Empieza por aquí.</span>
+        <em>Cómo unirme →</em>
+      </a>
+    </li>
+    <li>
+      <a class="intencion" href="{{ rel }}oportunidades.html">
+        <strong>Ver convocatorias abiertas</strong>
+        <span>Los grupos abren convocatorias propias de voluntariado y proyectos.</span>
+        <em>Ver oportunidades →</em>
+      </a>
+    </li>
+    <li>
+      <a class="intencion" href="{{ rel }}contacto.html">
+        <strong>Preguntar primero</strong>
+        <span>Si no sabes cuál encaja contigo, escríbenos y te orientamos.</span>
+        <em>Contacto →</em>
+      </a>
+    </li>
+  </ul>
+</div>
+{% endblock %}

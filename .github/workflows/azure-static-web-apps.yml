@@ -1,0 +1,56 @@
+name: Desplegar sitio a Azure Static Web Apps
+
+# El sitio no tiene build de Node: es Python + Jinja2 (build.py) generando
+# HTML plano. Azure Static Web Apps sabe hacer build automatico con Oryx
+# para frameworks conocidos (React, Next, etc.), pero no para un generador
+# Python casero como este — asi que el paso de build se hace a mano aqui
+# (instalar dependencias, correr build.py) y a la accion de deploy se le
+# dice `skip_app_build: true` para que solo suba lo que ya esta en dist/.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [main]
+
+jobs:
+  build_and_deploy:
+    if: github.event_name == 'push' || github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    name: Build y deploy
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Generar el sitio (dist/)
+        run: python build.py
+
+      - name: Verificar el sitio (marca IEEE, enlaces, accesibilidad)
+        run: python tools/verificar.py
+
+      - name: Deploy a Azure Static Web Apps
+        uses: azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "dist"
+          skip_app_build: true
+          output_location: ""
+
+  close_pull_request:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Cerrar entorno de previsualizacion del PR
+    steps:
+      - name: Cerrar entorno de PR
+        uses: azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: "close"

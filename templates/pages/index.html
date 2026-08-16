@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+{% block title %}{{ sitio.nombre }}{% endblock %}
+{% block description %}{{ sitio.descripcion }}{% endblock %}
+{% block body_class %}page-home{% endblock %}
+
+{% block content %}
+
+{# =====================================================================
+   PORTADA — sistema de bandas (§12 de ieee-up.css): secciones a todo el
+   ancho alternando fondo oscuro/claro, en vez de la retícula 8+4 que usan
+   las páginas interiores. Cada bloque de abajo trae una nota de qué
+   elemento de la portada anterior contiene — nada se quitó, se reordenó
+   en secciones de ancho completo y se fusionaron los dos avisos "Únete"
+   (sidebar + CTA final) que decían, en esencia, lo mismo.
+   ===================================================================== #}
+
+{# --- 1. HERO -----------------------------------------------------------
+   Curacion de la foto: buena parte de las "fotos" del catalogo son flyers
+   graficos con su propio texto grande; detras de un titulo se ven
+   saturados. Cuando el evento destacado es uno de esos, se usa una foto
+   candid REAL de la Rama (no una invencion) como fondo. #}
+{% set foto_ambiente_curada = 'img/eventos/visita-a-bcp-y-yape/02-full.jpg' %}
+{% set overrides_foto_hero = {
+  'hackathon-fing-2026': foto_ambiente_curada,
+  'lacci-2026': foto_ambiente_curada,
+  'sbrm-2026-guadalajara': foto_ambiente_curada,
+} %}
+{% set hero = proximo_evento or eventos[0] %}
+{% set hero_foto = overrides_foto_hero.get(hero.slug) or (hero.portada.full if hero.portada else foto_ambiente_curada) %}
+
+{# TODA la portada oscura va dentro de UN contenedor: el fondo nocturno y la
+   trama de franjas a 115° son continuos de punta a punta, y los anillos y
+   halos de abajo estan anclados al alto TOTAL de la pagina, no a una
+   seccion. Por eso sus curvas cruzan de una banda a la siguiente y cosen el
+   conjunto en vez de dejar recortes independientes. Ver §12.0 del CSS. #}
+<div class="portada">
+  <span class="portada__halo portada__halo--1" aria-hidden="true"></span>
+  <span class="portada__halo portada__halo--2" aria-hidden="true"></span>
+  <span class="portada__halo portada__halo--3" aria-hidden="true"></span>
+  <span class="portada__anillo portada__anillo--1" aria-hidden="true"></span>
+  <span class="portada__anillo portada__anillo--2" aria-hidden="true"></span>
+  <span class="portada__anillo portada__anillo--3" aria-hidden="true"></span>
+  <span class="portada__anillo portada__anillo--4" aria-hidden="true"></span>
+
+{# El fondo NO es una foto fija: rota entre las de los eventos destacados con
+   foto propia, para que la portada muestre actividad real de la Rama y no una
+   sola imagen. El titular se queda en el proximo evento (es lo que tiene
+   plazo); lo unico que cambia es la fotografia.
+
+   La PRIMERA —la que ve todo el que entra— es la foto de la comunidad
+   entera con las letras IEEE: representa a la Rama completa, no a un evento
+   suelto, que es lo que corresponde a la imagen de apertura del sitio. #}
+{% set foto_comunidad = 'img/rama/comunidad-ieee-up.jpg' %}
+{% set fotos_hero = [foto_comunidad] %}
+{% if hero_foto != foto_comunidad %}{% set _ = fotos_hero.append(hero_foto) %}{% endif %}
+{% for ev in eventos if ev.portada and ev.slug not in overrides_foto_hero %}
+  {% if ev.portada.full not in fotos_hero and fotos_hero|length < 5 %}
+  {% set _ = fotos_hero.append(ev.portada.full) %}
+  {% endif %}
+{% endfor %}
+
+<section class="hero-foto">
+  <div class="hero-foto__fondos" aria-hidden="true">
+    {% for foto in fotos_hero %}
+    <div class="hero-foto__fondo{% if loop.first %} activa{% endif %}" style="background-image:url('{{ rel }}{{ foto }}');"></div>
+    {% endfor %}
+  </div>
+  <div class="container">
+    <div class="hero-foto__panel">
+      <p class="hero-foto__meta">
+        <span><i class="fa fa-calendar" aria-hidden="true"></i> {{ hero.fecha_legible }}</span>
+        {% if not proximo_evento %}<span>Último evento</span>{% endif %}
+      </p>
+      <h1>{{ hero.titulo }}</h1>
+      {# Subtitulo corto, como el "December 12th at 8pm, ABC Hall" del template:
+         a 24px en negrita, 20 palabras se convertian en un parrafo. #}
+      {% set palabras_desc = hero.descripcion.split() %}
+      <h2>{{ palabras_desc[:13]|join(' ') }}{% if palabras_desc|length > 13 %}…{% endif %}</h2>
+      <p class="hero-foto__acciones">
+        {% if proximo_evento and hero.tipo == 'Ecosistema IEEE' %}
+        {# Ecosistema IEEE: participamos/representamos, no organizamos — el CTA
+           no es "Inscribete" (regla de 04-estructura-eventos.md). #}
+        <a class="btn-solido" href="{{ rel }}eventos.html#modal-{{ hero.slug }}">Conoce cómo participamos</a>
+        <a class="btn-ghost" href="{{ rel }}eventos.html">Ver todos los eventos</a>
+        {% elif proximo_evento %}
+        <a class="btn-solido" href="{{ rel }}eventos.html#modal-{{ hero.slug }}">Inscríbete</a>
+        <a class="btn-ghost" href="{{ rel }}eventos.html">Ver todos los eventos</a>
+        {% else %}
+        <a class="btn-solido" href="{{ rel }}eventos.html">Ver todos los eventos</a>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+  {% if fotos_hero|length > 1 %}
+  <ul class="hero-foto__puntos">
+    {% for foto in fotos_hero %}
+    <li><button type="button" class="hero-foto__punto" aria-current="{{ 'true' if loop.first else 'false' }}"
+        aria-label="Ver imagen {{ loop.index }} de {{ fotos_hero|length }}"></button></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+
+{# Los tres grupos de eventos de la portada se construyen DISJUNTOS a
+   proposito: cada popup <dialog> lleva un id unico y un mismo evento en dos
+   bloques produciria ids duplicados en el DOM. #}
+{% set no_eco = eventos | rejectattr('tipo', 'equalto', 'Ecosistema IEEE') | list %}
+{% set proximos = no_eco | selectattr('estado', 'equalto', 'Próximo') | list %}
+{% set eventos_home = proximos if proximos else no_eco %}
+{% set destacados = eventos_home[:6] %}
+{% set proximos_eco = eventos_por_tipo['Ecosistema IEEE'] | selectattr('estado', 'equalto', 'Próximo') | list %}
+
+{# Retirados de la portada a petición: el aviso de "Convocatoria abierta"
+   (las oportunidades tienen su propia sección en el menú) y la fila de
+   cifras. El hero entra ahora directo al mosaico de eventos. #}
+
+{# --- 2. PRÓXIMOS EVENTOS: banda (05 Grid Mesh) --------------------------
+   El mosaico de fichas, sin cambios de contenido ni de comportamiento
+   (carrusel slick intacto, popups aparte). #}
+<section class="banda banda--grid">
+  <div class="container">
+    <div class="banda__cabecera">
+      <div>
+        <p class="antetitulo">AGENDA</p>
+        <h2 class="banda__titulo">{{ 'Próximos eventos' if proximos else 'Destacados' }}</h2>
+      </div>
+    </div>
+    <div class="banda__regla"></div>
+    <div class="eventos-carrusel">
+      {% for ev in destacados %}
+      <div class="eventos-carrusel__item">{% include "partials/evento_card_visual.html" %}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# --- 4. GRUPOS DE AFINIDAD: banda clara (06 Concentric) -----------------
+   Antes vivía en la barra lateral como una simple lista de enlaces; ahora
+   es su propia sección con la misión de cada grupo (mismas tarjetas que
+   usa grupos.html, sin CSS nuevo). #}
+<section class="banda banda--claro banda--concentric">
+  <div class="container">
+    <div class="banda__cabecera">
+      <div>
+        <p class="antetitulo">CAPÍTULOS</p>
+        <h2 class="banda__titulo">Grupos de Afinidad</h2>
+      </div>
+      <p class="banda__intro">Comunidades dentro de IEEE UP con una misión propia.</p>
+    </div>
+    <ul class="rejilla rejilla--3">
+      {% for grupo in organigrama.grupos %}
+      <li class="reveal">
+        <div class="grupo-card">
+          <span class="grupo-card__logo-chip"><img src="{{ rel }}{{ grupo.logo }}" alt="{{ grupo.nombre }}" class="grupo-card__logo"></span>
+          <h3>{{ grupo.nombre }}</h3>
+          <p class="grupo-card__mision">{{ grupo.mision }}</p>
+          <p><a class="btn-ghost" href="{{ rel }}grupo-{{ grupo.slug }}.html">Conocer más</a></p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# --- 5. ECOSISTEMA IEEE + NOS VERÁS EN: banda (08 Ruled Arc) ------------
+   Las dos caras de lo mismo, una al lado de la otra: a la izquierda dónde
+   YA estuvimos, a la derecha dónde estaremos. Antes iban apiladas y la de
+   arriba solo mostraba 2 encuentros; ahora la columna izquierda lista todos
+   los que hay documentados, que es lo que da la medida real de la presencia
+   de la Rama en la red IEEE. #}
+{% set eco_pasados = eventos_por_tipo['Ecosistema IEEE'] | selectattr('estado', 'equalto', 'Pasado') | list %}
+{% set foto_eco = 'img/eventos/ceremonia-de-inicio-de-ano-ieee-2023/04-full.jpg' %}
+{% if eco_pasados or proximos_eco %}
+<section class="banda banda--arc">
+  <div class="container">
+    <div class="eco-fila">
+
+      <div class="eco-fila__col">
+        <p class="antetitulo">RED IEEE</p>
+        <h2 class="banda__titulo">Ecosistema IEEE</h2>
+        <div class="banda__regla"></div>
+        {# Una foto y un texto corto: la lista completa de los encuentros ya
+           vive en la página de Ecosistema IEEE, y repetirla aquí convertía la
+           portada en un índice. Este bloque solo tiene que dar la idea de que
+           la Rama está presente en la red. El número sale de los datos. #}
+        <figure class="eco-foto">
+          <img src="{{ rel }}{{ foto_eco }}" alt="Delegación de IEEE UP en un encuentro de la red IEEE" loading="lazy">
+          <figcaption>
+            <p>
+              La Rama representa a la Universidad del Pacífico en los encuentros de
+              IEEE a nivel país, Región 9 y global: {{ eco_pasados|length }} hasta hoy,
+              entre reuniones de ramas, congresos y cumbres de liderazgo.
+            </p>
+            <a class="btn-ghost" href="{{ rel }}eventos-ecosistema.html">Ver el ecosistema IEEE</a>
+          </figcaption>
+        </figure>
+      </div>
+
+      {% if proximos_eco %}
+      <div class="eco-fila__col">
+        <p class="antetitulo">PRÓXIMAMENTE</p>
+        <h2 class="banda__titulo banda__titulo--sm">Nos verás en</h2>
+        <p class="banda__intro" style="margin-bottom:var(--e-3)">
+          Los encuentros a los que la Rama ya está convocada.
+        </p>
+        <div class="banda__regla"></div>
+        <ul class="eventos-widget eventos-widget--fila">
+          {% for ev in proximos_eco %}
+          {% include "partials/evento_widget_item.html" %}
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# --- 6. MESA DIRECTIVA + PROPÓSITO: banda clara (05 Grid Mesh, variante
+   clara) — deliberadamente DISTINTA de la banda clara de Grupos, que usa
+   los anillos concentricos: dos pausas claras idenricas leian como la misma
+   seccion repetida. #}
+<section class="banda banda--claro banda--grid">
+  <div class="container">
+    <div class="banda__cabecera">
+      <div>
+        <p class="antetitulo">QUIÉNES SOMOS</p>
+        <h2 class="banda__titulo">Mesa Directiva 2026</h2>
+      </div>
+    </div>
+    <div class="banda__regla"></div>
+    <ul class="personas-grid personas-grid--directiva">
+      {% for persona in organigrama.directorio | selectattr('mesa', 'defined') | list %}
+      <li>{% include "partials/persona_card.html" %}</li>
+      {% endfor %}
+    </ul>
+    <p class="remate"><a class="btn-ghost" href="{{ rel }}nosotros.html">Conoce a nuestro equipo</a></p>
+  </div>
+</section>
+
+{# Retirados de la portada a peticion: el bloque "Proposito" (vive completo en
+   Nosotros) y la banda "Agenda de la Rama" (duplicaba en lista los mismos
+   eventos que el mosaico de arriba y que la seccion Eventos entera). La
+   portada queda mas corta y sin repetir contenido. #}
+
+{# --- 8. CTA FINAL + ÚNETE: banda (02 Orbital) ---------------------------
+   Fusiona el CTA de cierre con el bloque "Únete" que antes vivía en la
+   barra lateral: decían, en esencia, lo mismo (talleres + visitas +
+   competencias + red global IEEE), repetido a un scroll de distancia. Un
+   solo llamado, más fuerte, con el mismo destino (`sitio.cta.url`). #}
+<section class="banda banda--orbital">
+  <div class="container">
+    <p class="antetitulo">ÚNETE</p>
+    <h2 class="banda__titulo" style="max-width:16ch">¿Listo para sumarte?</h2>
+    <p class="banda__intro" style="max-width:48ch">
+      Súmate a talleres, visitas técnicas y competencias, y conéctate con la
+      comunidad IEEE UP y la red global de IEEE.
+    </p>
+    <p style="display:flex; gap:14px; flex-wrap:wrap; margin-top:var(--e-4)">
+      <a class="btn-solido" href="{{ rel }}{{ sitio.cta.url }}">{{ sitio.cta.titulo }}</a>
+      {% if proyectos %}
+      <a class="btn-ghost" href="{{ rel }}proyectos.html">Ver los resultados de nuestros proyectos</a>
+      {% endif %}
+    </p>
+    <div style="display:flex; gap:22px; margin-top:var(--e-5)">
+      {% for red in sitio.redes %}{% if red.url %}
+      <a href="{{ red.url }}" target="_blank" rel="noopener" aria-label="{{ red.nombre }}" style="color:#fff; font-size:20px">
+        <i class="fa {{ red.icono }}" aria-hidden="true"></i>
+      </a>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+</div>{# /.portada #}
+
+{# Popups: uno por evento, fuera de las bandas (slick clona los slides) y
+   fuera de la lista, para que no haya ids duplicados. #}
+{% for ev in destacados %}{% include "partials/evento_modal.html" %}{% endfor %}
+
+{% endblock %}

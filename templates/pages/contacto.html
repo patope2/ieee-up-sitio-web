@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}Contacto - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Cómo comunicarte con IEEE Universidad del Pacífico Student Branch.{% endblock %}
+{% block body_class %}page-contacto{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / Contacto</p>
+    <h1>Contacto</h1>
+    <p class="lead">
+      Elige abajo lo que necesitas: la mayoría de consultas se resuelven en un
+      clic, sin esperar respuesta.
+    </p>
+  </div>
+</div>
+
+{# El correo es el canal principal; se resuelve una sola vez y se reutiliza
+   en los enlaces de abajo (asunto pre-rellenado incluido). #}
+{% set correo = (sitio.redes | selectattr('icono', 'equalto', 'fa-envelope') | first).url %}
+
+<section class="seccion-clara">
+  <div class="container">
+
+  {# --- Enrutado por intencion ------------------------------------------
+     Antes esta pagina abria con una lista de canales: obligaba a escribir un
+     correo incluso para cosas que ya estan resueltas en el sitio (inscribirse
+     a un evento, hacerse miembro). Ahora se ordena por la TAREA del
+     visitante y solo la tercera opcion termina en un correo. #}
+  <h2 class="boxed"><span>¿Qué necesitas?</span></h2>
+  <ul class="intenciones">
+    <li>
+      <a class="intencion" href="{{ rel }}eventos.html">
+        <strong>Inscribirme a un evento</strong>
+        <span>Cada ficha de evento lleva su propio enlace de inscripción y sus fechas.</span>
+        <em>Ver eventos →</em>
+      </a>
+    </li>
+    <li>
+      <a class="intencion" href="{{ rel }}{{ sitio.cta.url }}">
+        <strong>Formar parte de la Rama</strong>
+        <span>Cómo asociarte a IEEE y sumarte a la actividad local de IEEE UP.</span>
+        <em>Cómo unirme →</em>
+      </a>
+    </li>
+    <li>
+      <a class="intencion" href="{{ correo }}?subject=Consulta%20desde%20la%20web%20de%20IEEE%20UP">
+        <strong>Hacer otra consulta</strong>
+        <span>Alianzas, prensa, propuestas de colaboración o cualquier otra duda.</span>
+        <em>Escribirnos →</em>
+      </a>
+    </li>
+  </ul>
+
+  <div class="reticula">
+
+    <div class="reticula__principal">
+      <h2 class="boxed"><span>Canales directos</span></h2>
+      <ul class="canales">
+        {% for red in sitio.redes %}
+        <li>
+          {% if red.url %}
+          <a href="{{ red.url }}"{% if not red.url.startswith('mailto:') %} target="_blank" rel="noopener"{% endif %}>
+            {# El correo se muestra completo, no como la palabra "Correo": es
+               el canal de contacto principal y debe poder copiarse a simple vista. #}
+            <i class="fa {{ red.icono }}" aria-hidden="true"></i>{% if red.url.startswith('mailto:') %}{{ red.url[7:] }}{% else %}{{ red.nombre }}{% endif %}
+          </a>
+          {% else %}
+          <span class="canales__inerte">
+            <i class="fa {{ red.icono }}" aria-hidden="true"></i>{{ red.nombre }} (por completar)
+          </span>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+
+      {#
+        IEEE no permite backend propio ni captura de datos en su hosting (ver
+        00-TEMPLATE-OFICIAL-IEEE-DCI/05-formularios-y-limitaciones-hosting.md).
+        En vez de anunciar un formulario que no existe —lo que dejaba al
+        visitante en un callejon sin salida— se le da la via que SI funciona
+        hoy: enlaces `mailto:` con el asunto ya escrito, que hacen el mismo
+        trabajo de encaminar la consulta sin backend ni datos de terceros.
+      #}
+      <h2 class="boxed" style="margin-top:50px"><span>Escríbenos directo</span></h2>
+      <p>Elige el asunto y se abrirá tu correo con el mensaje ya encaminado:</p>
+      <ul class="canales">
+        <li><a href="{{ correo }}?subject=Consulta%20sobre%20membres%C3%ADa%20IEEE%20UP"><i class="fa fa-id-card-o" aria-hidden="true"></i>Membresía</a></li>
+        <li><a href="{{ correo }}?subject=Consulta%20sobre%20un%20evento%20de%20IEEE%20UP"><i class="fa fa-calendar" aria-hidden="true"></i>Eventos</a></li>
+        <li><a href="{{ correo }}?subject=Propuesta%20de%20alianza%20con%20IEEE%20UP"><i class="fa fa-handshake-o" aria-hidden="true"></i>Alianzas</a></li>
+        <li><a href="{{ correo }}?subject=Voluntariado%20en%20IEEE%20UP"><i class="fa fa-users" aria-hidden="true"></i>Voluntariado</a></li>
+      </ul>
+    </div>
+
+    <div class="reticula__lateral">
+      <h2 class="boxed"><span>Dónde estamos</span></h2>
+      <div class="bloque-lateral">
+        <h4>Universidad del Pacífico</h4>
+        <p>Lima, Perú.</p>
+        <p class="dato-pendiente">Espacio/oficina exacta de la Rama dentro del campus: por confirmar.</p>
+      </div>
+
+      <h2 class="boxed" style="margin-top:50px"><span>Síguenos</span></h2>
+      <div class="bloque-lateral">
+        <h4>La actividad del día a día</h4>
+        <p>Publicamos convocatorias y resultados en redes antes que en ningún otro sitio.</p>
+        <div id="social-links" style="justify-content:flex-start;margin-top:var(--e-3)">
+          {% for red in sitio.redes %}{% if red.url and not red.url.startswith('mailto:') %}
+          <a href="{{ red.url }}" target="_blank" rel="noopener" aria-label="{{ red.nombre }}"><i class="fa {{ red.icono }}" aria-hidden="true"></i></a>
+          {% endif %}{% endfor %}
+        </div>
+      </div>
+
+      <h2 class="boxed" style="margin-top:50px"><span>Únete</span></h2>
+      <div class="bloque-lateral">
+        <h4>Forma parte de IEEE UP</h4>
+        <p>La membresía IEEE es individual y directa con IEEE; la actividad local se coordina desde la Rama.</p>
+        <a class="btn btn-yellow btn-block" href="{{ rel }}{{ sitio.cta.url }}">{{ sitio.cta.titulo }}</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+{% endblock %}

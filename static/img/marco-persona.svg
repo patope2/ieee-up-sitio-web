@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="presentation">
+  <!--
+    Marco de retrato de IEEE UP: campo azul marino recorrido por haces de
+    lineas finas y cerrado abajo-izquierda por un arco claro. Va como
+    `background-image` de `.persona-card__avatar`, con el color de fondo
+    puesto por CSS (`background-color`), de modo que las paginas de grupo de
+    afinidad pueden cambiarlo a su propia tinta sin tocar este archivo: aqui
+    solo hay lineas, ningun relleno opaco.
+  -->
+  <defs>
+    <!-- Un haz = varias curvas paralelas desfasadas. Se define una vez y se
+         reutiliza girado y escalado en cada esquina. -->
+    <g id="haz">
+      <path d="M-40 0 C 60 -34, 150 34, 250 0 S 420 -34, 480 6"/>
+      <path d="M-40 16 C 60 -18, 150 50, 250 16 S 420 -18, 480 22"/>
+      <path d="M-40 32 C 60 -2, 150 66, 250 32 S 420 -2, 480 38"/>
+      <path d="M-40 48 C 60 14, 150 82, 250 48 S 420 14, 480 54"/>
+      <path d="M-40 64 C 60 30, 150 98, 250 64 S 420 30, 480 70"/>
+      <path d="M-40 80 C 60 46, 150 114, 250 80 S 420 46, 480 86"/>
+      <path d="M-40 96 C 60 62, 150 130, 250 96 S 420 62, 480 102"/>
+    </g>
+  </defs>
+
+  <g fill="none" stroke="#FFFFFF" stroke-width="1" opacity=".22">
+    <use href="#haz" transform="translate(-30 -46) rotate(-8)"/>
+    <use href="#haz" transform="translate(140 250) rotate(6) scale(1.1)"/>
+    <use href="#haz" transform="translate(-80 176) rotate(-3) scale(.9)"/>
+  </g>
+
+  <!-- Arco claro que entra por la esquina inferior izquierda. -->
+  <circle cx="120" cy="470" r="196" fill="none" stroke="#FFFFFF" stroke-width="26" opacity=".9"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="1" opacity=".3">
+    <circle cx="120" cy="470" r="214"/>
+    <circle cx="120" cy="470" r="222"/>
+    <circle cx="120" cy="470" r="230"/>
+  </g>
+</svg>

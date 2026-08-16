@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Visitas - Eventos - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Visitas técnicas de IEEE UP a empresas e instalaciones.{% endblock %}
+{% block body_class %}page-eventos page-eventos-categoria{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / <a href="{{ rel }}eventos.html">Eventos</a> / Visitas</p>
+    <h1>Visitas</h1>
+    <p class="lead">Visitas técnicas a empresas e instalaciones para conocer de cerca procesos reales de innovación e ingeniería.</p>
+  </div>
+</div>
+
+<section class="seccion-clara">
+  <div class="container">
+  <div class="reticula">
+    <div class="reticula__principal">
+      {% include "partials/nav_eventos_tabs.html" %}
+      {% set lista = eventos_por_tipo['Visita'] %}
+      <h2 class="boxed"><span>Visitas</span></h2>
+      {% if lista %}
+      <ul class="eventos-grid">
+        {% for ev in lista %}
+        <li>{% include "partials/evento_card.html" %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="dato-pendiente">Aún no hay visitas publicados en esta categoría.</p>
+      {% endif %}
+    </div>
+    <div class="reticula__lateral">
+      {% include "partials/nav_eventos.html" %}
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

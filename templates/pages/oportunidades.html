@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}Oportunidades - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Delegaciones internacionales financiadas, becas de aliados, voluntariado y participación en congresos IEEE para estudiantes de la Universidad del Pacífico.{% endblock %}
+{% block body_class %}page-oportunidades{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / Oportunidades</p>
+    <h1>Oportunidades</h1>
+    <p class="lead">
+      Ser miembro de IEEE UP abre puertas concretas: delegaciones a encuentros
+      internacionales con el viaje financiado, becas de aliados, voluntariado
+      como facilitador y participación en congresos IEEE. Aquí están todas,
+      con su estado y cómo se postula.
+    </p>
+  </div>
+</div>
+
+<section class="seccion-clara">
+  <div class="container">
+  <div class="reticula">
+
+    <div class="reticula__principal">
+
+      {% set abiertas = oportunidades | selectattr('estado', 'equalto', 'Abierta') | list %}
+      {% set permanentes = oportunidades | selectattr('estado', 'equalto', 'Permanente') | list %}
+      {% set cerradas = oportunidades | selectattr('estado', 'equalto', 'Cerrada') | list %}
+
+      {% if abiertas %}
+      <h2 class="boxed"><span>Abiertas ahora</span></h2>
+      <ul class="oportunidades">
+        {% for op in abiertas %}
+        {% include "partials/oportunidad_card.html" %}
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if permanentes %}
+      <h2 class="boxed" style="margin-top:50px"><span>Convocatorias permanentes</span></h2>
+      <ul class="oportunidades">
+        {% for op in permanentes %}
+        {% include "partials/oportunidad_card.html" %}
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if cerradas %}
+      <h2 class="boxed" style="margin-top:50px"><span>Ediciones anteriores</span></h2>
+      {# El historial no es relleno: demuestra que las delegaciones financiadas
+         y las becas son recurrentes y realmente se entregan. #}
+      <p class="texto-medido">
+        Estas convocatorias ya cerraron. Se mantienen publicadas porque son
+        recurrentes: vuelven a abrirse en la siguiente edición.
+      </p>
+      <ul class="oportunidades oportunidades--historial">
+        {% for op in cerradas %}
+        {% include "partials/oportunidad_card.html" %}
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+    </div>
+
+    <div class="reticula__lateral">
+
+      <h2 class="boxed"><span>Cómo se postula</span></h2>
+      <div class="bloque-lateral">
+        <h4>Delegaciones internacionales</h4>
+        <p>
+          Publicamos la convocatoria por nuestras redes y por este sitio. Los
+          postulantes pasan por un proceso de selección y una entrevista. El
+          viaje de la delegación es financiado por la Universidad del Pacífico
+          en convenio con IEEE.
+        </p>
+        <p class="small">Requisito: ser miembro IEEE activo de la Rama.</p>
+      </div>
+
+      <h2 class="boxed" style="margin-top:50px"><span>Primero, hazte miembro</span></h2>
+      <div class="bloque-lateral">
+        <h4>La membresía es la puerta de entrada</h4>
+        <p>
+          Casi todas estas oportunidades están reservadas a miembros de la Rama.
+          La membresía IEEE es individual y directa con IEEE.
+        </p>
+        <a class="btn btn-yellow btn-block" href="{{ rel }}{{ sitio.cta.url }}">{{ sitio.cta.titulo }}</a>
+      </div>
+
+      <h2 class="boxed" style="margin-top:50px"><span>¿Dudas?</span></h2>
+      <div class="bloque-lateral">
+        <h4>Escríbenos</h4>
+        <p>Resolvemos consultas sobre convocatorias, requisitos y plazos.</p>
+        <a class="btn btn-secondary btn-block" href="{{ rel }}contacto.html">Ir a Contacto</a>
+      </div>
+
+      <h2 class="boxed" style="margin-top:50px"><span>Ver también</span></h2>
+      <ul class="lista-nav">
+        <li><a href="{{ rel }}eventos-competencias.html">Competencias y concursos</a></li>
+        <li><a href="{{ rel }}eventos-ecosistema.html">Ecosistema IEEE</a></li>
+        <li><a href="{{ rel }}grupos.html">Grupos de Afinidad</a></li>
+      </ul>
+
+    </div>
+
+  </div>
+</div>
+</section>
+{% endblock %}

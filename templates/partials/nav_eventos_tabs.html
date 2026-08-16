@@ -1,0 +1,37 @@
+{#
+  UNICO control de categorias de la seccion Eventos.
+
+  Antes las mismas seis categorias aparecian TRES veces en la misma pantalla
+  (submenu de la nav, pestanas de filtro y lista "Categorias" en la barra
+  lateral) y, peor todavia, dos de esas copias hacian cosas distintas con la
+  misma etiqueta: las pestanas filtraban en el sitio y la barra lateral
+  navegaba a otra pagina. Con nombres ademas distintos ("TALLER" frente a
+  "Talleres", "COMPETENCIA/CONCURSO" frente a "Competencias y Concursos").
+
+  Ahora hay un solo control y todas sus opciones hacen lo mismo — navegar a
+  una pagina real, con su propia URL, su H1 y su descripcion. Se puede
+  compartir un enlace a "Talleres", el boton Atras funciona y no hace falta
+  JavaScript. Los recuentos se mantienen porque son informacion util a simple
+  vista (cuanto hay de cada cosa) y se calculan de los datos, no a mano.
+
+  Recibe: `pagina_actual` (lo inyecta build.py en cada render).
+#}
+{% set categorias = [
+  {'url': 'eventos.html',                'titulo': 'Todos',                    'n': eventos|length},
+  {'url': 'eventos-talleres.html',       'titulo': 'Talleres',                 'n': eventos_por_tipo['Taller']|length},
+  {'url': 'eventos-visitas.html',        'titulo': 'Visitas',                  'n': eventos_por_tipo['Visita']|length},
+  {'url': 'eventos-competencias.html',   'titulo': 'Competencias',             'n': eventos_por_tipo['Competencia/Concurso']|length},
+  {'url': 'eventos-impacto-social.html', 'titulo': 'Impacto social',           'n': eventos_por_tipo['Impacto social']|length},
+  {'url': 'eventos-ecosistema.html',     'titulo': 'Ecosistema IEEE',          'n': eventos_por_tipo['Ecosistema IEEE']|length}
+] %}
+<nav class="eventos-filtros" aria-label="Categorías de eventos">
+  <ul>
+    {% for cat in categorias %}
+    <li>
+      <a href="{{ rel }}{{ cat.url }}"{% if cat.url == pagina_actual %} aria-current="page"{% endif %}>
+        {{ cat.titulo }} <span class="eventos-filtros__n">{{ cat.n }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

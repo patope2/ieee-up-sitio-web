@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Eventos - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Talleres, visitas técnicas, competencias y participación de IEEE UP en el ecosistema IEEE.{% endblock %}
+{% block body_class %}page-eventos{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / Eventos</p>
+    <h1>Eventos</h1>
+    <p class="lead">
+      Talleres, visitas técnicas y competencias organizadas por la Rama, además de
+      nuestra participación en encuentros de IEEE a nivel país, Región 9 y global.
+    </p>
+  </div>
+</div>
+
+<section class="seccion-clara">
+  <div class="container">
+  <div class="reticula">
+    <div class="reticula__principal">
+
+      {% include "partials/nav_eventos_tabs.html" %}
+
+      <ul class="eventos-grid">
+        {% for ev in eventos %}
+        <li>{% include "partials/evento_card.html" %}</li>
+        {% endfor %}
+      </ul>
+
+    </div>
+    <div class="reticula__lateral">
+      {% include "partials/nav_eventos.html" %}
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

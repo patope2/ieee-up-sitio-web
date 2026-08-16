@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% set grupo = organigrama.grupos | selectattr('slug', 'equalto', 'cis') | first %}
+{% block title %}{{ grupo.nombre }} - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}{{ grupo.mision }}{% endblock %}
+{% block body_class %}page-grupo page-grupo-cis{% endblock %}
+
+{% block content %}
+
+{# La cabecera era una `.grupo-card` con un <h1> dentro: una tarjeta haciendo
+   de cabecera de pagina, con el logo minusculo arriba y medio ancho vacio a
+   la derecha. Ahora es el `.gradient` del template con la placa de logo del
+   grupo en fila con el titulo. #}
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / <a href="{{ rel }}grupos.html">Grupos de Afinidad</a> / {{ grupo.nombre }}</p>
+    <div class="grupo-masthead">
+      <span class="grupo-card__logo-chip"><img src="{{ rel }}{{ grupo.logo }}" alt="{{ grupo.nombre }}" class="grupo-card__logo"></span>
+      <div class="grupo-masthead__texto">
+        <h1>{{ grupo.nombre_completo }}</h1>
+        <p class="lead">{{ grupo.mision }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container seccion">
+  <div class="reticula">
+
+    <div class="reticula__principal">
+
+      <h2 class="boxed"><span>Directiva</span></h2>
+      <ul class="personas-grid">
+        {% for persona in grupo.directiva %}
+        <li>{% include "partials/persona_card.html" %}</li>
+        {% endfor %}
+      </ul>
+      {% if grupo.equipo %}
+      <details class="equipo-base">
+        <summary>Equipo base ({{ grupo.equipo|length }})</summary>
+        <ul>{% for m in grupo.equipo %}<li>{{ m }}</li>{% endfor %}</ul>
+      </details>
+      {% endif %}
+
+      <h2 class="boxed" style="margin-top:50px"><span>Actividades</span></h2>
+      {% if grupo.eventos %}
+      <ul class="eventos-grid">
+        {% for ev in grupo.eventos %}
+        <li>{% include "partials/evento_card.html" %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="dato-pendiente">Aún no hay eventos propios de {{ grupo.nombre }} publicados en el catálogo.</p>
+      {% endif %}
+
+      {% if grupo.proyectos %}
+      <h2 class="boxed" style="margin-top:50px"><span>Proyectos</span></h2>
+      <ul class="eventos-grid">
+        {% for ev in grupo.proyectos %}
+        <li>{% include "partials/evento_card.html" %}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+
+    </div>
+
+    <div class="reticula__lateral">
+
+      <h2 class="boxed"><span>Cómo sumarte</span></h2>
+      <div class="bloque-lateral">
+        <h4>Súmate a {{ grupo.nombre }}</h4>
+        <p>
+          Únete primero a IEEE UP y luego escríbenos por nuestras redes o el
+          formulario de contacto para entrar al grupo.
+        </p>
+        <a class="btn btn-yellow btn-block" href="{{ rel }}unete.html">{{ sitio.cta.titulo }}</a>
+        <a class="btn btn-secondary btn-block" style="margin-top:10px" href="{{ rel }}contacto.html">Contacto</a>
+      </div>
+
+      <h2 class="boxed" style="margin-top:50px"><span>Otros grupos</span></h2>
+      <ul class="lista-nav">
+        {% for otro in organigrama.grupos %}{% if otro.slug != grupo.slug %}
+        <li>
+          <a href="{{ rel }}grupo-{{ otro.slug }}.html">
+            <img src="{{ rel }}{{ otro.logo }}" alt="" class="lista-nav__logo">{{ otro.nombre }}
+          </a>
+        </li>
+        {% endif %}{% endfor %}
+      </ul>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,174 @@
+{# Popup de evento (<dialog>). Recibe: ev. Compartido por evento_card.html
+   (tarjeta con foto) y evento_widget_item.html (widget tipo "recent-events"
+   del template oficial, sin foto) — un solo popup, dos formas de abrirlo. #}
+<dialog class="evento-modal" id="modal-{{ ev.slug }}" aria-labelledby="modal-{{ ev.slug }}-titulo">
+  <div class="evento-modal__grid{% if not ev.portada %} evento-modal__grid--sin-foto{% endif %}">
+
+    <div class="evento-modal__texto">
+      {# `autofocus`: sin el, `showModal()` daba el foco al primer elemento
+         focusable, que es el propio panel de texto (Chrome hace focusable
+         todo contenedor con scroll). Eso pintaba su anillo de foco como una
+         linea suelta en el borde del popup y dejaba al teclado empezando en
+         un sitio sin sentido. Ahora abre sobre el boton de cerrar. #}
+      <button type="button" class="evento-modal__cerrar" data-cierra-modal aria-label="Cerrar" autofocus>&times;</button>
+
+      <span class="badge-categoria{% if ev.tipo == 'Ecosistema IEEE' %} badge-categoria--ecosistema{% endif %}">{{ ev.badge }}</span>
+      <h3 class="evento-modal__titulo" id="modal-{{ ev.slug }}-titulo">{{ ev.titulo }}</h3>
+
+      <p class="evento-card__meta">
+        <span><i class="fa fa-calendar" aria-hidden="true"></i>{{ ev.fecha_legible }}</span>
+        {% if ev.get('ubicacion_texto') %}
+        <span><i class="fa fa-map-o" aria-hidden="true"></i>{{ ev.ubicacion_texto }}</span>
+        {% elif ev.modalidad != 'No especificada' %}
+        <span><i class="fa fa-map-o" aria-hidden="true"></i>{{ ev.modalidad }}</span>
+        {% endif %}
+        {% if ev.escala %}
+        <span><i class="fa fa-globe" aria-hidden="true"></i>Nivel {{ ev.escala }}</span>
+        {% endif %}
+        {# Quien firma el evento, en la misma linea de datos que la fecha y el
+           lugar (mismo formato que la tarjeta). Aqui si se despliega el detalle
+           completo: los aliados de una colaboracion y, en eventos de terceros,
+           quien organiza frente a quien participa. #}
+        <span><i class="fa fa-users" aria-hidden="true"></i>
+          {%- if ev.autoria.tipo == 'externo' -%}
+          Organiza {{ ev.autoria.etiqueta }} · Participa {{ ev.autoria.unidades | join(' y ') if ev.autoria.unidades else 'IEEE UP' }}
+          {%- elif ev.autoria.tipo == 'colaboracion' -%}
+          Colaboración: {{ (ev.autoria.unidades + ev.autoria.aliados) | join(' · ') }}
+          {%- else -%}
+          {{ ev.autoria.etiqueta }}
+          {%- endif -%}
+        </span>
+      </p>
+
+      {% if ev.descripcion %}
+      <p class="evento-card__desc">{{ ev.descripcion }}</p>
+      {% endif %}
+
+      {% if ev.resultado %}
+      <p class="evento-card__resultado">{{ ev.resultado }}</p>
+      {% elif ev.logro_obtenido %}
+      <p class="evento-card__resultado">{{ ev.logro_obtenido }}</p>
+      {% elif ev.tipo == 'Competencia/Concurso' %}
+      {# No se inventa ganador: si no esta confirmado, se dice explicitamente. #}
+      <p class="evento-card__resultado dato-pendiente">Resultado por confirmar</p>
+      {% endif %}
+
+      {# Ponentes, panelistas, mentores y facilitadores. Se agrupan por su rol
+         original para no perder el matiz: no es lo mismo un panel que una
+         mentoria. Este campo tampoco llegaba a ninguna plantilla.
+         El agrupado se hace a mano y no con `groupby` porque ese filtro ordena
+         los roles alfabeticamente, y ahi la moderadora salia antes que su
+         propio panel: se respeta el orden en que estan en data/eventos.yml. #}
+      {% if ev.ponentes %}
+      {% set roles = [] %}
+      {% for persona in ev.ponentes %}
+        {% if persona.rol not in roles %}{% set _ = roles.append(persona.rol) %}{% endif %}
+      {% endfor %}
+      <div class="evento-modal__ponentes">
+        {% for rol in roles %}
+        <p class="bloque-etiqueta">{{ rol }}</p>
+        <ul class="lista-personas">
+          {% for persona in ev.ponentes if persona.rol == rol %}
+          <li>{{ persona.nombre }}</li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {# Datos concretos que ya estaban en data/eventos.yml pero no llegaban a
+         ninguna plantilla: premios, becas de aliados y auspiciadores. Son
+         justamente la informacion de "oportunidades" que busca un visitante. #}
+      {% set datos = [
+        ('Premio', ev.get('premio')),
+        ('Becas de aliados', ev.get('becas_aliados')),
+        ('Talleres incluidos', ev.get('talleres_incluidos')),
+        ('Participantes', ev.get('participantes')),
+        ('Auspiciadores', ev.get('auspiciadores')),
+      ] | selectattr('1') | list %}
+      {% if datos %}
+      <dl class="evento-modal__datos">
+        {% for etiqueta, valor in datos %}
+        <div>
+          <dt>{{ etiqueta }}</dt>
+          <dd>{{ valor }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+      {% endif %}
+
+      {% if ev.get('enlaces_externos') %}
+      <p class="evento-modal__enlaces">
+        {% for enlace in ev.enlaces_externos %}
+        <a class="btn btn-primary" href="{{ enlace.url }}" target="_blank" rel="noopener">{{ enlace.texto }}</a>
+        {% endfor %}
+      </p>
+      {% endif %}
+    </div>
+
+    {% if ev.portada %}
+    <div class="evento-modal__media">
+      {# La portada abre el visor de fotos (§7.7b del CSS) en vez de mostrarse
+         solo recortada dentro de la columna: se ve completa, a ancho
+         completo, y desde ahi se navega al resto de la galeria. #}
+      <button type="button" class="evento-modal__portada"
+              data-abre-lightbox="lightbox-{{ ev.slug }}" data-lightbox-indice="0"
+              aria-label="Ampliar foto{% if ev.fotos|length > 1 %} (1 de {{ ev.fotos|length }}){% endif %} — {{ ev.titulo }}">
+        {# Doble capa: la de atras rellena la columna desenfocada y la de
+           delante muestra la foto ENTERA sin recortar. Buena parte del
+           catalogo son flyers con su propio texto impreso; recortarlos a
+           `cover` les cortaba las palabras. Asi no queda hueco muerto y no se
+           mutila nada. La capa de fondo es decorativa: alt vacio. #}
+        <span class="evento-modal__fondo" aria-hidden="true">
+          <img src="{{ rel }}{{ ev.portada.full }}" alt="" loading="lazy">
+        </span>
+        <img class="evento-modal__foto" src="{{ rel }}{{ ev.portada.full }}" alt="{{ ev.portada.alt }}" loading="lazy">
+        <span class="evento-modal__lupa" aria-hidden="true"><i class="fa fa-search-plus"></i>Ver completa</span>
+      </button>
+      {% if ev.fotos|length > 1 %}
+      <ul class="galeria evento-modal__galeria">
+        {% for foto in ev.fotos[1:] %}
+        <li>
+          <button type="button" class="galeria__boton"
+                  data-abre-lightbox="lightbox-{{ ev.slug }}" data-lightbox-indice="{{ loop.index }}"
+                  aria-label="Ampliar foto {{ loop.index + 1 }} de {{ ev.fotos|length }} — {{ ev.titulo }}">
+            <img src="{{ rel }}{{ foto.card }}" alt="{{ foto.alt }}" loading="lazy">
+          </button>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</dialog>
+
+{% if ev.portada %}
+{# Visor de fotos a pantalla completa, compartido por la portada y todas las
+   miniaturas de este evento. Es un <dialog> hermano del popup, no anidado:
+   ambos pueden estar abiertos a la vez (el popup detras, el visor encima) y
+   Escape cierra primero el que esta al frente, por comportamiento nativo de
+   <dialog>. #}
+<dialog class="lightbox" id="lightbox-{{ ev.slug }}" aria-label="Galería de fotos — {{ ev.titulo }}">
+  <button type="button" class="lightbox__cerrar" data-cierra-modal aria-label="Cerrar visor de fotos">&times;</button>
+  {% if ev.fotos|length > 1 %}
+  <button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Foto anterior">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Foto siguiente">
+    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+  </button>
+  {% endif %}
+  <div class="lightbox__lienzo">
+    {% for foto in ev.fotos %}
+    <figure class="lightbox__item{% if loop.first %} lightbox__item--activo{% endif %}">
+      <img src="{{ rel }}{{ foto.full }}" alt="{{ foto.alt }}" loading="lazy">
+    </figure>
+    {% endfor %}
+  </div>
+  {% if ev.fotos|length > 1 %}
+  <p class="lightbox__contador"><span data-lightbox-actual>1</span> / {{ ev.fotos|length }}</p>
+  {% endif %}
+</dialog>
+{% endif %}

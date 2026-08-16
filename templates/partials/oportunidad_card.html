@@ -1,0 +1,106 @@
+{# Tarjeta de oportunidad. Recibe: op (registro de data/oportunidades.yml).
+
+   Estructura fija en cuatro bandas para que todas las tarjetas se lean igual
+   aunque tengan distinta cantidad de datos: cabecera, cuerpo a dos columnas
+   (a que da acceso / datos clave), cobertura en chips y pie de acciones. Cada
+   banda desaparece sola si no hay contenido.
+
+   Los campos opcionales se leen con .get() porque el entorno Jinja corre con
+   StrictUndefined: un acceso directo a una clave ausente aborta el build. #}
+<li class="oportunidad reveal">
+
+  <div class="oportunidad__head">
+    <p class="oportunidad__cabecera">
+      <span class="badge-categoria{% if op.estado == 'Cerrada' %} badge-categoria--eyebrow{% endif %}">{{ op.categoria }}</span>
+      <span class="oportunidad__estado oportunidad__estado--{{ op.estado|lower }}">{{ op.estado }}</span>
+    </p>
+    <h3 class="oportunidad__titulo">{{ op.titulo }}</h3>
+    <p class="oportunidad__resumen">{{ op.resumen }}</p>
+  </div>
+
+  {% set datos = [
+    ('Dirigido a', op.get('dirigido_a')),
+    ('Selección', op.get('seleccion')),
+    ('Financiamiento', op.get('financiamiento')),
+    ('Convocatoria', op.get('cierre_texto')),
+  ] | selectattr('1') | list %}
+
+  {% if op.get('actividades') or datos %}
+  <div class="oportunidad__cuerpo">
+    {% if op.get('actividades') %}
+    <div class="oportunidad__col">
+      <p class="bloque-etiqueta">A qué da acceso</p>
+      <ul class="oportunidad__actividades">
+        {% for item in op.actividades %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% if datos %}
+    <div class="oportunidad__col">
+      <p class="bloque-etiqueta">Datos clave</p>
+      <dl class="oportunidad__datos">
+        {% for etiqueta, valor in datos %}
+        <div>
+          <dt>{{ etiqueta }}</dt>
+          <dd>{{ valor }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if op.get('incluye') or op.get('no_incluye') %}
+  <div class="oportunidad__cobertura">
+    <p class="bloque-etiqueta">Cobertura</p>
+    <ul class="chips">
+      {% for item in op.get('incluye') or [] %}
+      <li class="chip chip--si"><span class="screen-reader-text">Incluye: </span>{{ item }}</li>
+      {% endfor %}
+      {% for item in op.get('no_incluye') or [] %}
+      <li class="chip chip--no"><span class="screen-reader-text">No incluye: </span>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {#
+    El formulario de postulacion (`url_postulacion_interna`, si existe) NUNCA
+    se enlaza directo: esta pagina es publica para todo internet, y estos
+    formularios se coordinan por canales internos de la Rama, no abiertos a
+    cualquiera que pase por el sitio. Publicar el enlace lo expone a
+    completarse por curiosidad o fuera del proceso previsto. En su lugar, el
+    boton manda un correo pidiendo el enlace, y quien responde lo comparte
+    por un canal interno (WhatsApp, redes de miembros).
+  #}
+  {% set correo = (sitio.redes | selectattr('icono', 'equalto', 'fa-envelope') | first).url %}
+  <div class="oportunidad__pie">
+    <p class="oportunidad__acciones">
+      {% if op.get('url_postulacion_interna') %}
+      <a class="btn btn-yellow" href="{{ correo }}?subject=Postulaci%C3%B3n%20a%20{{ op.titulo | urlencode }}">Contáctanos</a>
+      {% elif op.estado != 'Cerrada' %}
+      <a class="btn btn-yellow" href="{{ rel }}contacto.html">Pedir las bases</a>
+      {% endif %}
+      {% if op.get('evento') %}
+      <a class="btn btn-secondary" href="{{ rel }}eventos.html#modal-{{ op.evento.slug }}">Ver el evento</a>
+      {% endif %}
+      {% if op.get('url_info') %}
+      <a class="btn btn-secondary" href="{{ op.url_info }}" target="_blank" rel="noopener">Sitio oficial</a>
+      {% endif %}
+    </p>
+    {% if op.get('url_postulacion_interna') %}
+    <p class="oportunidad__acceso">
+      Si eres miembro de IEEE UP, ¡anímate a postular! El enlace de inscripción
+      no está publicado en este sitio — se comparte por los canales internos
+      de la Rama. Escríbenos y te lo enviamos.
+    </p>
+    {% endif %}
+    {% if op.get('pendiente') %}
+    <p class="dato-pendiente">{{ op.pendiente }}</p>
+    {% endif %}
+  </div>
+
+</li>

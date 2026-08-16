@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Talleres - Eventos - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Talleres técnicos y de habilidades blandas organizados por IEEE UP.{% endblock %}
+{% block body_class %}page-eventos page-eventos-categoria{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / <a href="{{ rel }}eventos.html">Eventos</a> / Talleres</p>
+    <h1>Talleres</h1>
+    <p class="lead">Formación práctica, técnica y de habilidades blandas, dictada por miembros de la Rama o facilitadores invitados.</p>
+  </div>
+</div>
+
+<section class="seccion-clara">
+  <div class="container">
+  <div class="reticula">
+    <div class="reticula__principal">
+      {% include "partials/nav_eventos_tabs.html" %}
+      {% set lista = eventos_por_tipo['Taller'] %}
+      <h2 class="boxed"><span>Talleres</span></h2>
+      {% if lista %}
+      <ul class="eventos-grid">
+        {% for ev in lista %}
+        <li>{% include "partials/evento_card.html" %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="dato-pendiente">Aún no hay talleres publicados en esta categoría.</p>
+      {% endif %}
+    </div>
+    <div class="reticula__lateral">
+      {% include "partials/nav_eventos.html" %}
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

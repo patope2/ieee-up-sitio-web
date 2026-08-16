@@ -1,0 +1,21 @@
+{# Tarjeta de persona — el `.tmm_member` del template (plugin Team Members),
+   reconstruido sin el plugin: retrato sobre tarjeta con filete de apertura
+   azul, nombre y cargo. Recibe: persona (nombre, cargo, foto opcional).
+   Mientras no haya retratos reales la placa lleva iniciales; nunca un
+   placeholder generico de stock.
+
+   Ya no hay variante "rect": la tarjeta ancha estiraba el retrato 4/5 hasta
+   570x712px en las columnas grandes y dominaba la pagina entera con dos
+   letras. Una sola forma, un solo tamaño. #}
+{% set iniciales = (persona.nombre.split() | first)[0] ~ (persona.nombre.split() | last)[0] %}
+<div class="persona-card reveal">
+  <div class="persona-card__avatar">
+    {% if persona.get('foto') %}
+    <img src="{{ rel }}{{ persona.foto }}" alt="{{ persona.nombre }}" loading="lazy">
+    {% else %}
+    <span aria-hidden="true">{{ iniciales }}</span>
+    {% endif %}
+  </div>
+  <p class="persona-card__nombre">{{ persona.nombre }}</p>
+  <p class="persona-card__cargo">{{ persona.cargo }}</p>
+</div>

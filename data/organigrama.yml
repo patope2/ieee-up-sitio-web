@@ -1,0 +1,227 @@
+# Organigrama 2026 de IEEE UP, transcrito de
+# 02-ARQUITECTURA-WEB-IEEE-UP/03-organigrama-2026-y-modelo-de-datos.md
+#
+# Regla de privacidad (no negociable, ver ese archivo seccion 6): NUNCA agregar
+# aqui el ID de miembro (P000xxxxxx), genero, ni facultad/carrera. Solo nombre
+# y cargo/rol.
+#
+# Regla de fotos (02-wireframe-home-y-paginas-clave.md): con foto solo el
+# Directorio (14) y la presidencia de cada Grupo de Afinidad (3). El resto,
+# nombre + rol sin foto. Por eso `foto` se deja vacio por defecto: se completa
+# a mano cuando exista una fotografia real (nunca placeholder generico).
+
+# `mesa: true` marca a los oficiales que IEEE pide reportar en vTools
+# (presidencia, vicepresidencia, secretaria, tesoreria y webmaster). Es lo
+# que muestran la portada y la cabecera de Nosotros. Antes esos bloques
+# cortaban la lista con `directorio[:3]`, asi que dependian del ORDEN del
+# archivo: mover una fila cambiaba en silencio quien salia publicado.
+directorio:
+  - { nombre: "Madisson Ivette Ramos Granda", cargo: "Presidenta", foto: "img/personas/madisson-ramos.jpg", mesa: true }
+  - { nombre: "Ana Gabriela Molina Zamalloa", cargo: "Vicepresidenta", foto: "img/personas/ana-molina.jpg", mesa: true }
+  # Tambien dirige el area de Recursos Humanos (ver `areas` mas abajo);
+  # en la mesa directiva figura por su cargo de secretaria.
+  - { nombre: "Gady Letizia Taza Lopez", cargo: "Secretaria", foto: "img/personas/gady-taza.jpg", mesa: true }
+  - { nombre: "Juliana Esther Bautista Espino", cargo: "Tesorera", foto: "img/personas/juliana-bautista.jpg", mesa: true }
+  - { nombre: "Jhoan Leandro Vargas Collas", cargo: "Webmaster", foto: "img/personas/jhoan-vargas.jpg", mesa: true }
+  - { nombre: "Marietha Kristeen Alexandra Cordova Delgado", cargo: "Directora de Investigación", foto: "" }
+  - { nombre: "Flavia Fernanda De Fatima Chirinos Molinero", cargo: "Co-Directora de Innovación (Emprendimiento)", foto: "" }
+  - { nombre: "Maria Fe De Jesus Torres Tovar", cargo: "Co-Directora de Innovación (Consultoría)", foto: "" }
+  - { nombre: "Pathy Tuero Tuero Culqui", cargo: "Directora de Desarrollo", foto: "" }
+  - { nombre: "Johao Rafael Mendoza Fabian", cargo: "Codirector de Desarrollo", foto: "" }
+  - { nombre: "Jazmin Melina Gonzales Ubia", cargo: "Directora de Eventos", foto: "" }
+  - { nombre: "Brigitte Rosisabel Huillca Valencia", cargo: "Directora de Marketing", foto: "" }
+  - { nombre: "Luis Fernando Flores Huaman", cargo: "Director de Finanzas", foto: "" }
+  - { nombre: "Pablo Manuel Salcedo Mosquera", cargo: "Director de Relaciones Públicas", foto: "" }
+  - { nombre: "Luis Adrian Suárez Ladines", cargo: "Director de Legal", foto: "" }
+
+# Areas funcionales: se muestra el/los directores (ya estan en el Directorio,
+# se repiten aqui solo para agrupar visualmente) + el conteo del equipo base.
+# Los nombres del equipo se listan sin foto (regla de arriba), en un bloque
+# expandible, no en tarjeta destacada.
+areas:
+  - nombre: Innovación
+    directores: ["Flavia Fernanda De Fatima Chirinos Molinero", "Maria Fe De Jesus Torres Tovar"]
+    equipo:
+      - Luciana Del Carmen Zavaleta Rivas
+      - Tirza Valentina Chávez Rojas
+      - Sofia Alexandra Rocillo Pizarro
+      - Adriana De Los Angeles Ramos Contreras
+      - Carlos Raul Gutierrez Guevara
+      - Rodrigo Augusto Rengifo Chuquival
+      - David Huaman Oruna
+      - Josue David Sulcaray Araujo
+      - Renzo Javier Espinola Ulloa
+      - Luz Vanesa Alberto Ticona
+      - Rosa Soledad Llaccta Torres
+      - Johnny Henry Calluchi Arbildo
+      - Karla Xiomara Hernández Rojas
+      - Lucero Almendra Vera Casamayor
+
+  - nombre: Desarrollo
+    directores: ["Pathy Tuero Tuero Culqui", "Johao Rafael Mendoza Fabian"]
+    equipo:
+      - Maria Fernanda Leon Aleman
+      - Arelis Yelina Solis Villaorduña
+      - Lindo Marx Rojas Rojas
+      - Joyssie Alison Rivas Rios
+      - Francisco Luis Delgado Santana
+      - Tania Lisset Chavez Alvitez
+
+  - nombre: Investigación
+    directores: ["Marietha Kristeen Alexandra Cordova Delgado"]
+    equipo:
+      - Maria Del Carmen Mendoza Mechán
+      - Brian Steven Romero Cabrera
+      - Fiorella Ariana Tamariz Pantoja
+      - Rodrigo José Ortiz Vargas
+      - Marianne Borit Morgan
+      - Sebastian Antonio Valentino Guevara Peralta
+
+  - nombre: Eventos
+    directores: ["Jazmin Melina Gonzales Ubia"]
+    equipo:
+      - Erick James Buendia Basaldua
+      - Bianca Aracelly Marquez García
+      - Gianela Katherine Canchari Alfaro
+      - Víctor Hugo Huaman Miguel
+      - José Manuel Huamanyauri Aylas
+      - Rafael Antonio Rodríguez Rosell
+      - Adriana Fernanda Gallardo Mallma
+      - Julio César Valverde Luján
+      - Nicole Donayre
+      - Joaquin Casallo
+      - Paulo Verde
+      - Yago Valentin Piñas Dávila
+
+  - nombre: Marketing
+    directores: ["Brigitte Rosisabel Huillca Valencia"]
+    equipo:
+      - Sophia Cristina Mansilla Olortegui
+      - Mateo Gabriel Pereyra Jara
+      - Sandra Sofia Huayllaccahua Jimenez
+      - Nayeli Beatriz Isidro De La Cruz
+      - Paola Fernanda Ortiz Orihuela
+      - Margareth Salvador
+      - Emely Pazos
+      - Samira Araujo
+
+  - nombre: Recursos Humanos
+    directores: ["Gady Letizia Taza Lopez"]
+    encargada: "Camila Añazco Mormontoy"
+    equipo:
+      - Sebastian Julio Cesar Paredes Azpur
+      - Gabriel Alonso Cumpa Portales
+      - Meg Glenn Contreras Torre
+      - Jonathan Hector Josue Chaparro Panduro
+      - Milthon Vasquez Zarate
+      - Paolo Joaquín Ventocilla Cárdenas
+      - Luz Marina Toledo Peña
+      - Rita Maria Calla Perez
+      - Josue David Sulcaray Araujo
+      - Mauricio Jair Cortez Graham
+
+  - nombre: Finanzas
+    directores: ["Luis Fernando Flores Huaman"]
+    equipo:
+      - Fabiana Francisca Avila Julca
+      - Luis Angel Nicanor Quispe Lucas
+      - Arturo Alvarez De La Torre Sequeiros
+      - Mireya Soledad Quiñones Romero
+      - Claudia Alexandra Rivera Gómez
+      - Anthony Roger Tovar Vilchez
+      - Christopher Gregori Narvaez Abiega
+      - Jack Perez Murrieta
+      - Luis Julian Yucra Perez
+      - Lizeth Alarcón Gutierrez
+      - Fabricio Diego Jhon Avalos Izaguirre
+      - Angelo Roberto Piero Rodriguez Medina
+      - Jean Carlos Palomino Obregon
+
+  - nombre: Relaciones Públicas
+    directores: ["Pablo Manuel Salcedo Mosquera"]
+    equipo:
+      - Félix Teófilo Aramburú Delgado
+      - Andree Richard Alvarez Capcha
+      - Ana Paula Carhuavilca Casas
+      - Gabriel Omar Alzamora Polanco
+      - Aldo Miguel Vásquez Paredes
+      - Renzo Edgard Poma Magro
+      - Valeria Jennifer Huaranga Vera
+
+  - nombre: Legal
+    directores: ["Luis Adrian Suárez Ladines"]
+    equipo:
+      - Verónica Bianca Lucia Vargas Egusquiza
+
+# Grupos de afinidad. slug coincide con grupo-<slug>.html y con el campo
+# `grupo` de data/eventos.yml (WIE / SIGHT / CIS) para poder filtrar eventos.
+grupos:
+  - slug: wie
+    nombre: "IEEE WIE"
+    nombre_completo: "IEEE Women in Engineering - Universidad del Pacífico"
+    logo: "img/logos/WIE-UP-BLANCO.png"
+    mision: >-
+      Impulsar la participación, el liderazgo y la visibilidad de las mujeres
+      en ingeniería y tecnología dentro de la comunidad de la Universidad del
+      Pacífico.
+    directiva:
+      - { nombre: "Andrea Isabel Flores Chuco", cargo: "Presidenta" }
+      - { nombre: "Frida Indyra Apaza Mantilla", cargo: "Vicepresidenta" }
+      - { nombre: "Camila Alexandra Bravo Paz", cargo: "Tesorera" }
+      - { nombre: "Delia De Los Ángeles Dávila Parra", cargo: "Directiva" }
+      - { nombre: "Kiara Hilda Peterson Lam", cargo: "Coordinadora de Logística" }
+      - { nombre: "Luciana Isabel Rodriguez Bazan", cargo: "Coordinadora de Marketing" }
+      - { nombre: "Romina Lucia Mendivil Carranza", cargo: "Enlace RR.HH." }
+    equipo:
+      - Alejandra Muñoz Torres
+      - Andrea Joseline Marreros Fonseca
+      - María Fernanda Ramos Fiestas
+      - Leslie Fiorella Vivanco Uribe
+      - Marianela Alisson Usnayo Gutierrez
+      - Jenifer Eva Machaca Viza
+      - Genesis Lorena Angella Allcca Chacón
+      - Nicole Liliana Holgado Ortiz
+      - Luana Orna Richter
+      - Jhoanys Joseph Villanueva Leiva
+      - Francesca Rabanal Geronimo
+      - Luciana Vanessa Acuña Tomas
+      - Romina Rachele Mugruza Guzman
+      - Victor Enrique Tipismana Arriola
+      - Nayeli Belinda Gutierrez Castro
+
+  - slug: sight
+    nombre: "IEEE SIGHT"
+    nombre_completo: "IEEE Special Interest Group on Humanitarian Technology - Universidad del Pacífico"
+    logo: "img/logos/SIGHT-UP-BLANCO.png"
+    mision: >-
+      Aplicar la tecnología al servicio de comunidades vulnerables mediante
+      proyectos de impacto social y actividades educativas abiertas.
+    directiva:
+      - { nombre: "Jenifer Geraldine Zarate Saenz", cargo: "Presidenta" }
+      - { nombre: "Maria Claudia De La Cruz Gabino", cargo: "Vicepresidenta" }
+      - { nombre: "Claudia Fernanda Chavez Delgado", cargo: "Miembro de Marketing" }
+    equipo:
+      - Lorena Camila Ponce López
+
+  - slug: cis
+    nombre: "IEEE CIS"
+    nombre_completo: "IEEE Computational Intelligence Society - Universidad del Pacífico"
+    logo: "img/logos/CIS-UP-BLANCO.png"
+    mision: >-
+      Promover la inteligencia computacional - machine learning, computación
+      evolutiva y sistemas difusos - a través de espacios de estudio y
+      proyectos aplicados entre estudiantes.
+    directiva:
+      - { nombre: "Sergio Fabrizzio Marin Colquichagua", cargo: "Presidente" }
+      - { nombre: "Daniel Sebastian Cabrera Lazo", cargo: "Vicepresidente" }
+      - { nombre: "Mildred Belinda Bautista Abanto", cargo: "Directora de Eventos CIS" }
+    equipo:
+      - Jean Lee Trujillo Dominguez
+      - Jhoan Leandro Vargas Collas
+
+# Trayectoria: hitos institucionales que no vienen de un evento individual.
+# Los logros reales SI vienen de eventos (en_logros=true en eventos.yml) y se
+# listan aparte en la pagina para no duplicar contenido.
+trayectoria:
+  - anio: 2026
+    texto: "Ciclo activo, con foco en la sección protagonista del sitio: Eventos."

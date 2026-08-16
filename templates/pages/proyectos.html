@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Proyectos - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Catálogo de resultados: competencias y concursos de IEEE UP que ya cerraron con equipo y resultado.{% endblock %}
+{% block body_class %}page-proyectos{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / Proyectos</p>
+    <h1>Proyectos</h1>
+    <p class="lead">
+      Resultados reales de nuestras competencias y concursos: cada ficha viene
+      de un evento en <a href="{{ rel }}eventos-competencias.html">Competencias y
+      Concursos</a> — un mismo registro, dos vistas, sin duplicar contenido.
+    </p>
+  </div>
+</div>
+
+<div class="container seccion">
+  <h2 class="boxed"><span>Catálogo de resultados</span></h2>
+  {% if proyectos %}
+  <ul class="eventos-grid">
+    {% for ev in proyectos %}
+    <li>{% include "partials/evento_card.html" %}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="dato-pendiente">Aún no hay proyectos con resultado confirmado publicados.</p>
+  {% endif %}
+
+  {# La pagina terminaba en la ultima tarjeta, sin nada que hacer despues.
+     Estas tres salidas recogen las intenciones reales de quien llega aqui:
+     ver el resto del historial, competir, o construir con un grupo. #}
+  <h2 class="boxed" style="margin-top:50px"><span>Y ahora qué</span></h2>
+  <ul class="intenciones">
+    <li>
+      <a class="intencion" href="{{ rel }}eventos-competencias.html">
+        <strong>Ver todas las competencias</strong>
+        <span>El historial completo, incluidas las que aún no tienen resultado.</span>
+        <em>Competencias →</em>
+      </a>
+    </li>
+    <li>
+      <a class="intencion" href="{{ rel }}oportunidades.html">
+        <strong>Competir con nosotros</strong>
+        <span>Convocatorias abiertas para representar a la Rama.</span>
+        <em>Ver oportunidades →</em>
+      </a>
+    </li>
+    <li>
+      <a class="intencion" href="{{ rel }}grupos.html">
+        <strong>Construir en un grupo</strong>
+        <span>WIE, SIGHT y CIS llevan proyectos propios durante todo el ciclo.</span>
+        <em>Ver grupos →</em>
+      </a>
+    </li>
+  </ul>
+</div>
+{% endblock %}

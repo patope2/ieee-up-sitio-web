@@ -1,0 +1,2768 @@
+/* ==========================================================================
+   IEEE UP — sistema de diseño, AUTOCONTENIDO.
+
+   QUÉ ES ESTE ARCHIVO
+   Una reconstrucción del lenguaje visual del template oficial IEEE Sites
+   (`01-SITIO-BASE-DESCARGADO/index.html`, "Home Template 1"), con los
+   componentes del sitio de la Rama encima. No es una capa de overrides: el
+   `styles.css` original NO se carga, porque declaraba toda su tipografía bajo
+   `#page` (especificidad de ID) y anulaba en silencio ~19% de este archivo,
+   incluidos TODOS los indicadores de foco (`:focus{outline:0!important}`).
+   Además el 66% de aquel archivo era CSS muerto de plugins (WPBakery, Tribe
+   Events, Team Members, buscador). Lo que sí aportaba está portado aquí,
+   medido contra el template renderizado, y con tokens en vez de `#069`
+   hard-codeado 39 veces.
+   Bootstrap 3 se conserva SOLO por su grilla (.container/.row/.col-*).
+
+   LAS MEDIDAS SON LAS DEL TEMPLATE, NO APROXIMACIONES
+   Todo lo de abajo está tomado del template renderizado a 1440px:
+     contenedor 1170px · columnas 780+390 · cuerpo 18px/30px · h1 Condensed
+     48px · h2 Open Sans 700 24px/29px · h3.boxed 16px en caja de 28px sobre
+     un filete de 1px · botones de 38px con radio 4px · nav de 44px · fila de
+     logo de 96px · footer en azul IEEE sólido · fichas de 278px con placa de
+     título blanca de 270x102 abajo a la derecha.
+
+   LOS CUATRO RECURSOS QUE DEFINEN AL TEMPLATE
+     1. `h3.boxed` — cada bloque abre con una cajita de borde azul apoyada
+        sobre un filete que cruza la columna. Es SU marca de agua; sin esto el
+        sitio no se parece al template por mucho que coincida la paleta.
+     2. El velo — degradado vertical de transparente a rgba(0,98,155,.02)
+        cerrado por un filete abajo. Va en filas de lista, barra lateral y
+        bloques de contenido.
+     3. La retícula 8+4 — columna principal de 780px y barra lateral de
+        390px. El template NO apila secciones a todo el ancho.
+     4. Dos voces tipográficas — Condensed SOLO en h1, h4, nav, botones y
+        etiquetas; h2 y h3 en Open Sans 700.
+
+   DESVIACIONES DELIBERADAS RESPECTO DEL TEMPLATE (son de cumplimiento):
+     · Master Brand reverso en blanco sobre el header oscuro, no azul (el
+       azul se reserva a ieee.org; la negra queda para fondo claro).
+     · Meta-navegación a 12px (el template la trae a 11px, bajo el mínimo).
+     · El identificador del sitio no es un <h1> (una página, un <h1>).
+     · Indicadores de foco restituidos.
+
+   Lo que NO se toca por indicación expresa: el sistema de movimiento (§9) y
+   el comportamiento del carrusel. (El popup de evento, §7.6, SÍ se rediseñó
+   más tarde a pedido expreso: ver la nota de esa sección.)
+
+   LA PORTADA ES LA EXCEPCIÓN A "3. La retícula 8+4" DE ARRIBA
+   `index.html` abandona la retícula 8+4 y apila secciones a todo el ancho
+   (§12, sistema de bandas): es el rediseño para el IEEE R9 Student Website
+   Contest, con alternancia de bandas oscuras/claras sobre la paleta IEEE.
+   Las 15 páginas interiores conservan la retícula 8+4 y el fondo claro sin
+   cambios — solo el header y el footer (§4/§5) pasan a oscuros en todo el
+   sitio. Todo estilo de banda cuelga de `.banda`, nunca del componente
+   suelto, para que las páginas interiores no hereden nada de esto (§12.0).
+
+   Índice:
+     1. Tokens
+     2. Base y tipografía
+     3. Layout: contenedor, retícula, velo, cabeceras `boxed`
+     4. Header
+     5. Footer
+     6. Botones
+     7. Componentes
+     8. Identidad geométrica IEEE UP (acento acotado)
+     9. Movimiento
+    10. Accesibilidad
+    11. Oportunidades
+    12. Sistema de bandas (portada)
+   ========================================================================== */
+
+/* =========================================================================
+   1. TOKENS
+   ========================================================================= */
+:root {
+  /* --- Marca --- */
+  --ieee-blue: #00629B;            /* oficial: Pantone 3015C / RGB 0,98,155 */
+  --ieee-blue-700: #004A75;
+  --ieee-blue-900: #002E4A;
+  --ieee-blue-300: #9AD5FF;        /* texto/iconos sobre fondo oscuro (5.96:1) */
+  --ieee-yellow: #FFD100;          /* Pantone 109C */
+  --ieee-yellow-borde: #D54308;    /* el borde que el template da al botón amarillo */
+  --ieee-error: #922842;
+
+  --ieee-blue-02: rgba(0, 98, 155, .02);
+  --ieee-blue-08: rgba(0, 98, 155, .08);
+  --ieee-blue-10: rgba(0, 98, 155, .10);
+  --ieee-blue-12: rgba(0, 98, 155, .12);
+  --ieee-blue-20: rgba(0, 98, 155, .20);
+  --ieee-blue-75: rgba(0, 98, 155, .75);
+  --ieee-blue-80: rgba(0, 98, 155, .80);
+
+  /* --- SUPERFICIES: EL SITIO ES OSCURO POR DEFECTO ----------------------
+     Estos seis tokens (mas los tres filetes y el velo) los consume TODO el
+     catalogo de componentes. Definirlos en oscuro aqui vuelve oscuro el
+     sitio entero sin reescribir cada componente; las islas claras
+     (`.banda--claro`) los REDECLARAN en su propio ambito mas abajo y todo
+     lo que cae dentro vuelve a encenderse solo. Es la razon de que no haya
+     un juego de reglas `.oscuro .componente` duplicando el archivo. */
+  --fondo: var(--nocturno);
+  --fondo-alt: rgba(255, 255, 255, .04);   /* superficie de tarjeta sobre nocturno */
+  --texto: rgba(255, 255, 255, .82);
+  --texto-fuerte: #FFFFFF;
+  --texto-suave: rgba(255, 255, 255, .62);
+  /* El azul IEEE puro sobre nocturno da 3.0:1 — insuficiente para texto
+     pequeno. Como COLOR DE TEXTO se usa el acento; el azul sigue siendo azul
+     en fondos, bordes y botones. */
+  --marca-texto: var(--acento);
+  /* Pildoras/insignias: viven sobre un fondo tenido propio, asi que su
+     contraste no lo resuelve --marca-texto. Cada tema fija el par. */
+  --pildora-fondo: rgba(127, 196, 232, .16);
+  --pildora-texto: var(--acento);
+
+  /* Filetes: el template separa TODO con estas dos opacidades. */
+  --linea: rgba(127, 196, 232, .16);
+  --linea-fuerte: rgba(127, 196, 232, .28);
+  --linea-clara: rgba(255, 255, 255, .45);
+
+  /* El velo del template, en version nocturna. */
+  --velo: linear-gradient(180deg, rgba(255, 255, 255, .02) 0%, rgba(127, 196, 232, .05) 100%);
+
+  --borde: var(--linea-fuerte);
+
+  /* --- Tipografía ---------------------------------------------------------
+     Escala EXACTA del template. En px a propósito: el template no usa rem, y
+     Bootstrap 3 declara `html{font-size:10px}`, con lo que cualquier rem se
+     renderizaría al 62.5% de su valor. Con px el tamaño es el que dice. */
+  --fuente: 'Open Sans', system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  /* Misma familia variable que --fuente: la voz condensada es el eje de
+     ancho (font-stretch:75%) del propio Open Sans, no una familia aparte.
+     Cada selector que usa --fuente-display debe declarar `font-stretch: 75%`
+     junto a el (ver §2 h1/h4 y las cabeceras `.boxed`/`.antetitulo`). */
+  --fuente-display: 'Open Sans', system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+
+  --t-h1: 48px;        --lh-h1: 58px;
+  --t-h2: 24px;        --lh-h2: 29px;
+  --t-h3: 20px;        --lh-h3: 24px;
+  --t-h4: 18px;        --lh-h4: 22px;
+  --t-h5: 16px;        --lh-h5: 24px;
+  --t-body: 18px;      --lh-body: 30px;
+  --t-sm: 14px;        --lh-sm: 20px;
+  --t-xs: 12px;        --lh-xs: 18px;
+  --t-mini: 10px;      --lh-mini: 12px;
+
+  /* --- Espaciado: la retícula de 5 del template (10/15/20/30/50) --- */
+  --e-1: 5px;   --e-2: 10px;  --e-3: 15px;  --e-4: 20px;
+  --e-5: 30px;  --e-6: 40px;  --e-7: 50px;  --e-8: 60px;
+  --e-9: 80px;  --e-10: 90px;
+
+  --seccion-y: 50px;
+  --ancho-max: 1170px;             /* .container del template */
+  --ancho-texto: 42em;
+
+  --radio: 4px;                    /* el único radio del template */
+
+  --sombra-btn: 0 4px 12px 0 rgba(0, 98, 155, .25);
+  --sombra-1: 0 4px 12px 0 rgba(0, 98, 155, .10);
+  --sombra-2: 0 6px 18px 0 rgba(0, 98, 155, .20);
+  --sombra-3: 0 20px 60px rgba(0, 20, 45, .35);   /* popup: no tocar */
+
+  --anim-rapida: .18s cubic-bezier(.2, .7, .3, 1);
+  --anim-base: .38s cubic-bezier(.2, .7, .3, 1);
+  --skew: -12deg;
+
+  /* --- Sistema de bandas (portada): paleta nocturna + acento -------------
+     Sustituye al naranja/rojo corporativo por un celeste dentro de la
+     familia del azul IEEE. Solo lo usa `.banda` (§12) y el header/footer
+     oscuros (§4/§5); el resto del sitio sigue con la paleta clara de arriba. */
+  --nocturno: #000B1D;
+  --nocturno-900: #000917;
+  --nocturno-800: #001129;
+  --nocturno-700: #001739;
+  --nocturno-600: #002450;
+  --nocturno-500: #013A63;
+  --nocturno-400: #01426E;
+  --acento: #7FC4E8;               /* celeste; contraste >=5.4:1 sobre todo el nocturno */
+  --acento-texto: #00294A;         /* texto sobre --acento (7.74:1) */
+
+  --hairline: rgba(127, 196, 232, .22);   /* filete divisor del sistema de bandas */
+  --hairline-fuerte: rgba(127, 196, 232, .4);
+
+  --claro-fondo: #F4F6F8;          /* la unica banda clara, entre cunas diagonales */
+  --claro-texto: #001129;
+  --claro-suave: #41505F;
+  --claro-tenue: #5A6A79;
+
+  --blanco-90: rgba(255, 255, 255, .9);
+  --blanco-72: rgba(255, 255, 255, .72);
+  --blanco-62: rgba(255, 255, 255, .62);
+  --blanco-22: rgba(255, 255, 255, .22);
+  --blanco-12: rgba(255, 255, 255, .12);
+
+  --fade-banda: 70px;              /* disolvido vertical del borde de cada banda */
+  --wedge: 64px;                   /* cuna diagonal de entrada/salida de la banda clara */
+
+  /* Tokens que existian sin uso: se reutilizan aqui en vez de anadir nuevos. */
+  --linea-clara: rgba(255, 255, 255, .45);   /* borde del boton ghost */
+  --seccion-y: clamp(38px, 3.4vw, 56px);     /* ritmo vertical de una banda */
+}
+
+/* =========================================================================
+   2. BASE Y TIPOGRAFÍA
+   ========================================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Bootstrap 3 declara `html{font-size:10px}`. Aquí la escala está en px, pero
+   se restituye la raíz para que cualquier `rem` de terceros mida lo que dice. */
+html { font-size: 100%; }
+
+body {
+  font-family: var(--fuente);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--texto);
+  background: var(--fondo);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0 0 var(--e-3); color: var(--texto-fuerte); font-weight: 700; }
+
+/* Voz de RÓTULO: condensada — h1 y h4, como en el template. */
+h1 { font-family: var(--fuente-display); font-stretch: 75%; font-size: var(--t-h1); line-height: var(--lh-h1); margin-bottom: var(--e-2); }
+h4 { font-family: var(--fuente-display); font-stretch: 75%; font-size: var(--t-h4); line-height: var(--lh-h4); margin-bottom: 6px; }
+
+/* Voz de LECTURA: Open Sans 700 — h2 y h3, como en el template. */
+h2 { font-size: var(--t-h2); line-height: var(--lh-h2); margin-bottom: var(--e-3); }
+h3 { font-size: var(--t-h3); line-height: var(--lh-h3); }
+h5 { font-size: var(--t-h5); line-height: var(--lh-h5); margin-bottom: 6px; }
+h6 { font-size: var(--t-sm); line-height: var(--lh-sm); }
+
+p { margin: 0 0 var(--e-4); }
+p:last-child { margin-bottom: 0; }
+
+.lead { font-size: var(--t-body); line-height: var(--lh-body); margin-bottom: var(--e-4); }
+.small, .small p { font-size: var(--t-sm); line-height: 17px; }
+
+a { color: var(--marca-texto); text-decoration: none; transition: color var(--anim-rapida); }
+a:hover, a:focus { color: var(--ieee-blue-700); text-decoration: underline; }
+
+img { max-width: 100%; height: auto; }
+ul, ol { margin: 0 0 var(--e-4); padding-left: var(--e-4); }
+li { margin-bottom: var(--e-1); }
+strong, b { font-weight: 700; }
+hr { border: 0; border-top: 1px solid var(--linea-fuerte); margin: var(--e-5) 0 var(--e-7); }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: .88em; background: var(--ieee-blue-08); color: var(--ieee-blue-700);
+  padding: 1px 4px; border-radius: 3px;
+}
+
+.texto-medido { max-width: var(--ancho-texto); }
+
+@media (max-width: 767px) {
+  :root { --t-body: 16px; --lh-body: 26px; --t-h1: 28px; --lh-h1: 34px;
+          --t-h2: 20px; --lh-h2: 25px; --t-h3: 17px; --lh-h3: 22px; }
+}
+
+/* =========================================================================
+   3. LAYOUT: CONTENEDOR, RETÍCULA, VELO, CABECERAS `boxed`
+   ========================================================================= */
+.container {
+  width: 100%;
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding-inline: var(--e-3);
+}
+
+/* La retícula 8+4 del template: 780 + 390 dentro de 1170.
+   Se implementa con grid (no con los floats de Bootstrap) para que la barra
+   lateral no dependa del orden de los floats ni deje huecos. */
+.reticula {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 0 var(--e-5);
+  align-items: start;
+}
+.reticula__principal, .reticula__lateral { min-width: 0; }
+/* La barra lateral acompaña: en Eventos la columna principal mide 7.000px y
+   la lateral 600px, así que sin esto la mitad derecha de la página es un
+   vacío de seis pantallas. */
+@media (min-width: 992px) { .reticula__lateral { position: sticky; top: var(--e-4); } }
+@media (max-width: 991px) { .reticula { grid-template-columns: 1fr; gap: 0; } .reticula__lateral { margin-top: var(--e-7); } }
+
+.seccion { padding-block: var(--e-5) var(--e-7); }
+.seccion--sm { padding-block: var(--e-4) var(--e-5); }
+
+/* --- 3.1 `h3.boxed`: LA cabecera de bloque del template -------------------
+   Un filete cruza la columna y una cajita de borde azul se apoya encima. Es
+   el recurso que hace reconocible al template; se usa en TODOS los bloques,
+   tanto en la columna principal como en la lateral. */
+/* COHESION CON LA PORTADA: la cajita con borde del template se cambia por la
+   misma cabecera que usan las bandas — guion de acento + titulo condensado
+   en 800 apoyado sobre un filete. El elemento y el marcado no cambian
+   (`<h2 class="boxed"><span>...</span></h2>` sigue igual en las 15 paginas
+   interiores), solo su vestido, para que un bloque de Eventos o de Nosotros
+   se lea como una seccion de la portada. */
+.boxed {
+  border-top: 0;
+  border-bottom: 1px solid var(--linea-fuerte);
+  margin: 0 0 var(--e-5);
+  padding: 0 0 var(--e-3);
+  font-size: 0;
+  line-height: 0;
+  display: flex; align-items: center; gap: 10px;
+}
+.boxed::before {
+  content: "";
+  width: 22px; height: 2px; flex: none;
+  background: var(--ieee-blue);
+}
+.boxed > span {
+  display: inline-block;
+  color: var(--marca-texto);
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: clamp(20px, 2.1vw, 28px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  text-transform: none;   /* a este tamano las versales gritan */
+}
+/* Contenedor de una fila de fichas: es el ancla del `h3.boxed.tiled`, que va
+   posicionado por encima de las imágenes. */
+.posts { position: relative; }
+
+/* Variante que se monta sobre una fila de fichas (`h3.boxed.tiled` en el
+   template): baja para pisar el borde superior de las imágenes. */
+/* `.boxed--tiled` (la cabecera que se montaba sobre la fila de fichas) ya no
+   se usa en ninguna plantilla: la portada la sustituyo por `.banda__cabecera`.
+   Se deja fuera para no arrastrar CSS muerto. */
+.promoted .boxed { border-bottom-color: var(--hairline); }
+
+/* --- 3.2 El velo --------------------------------------------------------- */
+.velo { background: var(--velo); border-bottom: 1px solid var(--linea); padding: var(--e-4) var(--e-5); }
+
+/* --- 3.3 Cabecera de página interior -------------------------------------
+   COHESION CON LA PORTADA: era el velo azul clarito del template. Ahora es
+   una banda NOCTURNA con el mismo formato 01 Ribbons del header y del hero,
+   de modo que las 16 paginas abren igual: barra negra -> logo -> nav ->
+   cabecera oscura -> cuerpo claro. Es el mismo ritmo oscuro/claro de la
+   portada, conseguido con una sola regla en vez de tocar 15 plantillas.
+   El cuerpo de las paginas interiores sigue claro y con la reticula 8+4. */
+.page-head {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--nocturno);
+  color: #fff;
+  padding: var(--e-7) 0 var(--e-8);
+  margin-bottom: var(--e-7);
+}
+.page-head::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 118px),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .018) 0 46px, transparent 46px 260px),
+    radial-gradient(110% 190% at 78% 8%, rgba(2, 74, 120, .55) 0%, rgba(0, 17, 41, .92) 55%, var(--nocturno) 100%);
+}
+/* Anillo delineado sangrando por la derecha: la misma figura que cose las
+   bandas de la portada, a escala de cabecera. */
+.page-head::after {
+  content: "";
+  position: absolute; z-index: 0; pointer-events: none;
+  right: -12%; top: -120%; width: 46%; aspect-ratio: 1;
+  border-radius: 50%; border: 1px solid rgba(0, 140, 220, .22);
+}
+.page-head > .container { position: relative; z-index: 1; }
+.page-head h1 {
+  color: #fff;
+  font-weight: 800; letter-spacing: -.03em;
+  font-size: clamp(32px, 3.6vw, 52px); line-height: 1.04;
+  margin-bottom: var(--e-3);
+}
+.page-head .lead { max-width: 46em; margin-bottom: 0; color: var(--blanco-72); font-weight: 300; line-height: 1.7; }
+.page-head .lead a { color: var(--acento); }
+.page-head .lead a:hover { color: #fff; }
+/* Miga de pan: hace de antetitulo de la cabecera, con la misma voz que
+   `.antetitulo` del sistema de bandas (12px/700/.2em en acento). */
+#breadcrumbs {
+  margin-bottom: var(--e-3);
+  font-size: var(--t-xs);
+  line-height: var(--lh-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: var(--acento);
+}
+#breadcrumbs a { color: var(--acento); }
+#breadcrumbs a:hover { color: #fff; }
+
+/* --- 3.4 Rejillas de tarjetas ------------------------------------------- */
+.rejilla { display: grid; gap: var(--e-5); list-style: none; padding: 0; margin: 0; }
+.rejilla > * { margin: 0; min-width: 0; }
+.rejilla--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.rejilla--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 991px) { .rejilla--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .rejilla--3, .rejilla--2 { grid-template-columns: 1fr; } }
+
+/* Bloque de ideas breves (Propósito, ¿Qué ganas?): filas con velo y filete,
+   la misma gramática que `ul.simple`. */
+.ideas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--e-5); list-style: none; padding: 0; margin: 0; }
+.ideas > * {
+  margin: 0;
+  padding: var(--e-3) var(--e-3) var(--e-4);
+  border-top: 1px solid var(--linea-fuerte);
+  border-bottom: 1px solid var(--linea);
+  background: var(--velo);
+}
+.ideas > * > h3, .ideas > * > h4 {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-h4); line-height: var(--lh-h4);
+  color: var(--marca-texto);
+  margin-bottom: var(--e-2);
+}
+.ideas > * > p { font-size: var(--t-sm); line-height: 22px; margin: 0; }
+@media (max-width: 767px) { .ideas { grid-template-columns: 1fr; } }
+
+/* Nota / dato aún no confirmado. */
+.dato-pendiente { font-size: var(--t-sm); line-height: 22px; color: var(--texto-suave); font-style: italic; }
+p.dato-pendiente:not(.evento-card__resultado) {
+  background: var(--velo);
+  border-left: 2px solid var(--linea-fuerte);
+  padding: var(--e-2) var(--e-3);
+}
+
+/* =========================================================================
+   4. HEADER
+   ========================================================================= */
+#page { overflow-x: clip; }
+
+/* Header oscuro unificado: meta-nav y fila de logo comparten UN solo campo
+   nocturno, en vez de dos bloques con su propio fondo y un filete
+   partiendolos.
+
+   NO se usa `header-bkg-blue.png` (la trama de circuito del template): ese
+   PNG es indexado, SIN canal alfa y con fondo BLANCO opaco, asi que sobre
+   el header oscuro pintaba una banda gris clara detras de los logos. La
+   textura ahora son las franjas diagonales a 115° del sistema de bandas
+   (§12), en CSS: mismo gesto grafico, sin fondo blanco, y coherente con el
+   hero que viene justo debajo.
+
+   Termina en `--nocturno` opaco, que es el color con el que arranca el
+   hero: el header se funde con el contenido sin recurrir a
+   position:absolute ni a un margen negativo (fragil: la altura del header
+   cambia por breakpoint). */
+header#header {
+  position: relative;
+  z-index: 30;
+  background-color: var(--nocturno);
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 118px),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .018) 0 46px, transparent 46px 260px),
+    radial-gradient(120% 180% at 78% 0%, rgba(2, 74, 120, .5) 0%, rgba(0, 17, 41, .9) 55%, var(--nocturno) 100%);
+}
+
+/* --- Meta-navegación corporativa obligatoria ---
+   El template la trae a 11px; la guía exige un mínimo de 12px.
+   Fondo negro opaco propio (igual que la barra de utilidad de la referencia)
+   con un filete `--hairline` abajo: no hay salto de color hacia la fila del
+   logo porque header#header sigue el mismo negro justo debajo. */
+#meta-nav {
+  position: relative;
+  z-index: 1;
+  background: var(--nocturno-900);
+  border-bottom: 1px solid var(--hairline);
+  overflow: hidden;
+}
+#meta-nav ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; }
+#meta-nav li { margin: 0; font-size: var(--t-xs); line-height: 34px; font-weight: 700; }
+#meta-nav li a {
+  display: block;
+  padding: 0 13px;
+  color: rgba(255, 255, 255, .78);
+  border-right: 1px solid var(--hairline);
+  text-decoration: none;
+}
+#meta-nav li:first-child a { padding-left: 0; }
+#meta-nav li:last-child a { border-right: 0; padding-right: 0; }
+#meta-nav li a:hover { color: var(--acento); text-decoration: underline; }
+
+/* --- Fila del logo (96px, como el template) --- */
+#logo-search { display: flex; align-items: center; gap: var(--e-3); min-height: 96px; }
+#logo { flex: 1 1 auto; display: flex; align-items: center; }
+#logo a { display: inline-flex; transition: opacity var(--anim-rapida); }
+#logo a:hover { opacity: .8; }
+/* El identificador del sitio va MÁS GRANDE que el Master Brand, como exige la
+   guía. En el template es un <h1> de 48px; aquí es el logo real de la Rama
+   (sin kite ni logotipo IEEE — cumple Policy 6.3.2-C) a altura equivalente.
+   No es <h1>: cada página tiene un único <h1>, el suyo. */
+#logo .site-logo { height: 58px; width: auto; display: block; }
+
+.logo-ieee-block { border-left: 1px solid rgba(255, 255, 255, .25); padding-left: var(--e-5); margin-left: auto; }
+#logo-ieee { display: inline-block; padding-block: var(--e-4); }
+#logo-ieee img { width: 108px; height: 32px; min-width: 100px; min-height: 33px; display: block; }
+
+#mobile-menu, #mobile-search { display: none; }
+#mobile-menu button, #mobile-search button {
+  border: 0; background: none; padding: var(--e-1);
+  color: #fff; font-size: 25px; cursor: pointer; line-height: 1;
+}
+
+/* --- Navegación principal: barra de 44px con los ítems repartidos ---------
+   En el template cada <li> es `flex:0 1 auto; flex-grow:1; max-width:300px`,
+   así que los ítems se reparten el ancho en vez de amontonarse a la
+   izquierda. Es una de las señas de identidad de la barra.
+   Campo nocturno sólido, no translúcido: el fondo semitransparente sobre el
+   PNG blanco del template daba un gris lavado sin carácter. Ahora es el
+   mismo `--nocturno-800` de las bandas, con un filete de acento arriba que
+   ata la barra al sistema; el ítem activo se marca con ese mismo acento. */
+#main-nav {
+  position: relative;
+  z-index: 1;
+  background: var(--nocturno-800);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+#nav { display: flex; flex-wrap: wrap; align-items: center; list-style: none; margin: 0; padding: 0; }
+#nav > li {
+  margin: 0;
+  position: relative;
+  flex: 1 1 auto;
+  max-width: 300px;
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-h5);
+  font-weight: 700;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+/* `:not(.btn)` es obligatorio: `#nav > li > a` gana por especificidad de ID
+   al `color:#000` de `.btn-yellow`, asi que sin esta exclusion el boton
+   "Únete" de la barra quedaba con texto BLANCO sobre amarillo — 1.46:1, muy
+   por debajo del minimo AA. El resto de los items si van en blanco. */
+#nav > li > a:not(.btn) {
+  display: block;
+  padding: 14px 12px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color var(--anim-rapida);
+}
+#nav > li > a:not(.btn) { box-shadow: inset 0 -3px 0 transparent; transition: background-color var(--anim-rapida), box-shadow var(--anim-rapida); }
+#nav > li:hover > a:not(.btn),
+#nav > li > a:not(.btn):focus-visible { background: rgba(0, 98, 155, .45); color: #fff; text-decoration: none; }
+/* El item activo se marca con un filete de acento, no con un subrayado de
+   texto: es la misma senal que usa el sistema de bandas para "aqui estas". */
+#nav > li.current-menu-item > a:not(.btn) { box-shadow: inset 0 -3px 0 var(--acento); text-decoration: none; }
+
+/* CTA "Únete": botón real dentro de la barra, sin estirarse a su alto.
+   Va en amarillo IEEE (Pantone 109C) igual que en el resto del sitio. Es la
+   UNICA accion de conversion de la web, y darle un color que no se usa en
+   ningun otro sitio la hace inconfundible (efecto de aislamiento): el
+   visitante aprende "amarillo = unirme" en la primera pantalla y lo
+   reconoce en las 16 paginas. El celeste queda para el sistema (antetitulos,
+   filetes, enlaces sobre oscuro) y el amarillo NO se usa para nada mas. */
+#nav > li.menu-item-cta { flex: 0 0 auto; max-width: none; display: flex; align-items: center; margin-left: auto; padding-left: var(--e-3); }
+#nav > li.menu-item-cta > a { padding: 0 var(--e-4); height: 30px; line-height: 28px; font-size: var(--t-sm); }
+
+/* Submenú */
+.sub-menu {
+  position: absolute;
+  top: 100%; left: 0;
+  width: 300px;
+  margin: 0; padding: 0;
+  list-style: none;
+  background: var(--nocturno-800);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--sombra-2);
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--anim-base), visibility 0s linear .2s;
+  z-index: 40;
+}
+#nav > li:hover > .sub-menu,
+#nav > li:focus-within > .sub-menu { opacity: 1; visibility: visible; transition: opacity var(--anim-base); }
+.sub-menu li { margin: 0; font-size: var(--t-sm); text-transform: none; }
+.sub-menu li a {
+  display: block;
+  padding: 12px 28px;
+  color: #fff;
+  border-bottom: 1px solid var(--hairline);
+  text-decoration: none;
+  transition: background-color var(--anim-rapida);
+}
+.sub-menu li:last-child a { border-bottom: 0; }
+.sub-menu li a:hover, .sub-menu li a:focus-visible { background: rgba(0, 98, 155, .45); color: #fff; }
+
+@media (max-width: 991px) {
+  #meta-nav { display: none; }
+  header#header {
+    background-image:
+      repeating-linear-gradient(115deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 118px),
+      radial-gradient(140% 200% at 80% 0%, rgba(2, 74, 120, .45) 0%, var(--nocturno) 70%);
+    box-shadow: 0 1px 0 var(--hairline);
+  }
+  #logo-search { min-height: 64px; }
+  #logo .site-logo { height: 34px; }
+  .logo-ieee-block { padding-left: var(--e-3); }
+  #logo-ieee img { width: 92px; height: 27px; min-width: 0; min-height: 0; }
+  #mobile-menu { display: block; order: -1; }
+
+  /* Panel deslizante, no la barra translucida sobre la foto: opaco de
+     borde a borde para que el texto se lea igual sin importar que haya
+     detras. */
+  #main-nav {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(84vw, 340px);
+    background: var(--nocturno-900);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 0;
+    transform: translateX(100%);
+    transition: transform var(--anim-base);
+    overflow-y: auto;
+    z-index: 60;
+    padding: var(--e-7) 0 var(--e-5);
+  }
+  #main-nav.abierto { transform: none; }
+  #nav { flex-direction: column; align-items: stretch; }
+  #nav > li { max-width: none; border-bottom: 1px solid rgba(255, 255, 255, .15); font-size: var(--t-sm); }
+  #nav > li > a { padding: var(--e-4) var(--e-5); }
+  #nav > li.menu-item-cta { margin: var(--e-4) var(--e-5) 0; padding: 0; border: 0; }
+  #nav > li.menu-item-cta > a { width: 100%; height: 38px; line-height: 36px; }
+  .sub-menu {
+    position: static; opacity: 1; visibility: visible;
+    box-shadow: none; background: rgba(0, 0, 0, .18); width: auto;
+  }
+  .sub-menu li a { padding-left: var(--e-6); }
+  .nav-cerrar {
+    position: absolute; top: var(--e-2); right: var(--e-2);
+    width: 40px; height: 40px; border: 0;
+    background: rgba(255, 255, 255, .12); color: #fff; font-size: 20px; cursor: pointer;
+  }
+  .nav-backdrop {
+    position: fixed; inset: 0; background: rgba(0, 20, 45, .5);
+    opacity: 0; visibility: hidden; transition: opacity var(--anim-base), visibility var(--anim-base);
+    z-index: 55;
+  }
+  .nav-backdrop.visible { opacity: 1; visibility: visible; }
+}
+@media (min-width: 992px) { .nav-cerrar, .nav-backdrop { display: none; } }
+
+/* =========================================================================
+   5. FOOTER
+   Nocturno con el formato 08 Ruled Arc del sistema de bandas (§12): filetes
+   verticales + un arco delineado sangrando por el borde derecho, en vez del
+   azul IEEE sólido de antes. Cambia en las 16 páginas (excepción deliberada
+   junto al header: es el chrome compartido, no un componente de portada). */
+footer#colophon {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, var(--nocturno-600) 0%, var(--nocturno-900) 100%);
+  color: #fff;
+  padding: 58px 0 var(--e-4);
+  font-size: var(--t-xs);
+  line-height: 22px;
+}
+footer#colophon::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(90deg, rgba(0, 9, 23, .95), rgba(0, 9, 23, 0) 42%),
+    repeating-linear-gradient(90deg, var(--hairline) 0 1px, transparent 1px 12.5%);
+}
+footer#colophon::after {
+  content: "";
+  position: absolute; z-index: 0; pointer-events: none;
+  right: -18%; top: -140%; width: 64%; aspect-ratio: 1;
+  border-radius: 50%; border: 2px solid rgba(0, 140, 220, .22);
+}
+footer#colophon > .container { position: relative; z-index: 1; }
+footer#colophon p { font-size: var(--t-xs); line-height: 22px; }
+footer#colophon a { color: #fff; text-decoration: none; }
+footer#colophon a:hover { color: var(--acento); text-decoration: underline; }
+
+.footer-marca { margin-bottom: var(--e-5); }
+.footer-marca__logo { height: 46px; width: auto; display: block; }
+
+#menu-footer-navigation {
+  list-style: none;
+  margin: 0 0 44px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2) 0;
+}
+#menu-footer-navigation li { margin: 0; }
+#menu-footer-navigation li a {
+  display: block;
+  padding: 0 16px;
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  border-right: 1px solid var(--hairline-fuerte);
+}
+#menu-footer-navigation li:first-child a { padding-left: 0; }
+#menu-footer-navigation li:last-child a { padding-right: 0; border-right: 0; }
+
+#social-links { display: flex; gap: 22px; align-items: center; justify-content: flex-end; }
+#social-links a { font-size: 20px; line-height: 1; }
+#social-links a:hover { opacity: .7; }
+@media (max-width: 991px) {
+  #social-links { justify-content: flex-start; margin-top: var(--e-5); }
+  #menu-footer-navigation li a { padding: 0 var(--e-2); }
+  #menu-footer-navigation li:first-child a { padding-left: 0; }
+}
+
+#top-link-block {
+  position: fixed; left: var(--e-2); bottom: var(--e-5);
+  z-index: 50;
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--anim-base), visibility var(--anim-base);
+}
+#top-link-block.visible { opacity: 1; visibility: visible; }
+#top-link-block a {
+  display: inline-flex; align-items: center; gap: var(--e-1);
+  background: #fff; color: var(--ieee-blue) !important;
+  border: 1px solid var(--ieee-blue);
+  padding: 8px var(--e-3);
+  border-radius: var(--radio);
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-xs); font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  box-shadow: var(--sombra-1);
+  text-decoration: none;
+}
+
+/* =========================================================================
+   6. BOTONES  — 38px de alto, 4px de radio, condensada en versales.
+   ========================================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-2);
+  height: 38px;
+  padding: 0 var(--e-4);
+  border: 1px solid transparent;
+  border-radius: var(--radio);
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  line-height: 36px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--anim-rapida), color var(--anim-rapida), box-shadow var(--anim-rapida);
+}
+.btn-primary { background: var(--ieee-blue); border-color: var(--ieee-blue); color: #fff; box-shadow: var(--sombra-btn); }
+.btn-primary:hover, .btn-primary:focus { background: var(--ieee-blue-700); border-color: var(--ieee-blue-700); color: #fff; }
+
+.btn-secondary { background: #fff; border-color: var(--ieee-blue); color: var(--ieee-blue); box-shadow: var(--sombra-btn); }
+.btn-secondary:hover, .btn-secondary:focus { background: var(--ieee-blue); color: #fff; }
+
+.btn-yellow { background: var(--ieee-yellow); border-color: var(--ieee-yellow-borde); color: #000; box-shadow: 0 4px 12px 0 rgba(255, 209, 0, .25); }
+.btn-yellow:hover, .btn-yellow:focus { background: #FFDD40; border-color: var(--ieee-yellow-borde); color: #000; }
+
+.btn-lg { height: 62px; padding: 0 var(--e-5); font-size: var(--t-h5); line-height: 60px; }
+.btn-block { display: flex; width: 100%; white-space: normal; }
+
+/* Remate de bloque: el template cierra cada columna con un botón de ancho
+   completo. Es la señal de "aquí termina este bloque". */
+.remate { margin-top: var(--e-5); }
+
+/* CTA secundario que ya usaban las plantillas. */
+.btn-pill {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--e-2);
+  height: 38px; padding: 0 var(--e-4);
+  border: 1px solid var(--ieee-blue); border-radius: var(--radio);
+  background: #fff; color: var(--ieee-blue);
+  font-family: var(--fuente-display); font-stretch: 75%; font-size: var(--t-sm); font-weight: 700; line-height: 36px;
+  text-transform: uppercase; text-decoration: none;
+  box-shadow: var(--sombra-btn);
+  transition: background-color var(--anim-rapida), color var(--anim-rapida);
+}
+.btn-pill:hover, .btn-pill:focus { background: var(--ieee-blue); color: #fff; text-decoration: none; }
+
+/* =========================================================================
+   7. COMPONENTES
+   ========================================================================= */
+
+/* --- 7.1 HERO (el `.slideshow` del template) -----------------------------
+   Alto de 545px, panel de media columna con velo azul al 75% sobre la foto:
+   la mitad derecha de la imagen queda a la vista. No es un degradado a
+   pantalla completa. */
+.hero-foto { position: relative; background-color: var(--nocturno); background-size: cover; background-position: center; color: #fff; overflow: hidden; }
+.hero-foto > .container { position: relative; z-index: 2; }
+
+/* Fondo variable: una capa por evento destacado, encadenadas con un fundido.
+   El texto NO cambia (sigue siendo el proximo evento): lo que rota es la
+   fotografia, para que la portada muestre la actividad real de la Rama en
+   vez de una sola imagen fija. `.hero-foto__fondo` es hermana del panel y
+   vive por debajo (z-index:0), asi que el velo del panel la cubre igual.
+   Sin JS las capas quedan apiladas y se ve la primera; con JS se alterna la
+   clase `.activa`. Con `prefers-reduced-motion` el JS no rota (ver
+   ieee-up.js) y el fundido se anula solo por el bloque global de §9. */
+.hero-foto__fondos { position: absolute; inset: 0; z-index: 0; }
+.hero-foto__fondo {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0;
+  transition: opacity 1.1s ease-in-out;
+}
+/* La primera capa ya viene con `activa` desde la plantilla: sin JS se ve
+   esa y nada mas, sin depender de un `:first-child` que compita con ella. */
+.hero-foto__fondo.activa { opacity: 1; }
+
+/* Puntos de navegacion del slideshow. */
+.hero-foto__puntos {
+  position: absolute; z-index: 3; left: 0; right: 0; bottom: var(--e-4);
+  display: flex; justify-content: center; gap: var(--e-2);
+  margin: 0; padding: 0; list-style: none;
+}
+.hero-foto__puntos li { margin: 0; }
+.hero-foto__punto {
+  display: block; width: 28px; height: 4px; padding: 0;
+  border: 0; border-radius: 2px;
+  background: var(--blanco-22);
+  cursor: pointer;
+  transition: background-color var(--anim-rapida);
+}
+.hero-foto__punto:hover { background: var(--blanco-72); }
+.hero-foto__punto[aria-current="true"] { background: var(--acento); }
+.hero-foto__panel {
+  position: relative;
+  width: 58%;
+  min-height: 545px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--e-8) var(--e-6) var(--e-8) 0;
+}
+/* El velo es UNA SOLA capa que cruza el hero entero y se desvanece en
+   diagonal hacia la derecha, en vez de dos: antes había un velo que moría
+   en el borde del panel y, pegada a él, otra capa de fundido. Por muy fino
+   que se ajustara el degradado, las dos no empalmaban exactamente (el velo
+   terminaba en rgb(1,16,37) y el fundido arrancaba en rgb(1,12,28)) y ese
+   escalón se leía como una línea vertical a lo alto del banner. Con una
+   capa única y una máscara, la junta no existe y no hay nada que cuadrar.
+
+   Vive en `.hero-foto` y no en el panel porque tiene que cubrir el ancho
+   completo del hero, no el del texto. z-index 1: por encima de las fotos
+   (z-index 0) y por debajo del contenido (`.container`, z-index 2). */
+.hero-foto::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 118px),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .018) 0 46px, transparent 46px 260px),
+    radial-gradient(120% 160% at 8% 35%, rgba(2, 74, 120, .6) 0%, rgba(0, 17, 41, .96) 48%, var(--nocturno) 100%);
+  -webkit-mask-image: linear-gradient(100deg, #000 0 38%, rgba(0, 0, 0, .62) 56%, rgba(0, 0, 0, .2) 78%, transparent 96%);
+          mask-image: linear-gradient(100deg, #000 0 38%, rgba(0, 0, 0, .62) 56%, rgba(0, 0, 0, .2) 78%, transparent 96%);
+}
+.hero-foto__meta {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-xs); font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--acento);
+  margin-bottom: var(--e-3);
+  display: flex; flex-wrap: wrap; gap: var(--e-4);
+}
+.hero-foto__panel h1 { color: #fff; margin-bottom: var(--e-2); }
+.hero-foto__panel h2 { color: #fff; margin-bottom: var(--e-4); }
+.hero-foto__acciones { display: flex; gap: 14px; flex-wrap: wrap; margin: 0; }
+@media (max-width: 991px) {
+  .hero-foto__panel { width: 100%; min-height: 340px; padding: var(--e-7) 0 var(--e-8); }
+  /* Sin dos columnas no hay sitio para que la foto asome al lado del texto:
+     el velo pasa a cubrirla entera y casi opaco, y se retira la mascara
+     diagonal (solo tiene sentido cuando hay foto al lado). Con el degradado
+     de escritorio la fotografia quedaba DEBAJO del titular y le comia el
+     contraste. */
+  .hero-foto::before {
+    background-image:
+      repeating-linear-gradient(115deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 118px),
+      linear-gradient(160deg, rgba(2, 74, 120, .55) 0%, rgba(0, 17, 41, .96) 45%, rgba(0, 11, 29, .98) 100%);
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+}
+
+/* --- 7.2 FICHA DE EVENTO --------------------------------------------------
+   Imagen de 278px con la ficha completa (título + fecha) legible sobre un
+   degradado que cubre TODO el ancho de la tarjeta, no una placa blanca al
+   75%. Se probó primero la placa sólida del template oficial; a este tamaño
+   de tarjeta dejaba una franja de foto huérfana a la izquierda y el título
+   competía por espacio en 3/4 del ancho. El degradado dinamiza el conjunto:
+   la foto se ve completa de punta a punta y el texto flota sobre ella con
+   contraste suficiente sin tapar más del ~45% inferior de la imagen (el
+   punto de equilibrio entre "se lee bien" y "se sigue viendo la foto"). */
+.evento-card { position: relative; height: 100%; }
+.evento-card__resumen {
+  display: block; width: 100%; height: 100%;
+  padding: 0; border: 0; background: none;
+  text-align: left; font: inherit; color: inherit; cursor: pointer;
+}
+.evento-card__media { position: relative; height: 278px; background: var(--ieee-blue); overflow: hidden; }
+.evento-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Sin foto: campo azul con la trama del template, nunca un hueco gris. */
+.evento-card--sin-foto .evento-card__media {
+  background-color: var(--ieee-blue);
+  background-image: url(../img/header-bkg-blue.png);
+  background-position: center;
+}
+.evento-card__cuerpo {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  width: 100%;
+  padding: 40px var(--e-4) var(--e-3);
+  color: #fff;
+  isolation: isolate;   /* ancla el z-index:-1 de abajo a ESTE elemento */
+}
+/* El degradado y el desenfoque viven en un pseudo-elemento aparte, no en
+   `.evento-card__cuerpo` directamente, para poder difuminar el BLUR mismo
+   con una mascara en degradado. `backdrop-filter` no se atenua solo: hace
+   el mismo desenfoque de borde a borde de su caja, así que el corte entre
+   "nítido" y "difuminado" quedaba como una línea recta muy visible (el
+   defecto senalado). Enmascarando este pseudo-elemento con un degradado de
+   opacidad, el desenfoque tambien se desvanece de forma gradual — arriba
+   se ve casi 100% la foto nítida, abajo el vidrio esmerilado completo, sin
+   costura. El texto (h3/p, hijos directos de `.evento-card__cuerpo`) queda
+   FUERA de esta capa y no se enmascara: siempre a opacidad plena. */
+.evento-card__cuerpo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg,
+    rgba(0, 32, 58, 0) 0%,
+    rgba(0, 32, 58, .3) 30%,
+    rgba(0, 32, 58, .74) 62%,
+    rgba(0, 32, 58, .93) 100%);
+  /* Buena parte del catalogo son flyers graficos con texto propio impreso
+     (titulos, nombres, fechas) cerca del borde inferior. Un degradado solo
+     no bastaba: a partir de ~40% de opacidad ese texto seguia asomando
+     detras del titulo y se leian los dos a la vez, superpuestos. El
+     desenfoque de fondo (vidrio esmerilado) disuelve ese texto ajeno sin
+     necesidad de una placa opaca — el equilibrio pedido: sigue siendo un
+     degradado translucido, pero lo que hay debajo deja de competir. */
+  backdrop-filter: blur(9px) saturate(1.15);
+  -webkit-backdrop-filter: blur(9px) saturate(1.15);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 55%, #000 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 55%, #000 100%);
+}
+.evento-card__titulo {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-h4);
+  line-height: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+.evento-card__resumen:hover .evento-card__titulo { text-decoration: underline; }
+/* Etiqueta de categoría: chip solido sobre la foto (ya no hay borde de placa
+   del que "asomar"). */
+.badge-categoria--eyebrow {
+  position: absolute;
+  top: var(--e-3); left: var(--e-3);
+  height: 22px;
+  padding: 0 var(--e-3);
+  background: var(--ieee-blue);
+  color: #fff;
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 20, 45, .3);
+}
+.evento-card__meta {
+  font-size: var(--t-mini);
+  line-height: 16px;
+  color: rgba(255, 255, 255, .85);
+  display: flex; flex-wrap: wrap; gap: var(--e-2);
+  margin: 6px 0 0;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.evento-card__meta .fa { margin-right: 3px; color: var(--ieee-blue-300); }
+.evento-card__toggle { display: none; }   /* el título ya es el disparador */
+
+/* Ficha estática (Logros): sin imagen ni degradado, sobre fondo claro. */
+.evento-card--estatico { background: var(--velo); border-top: 1px solid var(--linea-fuerte); border-bottom: 1px solid var(--linea); }
+.evento-card--estatico .evento-card__cuerpo {
+  position: static; width: 100%;
+  padding: var(--e-3) var(--e-4);
+  color: var(--texto);
+}
+.evento-card--estatico .evento-card__cuerpo::before { content: none; }   /* sin foto detras: no hace falta ni degradado ni blur */
+.evento-card--estatico .badge-categoria--eyebrow { position: static; display: inline-block; margin-bottom: var(--e-2); box-shadow: none; }
+.evento-card--estatico .evento-card__titulo { color: var(--texto-fuerte); }
+.evento-card--estatico .evento-card__meta { color: var(--texto-suave); }
+.evento-card--estatico .evento-card__meta .fa { color: var(--marca-texto); }
+
+.evento-card__desc { font-size: var(--t-body); line-height: var(--lh-body); margin: 0 0 var(--e-4); }
+.evento-card__resultado {
+  padding-top: var(--e-3);
+  border-top: 1px solid var(--linea);
+  font-size: var(--t-sm); line-height: 22px; font-weight: 700;
+  margin: var(--e-3) 0 0;
+}
+
+/* Píldora de categoría (dentro del popup). */
+.badge-categoria {
+  display: inline-block;
+  height: 20px; padding: 0 var(--e-3);
+  background: var(--pildora-fondo);
+  color: var(--pildora-texto);
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-xs); font-weight: 700; line-height: 20px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.badge-categoria--ecosistema { background: var(--ieee-blue); color: #fff; }
+.badge-categoria--logro { background: var(--ieee-yellow); color: #000; }
+
+/* --- 7.3 GRILLA Y CARRUSEL DE FICHAS ------------------------------------ */
+.eventos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--e-5);
+  list-style: none; padding: 0; margin: 0;
+}
+.eventos-grid > li { margin: 0; }
+.reticula__principal .eventos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 991px) { .eventos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .eventos-grid, .reticula__principal .eventos-grid { grid-template-columns: 1fr; } }
+
+.eventos-carrusel { margin-inline: -15px; }
+.eventos-carrusel__item { padding-inline: 15px; height: auto; }
+.eventos-carrusel .slick-track { display: flex !important; }
+.eventos-carrusel .slick-slide { height: auto; }
+.eventos-carrusel .slick-slide > div { height: 100%; }
+.eventos-carrusel .slick-arrow {
+  position: absolute; top: 139px; transform: translateY(-50%);
+  z-index: 3;
+  width: 38px; height: 38px;
+  border-radius: var(--radio);
+  border: 1px solid var(--ieee-blue);
+  background: #fff;
+  color: var(--ieee-blue);
+  font-size: 14px;
+  box-shadow: var(--sombra-btn);
+  cursor: pointer;
+  transition: background-color var(--anim-rapida), color var(--anim-rapida);
+}
+.eventos-carrusel .slick-arrow:hover { background: var(--ieee-blue); color: #fff; }
+/* Fuera de la fila: encima de las fichas tapaban la etiqueta de categoría,
+   que asoma justo en esa esquina. */
+.eventos-carrusel .slick-prev { left: -34px; }
+.eventos-carrusel .slick-next { right: -34px; }
+/* Sin sitio fuera de la fila, van sobre la imagen a media altura: ahí no
+   chocan ni con la cajita del título ni con la placa ni con la etiqueta. */
+@media (max-width: 1260px) {
+  .eventos-carrusel .slick-prev { left: 8px; }
+  .eventos-carrusel .slick-next { right: 8px; }
+  .eventos-carrusel .slick-arrow { background: rgba(255, 255, 255, .92); }
+}
+
+/* Pestañas de categoría de la sección Eventos. Son ENLACES, no botones: cada
+   una lleva a una página real con su URL, su H1 y su descripción — se puede
+   compartir, el botón Atrás funciona y no depende de JavaScript. Antes eran
+   botones que filtraban en el sitio mientras la barra lateral navegaba con
+   las mismas etiquetas: dos comportamientos para el mismo rótulo.
+   La activa se marca con el filete de acento, la misma señal de "aquí estás"
+   que usa la navegación principal. */
+.eventos-filtros { margin: 0 0 var(--e-6); }
+.eventos-filtros ul {
+  display: flex; flex-wrap: wrap; gap: 2px;
+  width: 100%; margin: 0; padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--linea-fuerte);
+}
+.eventos-filtros li { flex: 1 1 auto; margin: 0; text-align: center; }
+.eventos-filtros a {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  height: 100%;
+  padding: var(--e-3) var(--e-3);
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-sm); font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--marca-texto);
+  text-decoration: none;
+  box-shadow: inset 0 -3px 0 transparent;
+  transition: background-color var(--anim-rapida), box-shadow var(--anim-rapida);
+}
+.eventos-filtros a:hover { background: var(--ieee-blue-08); text-decoration: none; }
+.eventos-filtros a[aria-current="page"] {
+  background: var(--ieee-blue-08);
+  box-shadow: inset 0 -3px 0 var(--marca-texto);
+}
+/* El recuento acompaña, no compite: mismo color, menos peso. */
+.eventos-filtros__n {
+  font-size: var(--t-xs); font-weight: 400;
+  color: var(--texto-suave);
+}
+.eventos-filtros a[aria-current="page"] .eventos-filtros__n { color: inherit; }
+@media (max-width: 640px) {
+  .eventos-filtros li { flex: 1 1 44%; }
+  .eventos-filtros a { padding: var(--e-2); font-size: var(--t-xs); }
+}
+
+/* Segunda línea de una fila de `.lista-nav` (fecha, lugar…). El chevron pasa
+   a estar posicionado en vez de empujado con `margin-left:auto`: al envolver
+   el texto en dos líneas, el `auto` lo mandaba a una tercera línea propia. */
+.lista-nav__meta {
+  display: block; width: 100%;
+  font-size: var(--t-xs); font-weight: 400; line-height: 16px;
+  color: var(--texto-suave);
+}
+.lista-nav li a:has(.lista-nav__meta) {
+  flex-wrap: wrap; align-items: flex-start;
+  padding-right: var(--e-5);
+}
+.lista-nav li a:has(.lista-nav__meta)::after {
+  position: absolute; right: var(--e-3); top: 50%; transform: translateY(-50%);
+  margin: 0; padding: 0;
+}
+
+/* --- 7.4 LISTA SIMPLE (el `ul.simple` del template) ----------------------
+   Fila con velo, filete de cierre, título en azul y la categoría alineada a
+   la derecha. Es como el template lista noticias; aquí lista eventos. */
+.lista-simple { list-style: none; padding: 0; margin: 0; }
+.lista-simple > li {
+  position: relative;
+  margin: 0;
+  padding: 25px 120px 25px var(--e-5);
+  background: var(--velo);
+  border-bottom: 1px solid var(--linea);
+  font-size: var(--t-body);
+  line-height: 26px;
+}
+.lista-simple__titulo {
+  display: block; width: 100%;
+  padding: 0; border: 0; background: none; text-align: left;
+  font: inherit; font-weight: 700;
+  color: var(--marca-texto);
+  cursor: pointer;
+}
+.lista-simple__titulo:hover { text-decoration: underline; }
+.lista-simple__fecha { font-size: var(--t-mini); line-height: 14px; color: var(--texto-fuerte); margin: 6px 0 0; }
+.lista-simple__cat {
+  position: absolute; right: var(--e-5); top: 50%; transform: translateY(-50%);
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-xs); font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--texto-fuerte);
+  text-align: right; max-width: 100px; line-height: 14px;
+}
+@media (max-width: 640px) {
+  .lista-simple > li { padding: var(--e-3); font-size: var(--t-sm); line-height: 22px; }
+  .lista-simple__cat { position: static; transform: none; text-align: left; max-width: none; margin-top: var(--e-1); }
+}
+
+/* --- 7.5 WIDGET DE EVENTOS (el `.recent-events` del template) ------------
+   Fecha con icono de calendario y lugar con icono de mapa en dos columnas,
+   título en azul debajo, velo y filete de cierre. Vive en la barra lateral. */
+.eventos-widget { list-style: none; padding: 0; margin: 0; }
+.eventos-widget__item { margin: 0 0 var(--e-4); }
+.eventos-widget__boton {
+  display: block; width: 100%;
+  text-align: left; cursor: pointer; font: inherit; color: inherit;
+  background: var(--velo);
+  border: 0; border-bottom: 1px solid var(--linea);
+  padding: 0 0 var(--e-5);
+  font-size: var(--t-h5);
+  line-height: 24px;
+  transition: background-color var(--anim-rapida);
+}
+.eventos-widget__boton:hover { background: var(--ieee-blue-08); }
+.eventos-widget__fila { display: flex; gap: var(--e-4); margin-bottom: var(--e-4); font-size: var(--t-sm); line-height: 20px; }
+.eventos-widget__fecha, .eventos-widget__loc { min-width: 0; flex: 1 1 0; }
+.eventos-widget__fecha .fa, .eventos-widget__loc .fa { color: var(--marca-texto); font-size: var(--t-xs); display: block; margin-bottom: var(--e-1); }
+.eventos-widget__dias, .eventos-widget__lugar { font-weight: 700; }
+.eventos-widget__mes, .eventos-widget__pais { color: var(--texto); }
+.eventos-widget__titulo { font-weight: 700; color: var(--marca-texto); }
+.eventos-widget__boton:hover .eventos-widget__titulo { text-decoration: underline; }
+
+/* --- 7.6 POPUP DE EVENTO -------------------------------------------------
+   REDISENADO A PEDIDO (antes esta seccion decia "no tocar").
+
+   El problema: el popup eran DOS piezas pegadas — un panel de texto blanco y,
+   al lado, una columna con la foto a su alto natural que dejaba un vacio azul
+   debajo. Ni dialogaban entre si ni con el resto del sitio, que ya es oscuro.
+
+   Ahora es UNA sola superficie nocturna:
+     · misma paleta y misma trama de 115° que el header, el hero y las bandas;
+     · la foto CUBRE su columna (sin vacios) y se funde hacia el texto con un
+       velo diagonal, en vez de cortar en una linea vertical dura;
+     · la galeria flota sobre la foto, no debajo, para no volver a abrir
+       huecos;
+     · tipografia del sistema: antetitulo de acento, titular condensado 800,
+       filas de datos separadas por `--hairline`.
+   La foto sigue viendose COMPLETA y sin recorte a un clic, en el visor
+   (§7.7b): recortarla aqui no esconde nada. */
+dialog.evento-modal {
+  border: 0; padding: 0;
+  border-radius: 4px;
+  max-width: 980px; width: min(94vw, 980px);
+  max-height: min(88vh, 760px);
+  background: var(--nocturno);
+  color: #fff;
+  box-shadow: var(--sombra-3);
+  animation: modal-entra var(--anim-base);
+}
+dialog.evento-modal::backdrop { background: rgba(0, 11, 29, .78); animation: modal-fade var(--anim-base); }
+@keyframes modal-entra { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* `grid-template-rows: minmax(0, 1fr)` es lo que hace que el scroll interno
+   de las dos columnas funcione. Sin esto, con la fila en `auto` (el valor
+   por defecto), la fila del grid crecia al alto de su contenido MAS alto
+   —sin tope real— y `.evento-modal__grid` recien clipeaba ese sobrante con
+   `overflow:hidden`: ninguna columna llegaba a desbordar respecto a su
+   PROPIA altura (ambas quedaban estiradas al mismo alto que la mas alta),
+   asi que ninguna activaba su `overflow-y:auto`. El texto y la foto se
+   veian cortados sin scrollbar en ningun lado. `minmax(0,1fr)` fuerza a la
+   fila a el alto DISPONIBLE (hasta el `max-height` del contenedor) en vez
+   de al alto del contenido; `min-height:0` en cada columna anula el
+   `min-height:auto` implicito de todo item de grid, que si no se pisa
+   ignora ese tope y sigue estirandose igual. Con las dos reglas juntas cada
+   columna queda con una altura real y acotada, y es AHI donde su propio
+   `overflow-y:auto` empieza a funcionar — un solo arreglo para las dos. */
+/* La foto va PRIMERO en el grid (columna izquierda) y el texto despues: el
+   orden natural de lectura es imagen -> titulo -> datos, y ademas deja el
+   scroll de la columna larga (el texto) del lado derecho, donde el pulgar y
+   la rueda lo esperan. El marcado no cambia; se reordena con `order`. */
+.evento-modal__grid {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  grid-template-rows: minmax(0, 1fr);
+  max-height: min(88vh, 760px);
+  overflow: hidden;
+}
+.evento-modal__grid--sin-foto { grid-template-columns: 1fr; max-width: 620px; }
+.evento-modal__media { order: 1; }
+.evento-modal__texto { order: 2; }
+
+.evento-modal__texto {
+  position: relative;
+  padding: var(--e-7) var(--e-6);
+  overflow-y: auto; min-height: 0;
+  background: transparent;
+}
+/* La trama de 115°, la misma del header y de las bandas, para que el popup
+   pertenezca al sistema y no parezca una ventana de otro sitio. */
+.evento-modal__texto::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 118px),
+    radial-gradient(120% 90% at 100% 0%, rgba(2, 74, 120, .45) 0%, rgba(0, 11, 29, 0) 70%);
+}
+.evento-modal__texto > * { position: relative; z-index: 1; }
+
+/* Columna de la foto: la imagen CUBRE todo el hueco (nada de vacios) y un
+   velo diagonal la funde hacia la columna de texto, de modo que las dos
+   mitades se leen como una sola superficie y no como dos recortes. */
+.evento-modal__media {
+  position: relative;
+  background: var(--nocturno-800);
+  overflow: hidden; min-height: 0;
+}
+.evento-modal__media::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(100deg,
+    rgba(0, 11, 29, 0) 45%, rgba(0, 11, 29, .35) 72%, rgba(0, 11, 29, .82) 92%, var(--nocturno) 100%);
+}
+.evento-modal__portada {
+  position: absolute; inset: 0;
+  display: block; width: 100%; height: 100%;
+  padding: 0; border: 0; background: none; cursor: zoom-in;
+}
+/* Capa de fondo: la MISMA foto, ampliada y desenfocada, solo para rellenar
+   la columna. Es lo que permite mostrar la foto entera delante sin dejar
+   bandas negras a los lados. */
+.evento-modal__fondo { position: absolute; inset: 0; overflow: hidden; }
+.evento-modal__fondo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transform: scale(1.18);
+  filter: blur(26px) saturate(.75) brightness(.55);
+}
+/* Capa de delante: foto COMPLETA, nunca recortada. */
+.evento-modal__foto {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%; object-fit: contain; display: block;
+}
+/* Afordancia de "ampliar": siempre visible, no solo al pasar el mouse — en
+   tactil no hay hover y antes no habia ninguna pista de que la foto se podia
+   abrir completa. */
+.evento-modal__lupa {
+  position: absolute; top: var(--e-3); left: var(--e-3); z-index: 3;
+  height: 30px; padding: 0 var(--e-3); border-radius: 999px;
+  background: rgba(0, 11, 29, .72); color: #fff;
+  border: 1px solid var(--hairline);
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: var(--t-xs);
+  opacity: 1; transition: background-color var(--anim-rapida);
+}
+.evento-modal__portada:hover .evento-modal__lupa,
+.evento-modal__portada:focus-visible .evento-modal__lupa { background: var(--ieee-blue); }
+
+/* Galeria flotando SOBRE la foto, anclada abajo: antes iba debajo y volvia a
+   abrir un hueco muerto en la columna. */
+/* Selectores compuestos a proposito. `.galeria` (§7.7) se declara MAS ABAJO
+   en el archivo y con la misma especificidad (0,1,0), asi que ganaba por
+   orden e imponia su `display:grid` de columnas de 200px: dentro de esta
+   columna estrecha las miniaturas se salian de la tira y quedaban regadas
+   por encima de la foto. Con la clase del contenedor delante (0,2,0) esta
+   regla manda sin depender del orden del archivo. */
+.evento-modal__media .evento-modal__galeria {
+  position: absolute; z-index: 3;
+  left: 0; right: 0; bottom: 0;
+  display: flex; gap: 6px; flex-wrap: nowrap; overflow-x: auto;
+  padding: var(--e-3);
+  margin: 0;
+  background: linear-gradient(0deg, rgba(0, 11, 29, .9), rgba(0, 11, 29, 0));
+  scrollbar-width: thin;
+}
+.evento-modal__media .evento-modal__galeria > li { flex: 0 0 auto; margin: 0; }
+.evento-modal__media .evento-modal__galeria .galeria__boton {
+  width: 62px; height: 44px;
+  aspect-ratio: auto;                    /* anula el 3/2 de .galeria__boton */
+  border: 1px solid var(--hairline);
+  transition: border-color var(--anim-rapida);
+}
+.evento-modal__media .evento-modal__galeria .galeria__boton:hover,
+.evento-modal__media .evento-modal__galeria .galeria__boton:focus-visible { border-color: var(--acento); }
+.evento-modal__media .evento-modal__galeria .galeria__boton img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- Tipografia del popup, alineada al sistema de bandas --- */
+.evento-modal__titulo {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: clamp(24px, 2.4vw, 34px); line-height: 1.08;
+  font-weight: 800; letter-spacing: -.02em;
+  margin: var(--e-3) 0 var(--e-4);
+  color: #fff;
+}
+.evento-modal__texto .badge-categoria { background: var(--acento); color: var(--acento-texto); }
+.evento-modal__texto .badge-categoria--ecosistema { background: #fff; color: var(--ieee-blue); }
+.evento-modal__enlaces { display: flex; flex-wrap: wrap; gap: var(--e-3); margin-top: var(--e-5); }
+.evento-modal__texto .evento-card__desc { color: var(--blanco-72); font-weight: 300; font-size: var(--t-h5); line-height: 26px; }
+.evento-modal__texto .evento-card__resultado { border-top-color: var(--hairline); color: var(--acento); }
+.evento-modal__texto .dato-pendiente { color: var(--blanco-62); }
+.evento-modal__texto .bloque-etiqueta { color: var(--acento); }
+.evento-modal__texto .lista-personas li { color: var(--blanco-72); }
+.evento-modal__texto .btn-primary { background: #fff; border-color: #fff; color: var(--ieee-blue); box-shadow: none; }
+.evento-modal__texto .btn-primary:hover { background: var(--acento); border-color: var(--acento); color: var(--acento-texto); }
+
+.evento-modal__cerrar {
+  position: absolute; top: var(--e-4); right: var(--e-4); z-index: 4;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid var(--hairline);
+  background: rgba(0, 11, 29, .6); color: #fff;
+  font-size: 20px; line-height: 1; cursor: pointer;
+  transition: background-color var(--anim-rapida), border-color var(--anim-rapida);
+}
+.evento-modal__cerrar:hover { background: var(--ieee-blue); border-color: var(--ieee-blue); }
+/* El popup reutiliza `.evento-card__meta`, pensada para el degradado de la
+   tarjeta: aquí se le devuelve tamaño de lectura y se separa en filas con el
+   filete del sistema, que es lo que ordena los datos sin cajas. */
+.evento-modal__texto .evento-card__meta {
+  display: grid; gap: 0;
+  font-size: var(--t-sm); line-height: 22px; text-transform: none; letter-spacing: 0;
+  color: var(--blanco-72);
+  margin: 0 0 var(--e-4);
+  border-top: 1px solid var(--hairline);
+}
+.evento-modal__texto .evento-card__meta > span {
+  display: flex; gap: var(--e-2); align-items: baseline;
+  padding: var(--e-2) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.evento-modal__texto .evento-card__meta .fa { color: var(--acento); width: 16px; flex: none; }
+
+@media (max-width: 767px) {
+  /* En movil las dos columnas se apilan y es el grid entero el que hace
+     scroll de un tiron (no cada mitad por separado): se revierte la fila
+     `minmax(0,1fr)` del desktop a `auto` para que texto y foto midan lo que
+     su contenido pida, y el scroll vertical se mueve al contenedor. */
+  .evento-modal__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+  /* Apilada, la foto necesita un alto propio: en absoluto dentro de una
+     columna sin altura se colapsaria a cero. */
+  .evento-modal__media { min-height: auto; aspect-ratio: 16 / 10; }
+  .evento-modal__media::after {
+    background: linear-gradient(180deg, rgba(0, 11, 29, 0) 55%, rgba(0, 11, 29, .8) 88%, var(--nocturno) 100%);
+  }
+  .evento-modal__texto { padding: var(--e-5) var(--e-4); overflow-y: visible; min-height: auto; }
+}
+
+/* --- 7.7 GALERÍA DE MINIATURAS -------------------------------------------
+   Antes eran <a target="_blank"> que mandaban la foto suelta a otra pestaña.
+   Ahora son botones que abren el visor de fotos (§7.7b) sin salir de la
+   página. */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--e-2);
+  list-style: none; padding: 0; margin: 0 0 var(--e-2);
+}
+.galeria > li { margin: 0; }
+.galeria__boton {
+  display: block; width: 100%;
+  aspect-ratio: 3 / 2; overflow: hidden;
+  padding: 0; border: 0; background: none; cursor: zoom-in;
+}
+.galeria__boton img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--anim-base); }
+.galeria__boton:hover img, .galeria__boton:focus-visible img { transform: scale(1.05); }
+.galeria__credito { font-size: var(--t-xs); color: var(--texto-suave); }
+
+/* --- 7.7b VISOR DE FOTOS (lightbox) ---------------------------------------
+   Se abre desde la portada del popup o desde cualquier miniatura de su
+   galería. La imagen se ve SIEMPRE completa (object-fit:contain, nunca
+   recortada); si el evento tiene más de una foto, flechas y contador la
+   recorren como carrusel sin salir de la página ni abrir pestañas nuevas. */
+dialog.lightbox {
+  border: 0; padding: 0;
+  width: 100vw; height: 100vh;
+  max-width: 100vw; max-height: 100vh;
+  background: transparent;
+  animation: modal-fade var(--anim-rapida);
+}
+dialog.lightbox::backdrop { background: rgba(0, 10, 20, .95); animation: modal-fade var(--anim-base); }
+
+.lightbox__lienzo { position: relative; width: 100%; height: 100%; }
+.lightbox__item {
+  position: absolute; inset: 0;
+  margin: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--e-8) var(--e-9);
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--anim-base);
+}
+.lightbox__item--activo { opacity: 1; visibility: visible; }
+.lightbox__item img {
+  max-width: 100%; max-height: 100%;
+  width: auto; height: auto;
+  object-fit: contain;
+  box-shadow: var(--sombra-3);
+}
+.lightbox__cerrar {
+  position: absolute; top: var(--e-4); right: var(--e-4); z-index: 3;
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .35);
+  background: rgba(0, 20, 45, .55); color: #fff; font-size: 24px; line-height: 1; cursor: pointer;
+  transition: background-color var(--anim-rapida);
+}
+.lightbox__cerrar:hover { background: rgba(0, 20, 45, .85); }
+.lightbox__nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .35);
+  background: rgba(0, 20, 45, .55); color: #fff; font-size: 18px; cursor: pointer;
+  transition: background-color var(--anim-rapida);
+}
+.lightbox__nav:hover { background: rgba(0, 20, 45, .85); }
+.lightbox__nav--prev { left: var(--e-4); }
+.lightbox__nav--next { right: var(--e-4); }
+.lightbox__contador {
+  position: absolute; left: 50%; bottom: var(--e-4); transform: translateX(-50%); z-index: 3;
+  margin: 0; padding: 6px var(--e-3);
+  background: rgba(0, 20, 45, .6); color: #fff;
+  font-size: var(--t-xs); font-weight: 700; letter-spacing: .5px;
+  border-radius: 999px;
+}
+@media (max-width: 640px) {
+  .lightbox__item { padding: var(--e-7) var(--e-4); }
+  .lightbox__nav { width: 42px; height: 42px; font-size: 15px; }
+  .lightbox__nav--prev { left: var(--e-2); }
+  .lightbox__nav--next { right: var(--e-2); }
+}
+
+/* --- 7.8 BANDA PROMOCIONADA (el `.promoted` del template) ----------------
+   Velo oscuro sobre la foto, no el azul al 80% multiplicado que traia antes:
+   ese azul dejaba una placa celeste lavada donde las caras competian con el
+   texto y, dentro de una banda nocturna, saltaba como un parche mas claro
+   que todo lo demas. Ahora el degradado nocturno hace de fondo real (el
+   texto se lee) y la foto asoma por la derecha, que es donde no hay texto. */
+.promoted {
+  position: relative;
+  display: flex; align-items: center;
+  min-height: 300px;
+  background-color: var(--nocturno-700);
+  background-size: cover;
+  background-position: center;
+  padding: var(--e-6) var(--e-5);
+  color: #fff;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+}
+.promoted::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(100deg, rgba(0, 11, 29, .96) 0%, rgba(0, 17, 41, .88) 42%, rgba(0, 17, 41, .55) 72%, rgba(0, 17, 41, .42) 100%);
+}
+.promoted > * { position: relative; z-index: 1; width: 100%; }
+.promoted h2, .promoted h3, .promoted h4, .promoted h5 { color: #fff; }
+/* Selector con la clase del contenedor a proposito: el titulo es un <p>, y
+   `.promoted p` (mas abajo) tiene mas especificidad que `.promoted__titulo`
+   suelto — sin esto el titular se renderizaba al tamano del cuerpo. */
+.promoted .promoted__titulo {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: clamp(24px, 2.6vw, 34px); line-height: 1.1; font-weight: 800;
+  letter-spacing: -.02em; color: #fff; margin: 0 0 var(--e-4);
+}
+.promoted__meta {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-xs); font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--acento);
+  margin-bottom: var(--e-2);
+}
+.promoted p { color: var(--blanco-72); font-size: var(--t-sm); line-height: 22px; font-weight: 300; }
+.promoted a { color: var(--acento); text-decoration: underline; }
+.promoted a:hover { color: #fff; }
+.promoted__hitos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--e-5); }
+.promoted__hito { padding-top: var(--e-3); border-top: 1px solid var(--hairline-fuerte); }
+.promoted__hito h3 { font-size: var(--t-h3); line-height: var(--lh-h3); margin-bottom: var(--e-2); }
+.promoted__hito p { font-size: var(--t-sm); line-height: 22px; }
+@media (max-width: 767px) {
+  .promoted { padding: var(--e-5) var(--e-4); }
+  .promoted__titulo { font-size: 24px; line-height: 32px; }
+  .promoted__hitos { grid-template-columns: 1fr; }
+}
+
+/* --- 7.9 PERSONAS -------------------------------------------------------
+   El template usa el plugin Team Members: retrato sobre tarjeta blanca con
+   filete de apertura, nombre, cargo y una línea de dato. Se reconstruye sin
+   el plugin y sin fotos inventadas: mientras no haya retratos reales, la
+   placa lleva iniciales. */
+.personas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--e-5);
+  list-style: none; padding: 0; margin: 0;
+}
+.personas-grid > li { margin: 0; }
+/* La mesa directiva son CINCO cargos, y en una rejilla de 3 quedaban 3 + 2:
+   una segunda fila coja que se leia como si faltara gente. En una sola fila
+   de cinco se lee como lo que es — el cuerpo de oficiales completo — y de
+   paso el orden jerarquico (presidencia -> webmaster) queda en linea. */
+.personas-grid--directiva { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--e-4); }
+@media (max-width: 1100px) { .personas-grid--directiva { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .personas-grid--directiva { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* En la mesa directiva la tarjeta va sin caja ni filete: con cinco fotos en
+   fila, el retrato y el nombre ya marcan cada columna, y una caja por
+   persona sumaba lineas de sobra a una fila que ya tiene bastante.
+
+   El cargo se empuja al fondo con `margin-top:auto` sobre tarjetas de igual
+   alto: los nombres largos parten en dos lineas y los cortos en una, asi que
+   sin esto los cargos quedaban a alturas distintas y la fila se veia
+   desalineada aunque las fotos estuvieran a nivel. */
+.personas-grid--directiva .persona-card {
+  background: none;
+  border: 0;
+  padding: 0;
+  display: flex; flex-direction: column;
+}
+.personas-grid--directiva .persona-card__nombre { font-size: var(--t-h5); line-height: 20px; }
+.personas-grid--directiva .persona-card__cargo {
+  margin-top: auto; padding-top: var(--e-1);
+  font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--marca-texto);
+}
+
+.persona-card {
+  text-align: center;
+  background: var(--velo);
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--ieee-blue);
+  padding: var(--e-4) var(--e-3);
+  height: 100%;
+}
+/* Retrato circular simple: sin marco cuadrado ni fondo propio. */
+.persona-card__avatar, .persona-card__foto-rect {
+  width: 96px; height: 96px;
+  margin: 0 auto var(--e-3);
+  border-radius: 50%;
+  background: var(--ieee-blue);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fuente-display); font-stretch: 75%; font-size: 28px; font-weight: 700; letter-spacing: 1px;
+  overflow: hidden;
+}
+.persona-card__avatar img, .persona-card__foto-rect img { width: 100%; height: 100%; object-fit: cover; }
+.persona-card__nombre { font-family: var(--fuente-display); font-stretch: 75%; font-size: var(--t-h4); line-height: 22px; font-weight: 700; margin: 0; color: var(--texto-fuerte); }
+.persona-card__cargo { font-size: var(--t-xs); line-height: 18px; color: var(--texto-suave); margin: var(--e-1) 0 0; }
+/* La variante "rect" ya no deforma nada: es la misma tarjeta. */
+.persona-card--rect { text-align: center; }
+
+.equipo-base { margin-top: var(--e-4); }
+.equipo-base summary {
+  cursor: pointer;
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-sm); font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--marca-texto);
+}
+.equipo-base ul {
+  margin: var(--e-3) 0 0; padding: var(--e-3) 0 0 var(--e-4);
+  border-top: 1px solid var(--linea);
+  font-size: var(--t-sm); line-height: 22px;
+  columns: 2; column-gap: var(--e-5);
+}
+@media (max-width: 575px) { .equipo-base ul { columns: 1; } }
+
+/* --- 7.10 BLOQUE DE BARRA LATERAL --------------------------------------
+   El "Become a Member" del template: velo, filete de cierre y un botón de
+   ancho completo. Es el molde de todos los bloques de la columna lateral. */
+/* Bloque de barra lateral: tarjeta real con filete de acento arriba, en vez
+   del velo azul palido de antes. El filete la ancla al sistema y le da un
+   borde de agarre visual que el velo no tenia. */
+.bloque-lateral {
+  background: var(--fondo-alt);
+  border-top: 3px solid var(--ieee-blue);
+  border-bottom: 1px solid var(--linea);
+  padding: var(--e-4);
+}
+.bloque-lateral h4 { margin-bottom: var(--e-2); }
+.bloque-lateral p { font-size: var(--t-sm); line-height: 21px; }
+.bloque-lateral .btn { margin-top: var(--e-3); }
+
+/* Lista de enlaces de la barra lateral (el `.subnav` del template).
+   UX: cada fila es un destino, asi que se comporta como tal — area de clic
+   completa, chevron que indica "esto lleva a otra pagina" (afordancia
+   explicita: antes solo el color azul sugeria que era enlace) y el filete
+   izquierdo que aparece al pasar confirma el objetivo bajo el cursor. */
+.lista-nav { list-style: none; margin: 0; padding: 0; }
+.lista-nav li { margin: 0; }
+.lista-nav li a {
+  position: relative;
+  display: flex; align-items: center; gap: var(--e-3);
+  padding: var(--e-3) var(--e-4) var(--e-3) var(--e-3);
+  border-bottom: 1px solid var(--linea);
+  box-shadow: inset 3px 0 0 transparent;
+  font-size: var(--t-sm);
+  line-height: 22px;
+  color: var(--marca-texto);
+  font-weight: 700;
+  transition: background-color var(--anim-rapida), box-shadow var(--anim-rapida);
+}
+.lista-nav li a::after {
+  content: "\f105";                     /* fa-angle-right */
+  font-family: FontAwesome;
+  margin-left: auto; padding-left: var(--e-2);
+  color: var(--texto-suave);
+  font-weight: 400;
+}
+.lista-nav li a:hover, .lista-nav li a:focus-visible {
+  background: var(--ieee-blue-08);
+  box-shadow: inset 3px 0 0 var(--ieee-blue);
+  text-decoration: none;
+}
+.lista-nav li a:hover::after { color: var(--marca-texto); }
+.lista-nav__logo { height: 30px; width: 84px; object-fit: contain; flex-shrink: 0; background: var(--ieee-blue); padding: 3px; }
+
+/* --- 7.11 TARJETAS DE GRUPO / ÁREA ------------------------------------- */
+.grupo-card {
+  display: flex; flex-direction: column;
+  height: 100%;
+  background: var(--velo);
+  border-top: 1px solid var(--linea-fuerte);
+  border-bottom: 1px solid var(--linea);
+  padding: var(--e-3) var(--e-4) var(--e-4);
+}
+/* Los tres logos tienen proporciones muy distintas (WIE casi cuadrado, CIS un
+   lockup horizontal largo). Placa de tamaño fijo + `contain`: si no, cada
+   tarjeta abre con una mancha azul de otro tamaño y la fila se desalinea. */
+.grupo-card__logo-chip {
+  background: var(--ieee-blue);
+  width: 100%; max-width: 220px; height: 64px;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: var(--e-2) var(--e-3);
+  margin-bottom: var(--e-3);
+  flex-shrink: 0;
+}
+.grupo-card__logo { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+.grupo-card > h2, .grupo-card > h3, .grupo-card > h4 {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-h4); line-height: var(--lh-h4);
+  color: var(--marca-texto);
+  margin-bottom: var(--e-2);
+}
+.grupo-card__mision { font-size: var(--t-sm); line-height: 22px; }
+.grupo-card__datos { margin-top: auto; padding-top: var(--e-3); font-size: var(--t-xs); line-height: 18px; color: var(--texto-suave); }
+.grupo-card__datos strong { color: var(--texto-fuerte); }
+/* El remate se ancla abajo: con misiones de distinta longitud los tres
+   botones quedaban a alturas distintas dentro de tarjetas iguales. */
+.grupo-card > p:last-child { margin: auto 0 0; padding-top: var(--e-3); }
+
+/* Cabecera de página de grupo: placa de logo en fila con el título. */
+.grupo-masthead { display: flex; align-items: center; gap: var(--e-5); flex-wrap: wrap; }
+.grupo-masthead .grupo-card__logo-chip { margin-bottom: 0; width: 220px; height: 78px; }
+.grupo-masthead__texto { flex: 1 1 320px; min-width: 0; }
+.grupo-masthead__texto h1 { color: var(--marca-texto); margin-bottom: var(--e-2); }
+.grupo-masthead__texto .lead { margin-bottom: 0; }
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0 var(--e-5);
+  list-style: none; padding: 0; margin: 0;
+}
+.areas-grid > li { margin: 0; }
+.area-card {
+  background: var(--velo);
+  border-top: 1px solid var(--linea-fuerte);
+  border-bottom: 1px solid var(--linea);
+  padding: var(--e-3) 0 var(--e-4);
+  height: 100%;
+  display: flex; flex-direction: column;
+}
+.area-card h3 {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-h4); line-height: var(--lh-h4);
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--marca-texto);
+  margin: 0 0 var(--e-2);
+}
+.area-card__director { font-size: var(--t-sm); line-height: 20px; margin: 0 0 3px; }
+.area-card .equipo-base { margin-top: auto; padding-top: var(--e-2); }
+.area-card .equipo-base ul { columns: 1; }
+
+/* Canales de contacto: filas con velo y filete, como `ul.simple`. */
+/* Canales de contacto en rejilla de tarjetas, no en filas apiladas: cada
+   canal es un destino independiente y equivalente, asi que compiten mejor
+   uno al lado del otro que en una lista que obliga a leerlos en orden.
+   Blanco de clic grande (Fitts) y filete de acento al pasar. */
+.canales {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: var(--e-3);
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+.canales li { margin: 0; }
+.canales li > a, .canales li > span.canales__inerte {
+  height: 100%;
+  display: flex; align-items: center; gap: var(--e-3);
+  padding: var(--e-4);
+  background: var(--fondo-alt);
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--linea-fuerte);
+  font-size: var(--t-h5);
+  font-weight: 700;
+  word-break: break-word;
+  transition: background-color var(--anim-rapida), border-color var(--anim-rapida);
+}
+.canales li > a:hover, .canales li > a:focus-visible {
+  background: var(--ieee-blue-08); border-top-color: var(--ieee-blue); text-decoration: none;
+}
+.canales .fa { color: var(--marca-texto); font-size: 20px; width: 24px; text-align: center; flex: none; }
+.canales__inerte { color: var(--texto-suave); font-weight: 400; }
+
+/* Proceso numerado. A diferencia de `.intenciones` (opciones paralelas, se
+   elige una), esto es una secuencia: se hace 1 y luego 2. El numero grande
+   da el orden de un vistazo y el filete izquierdo encadena los pasos. */
+.pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e-4); }
+.pasos > li {
+  margin: 0;
+  display: grid; grid-template-columns: 52px 1fr; gap: var(--e-4);
+  padding: var(--e-4);
+  background: var(--fondo-alt);
+  border-left: 3px solid var(--ieee-blue);
+}
+.paso__n {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: 34px; font-weight: 800; line-height: 1;
+  color: var(--marca-texto);
+}
+.paso__cuerpo > h3 {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-h4); font-weight: 800; color: var(--texto-fuerte);
+  margin-bottom: var(--e-2);
+}
+.paso__cuerpo > p { font-size: var(--t-sm); line-height: 22px; }
+.paso__cuerpo > p:last-child { margin-bottom: 0; }
+.paso__cuerpo .btn { margin-top: var(--e-2); }
+@media (max-width: 575px) {
+  .pasos > li { grid-template-columns: 1fr; gap: var(--e-2); }
+  .paso__n { font-size: 26px; }
+}
+
+/* Tarjetas de intencion: enrutan por lo que el visitante QUIERE hacer
+   ("inscribirme", "unirme", "consultar"), no por como esta organizada la
+   Rama. Es la entrada mas rapida a la tarea y evita que alguien escriba un
+   correo para algo que se resuelve con un clic. */
+.intenciones {
+  list-style: none; margin: 0 0 var(--e-7); padding: 0;
+  display: grid; gap: var(--e-4);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.intenciones li { margin: 0; }
+.intencion {
+  height: 100%;
+  display: flex; flex-direction: column; gap: 6px;
+  padding: var(--e-4);
+  background: var(--fondo-alt);
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--ieee-blue);
+  color: var(--texto);
+  transition: background-color var(--anim-rapida), transform var(--anim-rapida);
+}
+.intencion:hover, .intencion:focus-visible { background: var(--ieee-blue-08); text-decoration: none; color: var(--texto); }
+.intencion strong {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-h4); font-weight: 800; color: var(--marca-texto);
+}
+.intencion span { font-size: var(--t-sm); line-height: 21px; }
+.intencion em {
+  margin-top: auto; padding-top: var(--e-2);
+  font-style: normal; font-weight: 700; font-size: var(--t-xs);
+  letter-spacing: .1em; text-transform: uppercase; color: var(--marca-texto);
+}
+
+/* --- 7.12 LÍNEA DE TIEMPO ---------------------------------------------- */
+.linea-tiempo { list-style: none; padding: 0; margin: 0; }
+.linea-tiempo li {
+  margin: 0;
+  padding: var(--e-3) var(--e-4);
+  background: var(--velo);
+  border-bottom: 1px solid var(--linea);
+  font-size: var(--t-h5); line-height: 24px;
+}
+.linea-tiempo strong {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: var(--t-h4);
+  letter-spacing: 1px;
+  color: var(--marca-texto);
+  display: block;
+}
+
+/* 7.13 CTA FINAL — retirado: la portada ahora cierra con `.banda--orbital`
+   (§12), que fusiona este CTA con el bloque "Únete" que vivía en la barra
+   lateral. Sin usos restantes en las plantillas. */
+
+/* =========================================================================
+   8. IDENTIDAD GEOMÉTRICA IEEE UP  (ver 06-identidad-ieee-up.md)
+   Acento acotado: hero, separadores y subrayados de título. Prohibido como
+   tratamiento de fondo de tarjetas, grillas de personas o tablas.
+   ========================================================================= */
+.ident-subrayado { position: relative; padding-bottom: var(--e-3); }
+.ident-subrayado::after {
+  content: ""; position: absolute; left: 0; bottom: 0;
+  width: 56px; height: 4px; background: var(--ieee-yellow);
+}
+.ident-subrayado--centrado::after { left: 50%; transform: translateX(-50%); }
+
+.ident-franja {
+  height: 6px; border: 0; margin: 0;
+  background-image: repeating-linear-gradient(45deg, var(--ieee-blue) 0 2px, transparent 2px 14px);
+  opacity: .4;
+}
+.divisor-linea { width: 1px; height: 28px; margin: 0 auto; background: var(--ieee-blue-20); }
+
+.ident-bloque { position: relative; overflow: hidden; isolation: isolate; }
+.ident-bloque::before {
+  content: ""; position: absolute; inset: 0 auto 0 -12%;
+  width: 52%; background: var(--ieee-blue);
+  transform: skewX(var(--skew)); transform-origin: top left; z-index: -1;
+}
+.ident-circulo { position: relative; overflow: hidden; isolation: isolate; }
+.ident-circulo::after {
+  content: ""; position: absolute;
+  width: 120vmax; height: 120vmax; border-radius: 50%;
+  right: -55vmax; bottom: -75vmax;
+  background: radial-gradient(circle, var(--ieee-blue-08) 0%, transparent 70%);
+  z-index: -1; pointer-events: none;
+}
+.ident-anillo { position: relative; isolation: isolate; }
+.ident-anillo::before {
+  content: ""; position: absolute;
+  width: 640px; height: 640px; border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 50%; top: -180px; left: -220px; z-index: -1; pointer-events: none;
+}
+.ident-anillo--oscuro::before { border-color: var(--ieee-blue-20); }
+
+/* =========================================================================
+   9. MOVIMIENTO
+   ========================================================================= */
+.reveal { opacity: 1; transform: none; }
+.js-anim .reveal {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity var(--anim-base), transform var(--anim-base);
+}
+.js-anim .reveal.mostrar { opacity: 1; transform: none; }
+.js-anim .reveal:nth-child(2) { transition-delay: .07s; }
+.js-anim .reveal:nth-child(3) { transition-delay: .14s; }
+.js-anim .reveal:nth-child(4) { transition-delay: .21s; }
+
+/* Deriva de los orbes/blobs y barrido de brillo del sistema de bandas (§12).
+   Cubiertas por el `prefers-reduced-motion` de abajo via el selector
+   universal `*`: no hace falta repetirlas ahi. */
+@keyframes drift { 0%, 100% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(3%, -2%, 0) scale(1.06); } }
+@keyframes sheen { 0% { transform: translateX(-30%); } 100% { transform: translateX(130%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js-anim .reveal { opacity: 1; transform: none; }
+}
+
+/* =========================================================================
+   10. ACCESIBILIDAD
+   El tema traía `:focus { outline:0 !important }`, que anulaba TODOS los
+   indicadores de foco del sitio (fallo WCAG 2.4.7).
+   ========================================================================= */
+/* Anillo de foco de DOS TONOS. El amarillo solo da 1.5:1 sobre blanco, asi
+   que por si mismo no cumple WCAG 2.4.11 en las paginas claras; el aro
+   oscuro exterior lo separa de cualquier fondo, claro u oscuro. Ademas el
+   amarillo es ahora el color del boton "Únete", y sin este aro el foco
+   sobre ese boton seria invisible. */
+:focus-visible {
+  outline: 3px solid var(--ieee-yellow);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(0, 20, 45, .55);
+}
+
+.skip-link {
+  position: absolute; left: var(--e-3); top: var(--e-3);
+  transform: translateY(-200%);
+  background: var(--ieee-blue); color: #fff;
+  padding: var(--e-2) var(--e-4); border-radius: var(--radio);
+  z-index: 100; transition: transform var(--anim-rapida);
+}
+.skip-link:focus { transform: none; color: #fff; text-decoration: none; }
+
+.screen-reader-text {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
+}
+
+/* =========================================================================
+   11. OPORTUNIDADES
+   Tarjetas de la pagina Oportunidades y bloque de datos concretos (becas,
+   premios, auspiciadores) dentro del popup de evento. Sin identidad
+   geometrica: por §3 las clases .ident-* estan prohibidas en tarjetas.
+   ========================================================================= */
+.oportunidades { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e-4); }
+
+.oportunidad {
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--radio);
+  padding: var(--e-4);
+  background: var(--fondo);
+  background-image: var(--velo);
+  /* Bandas apiladas con separacion regular: cabecera, cuerpo, cobertura y pie.
+     Cada una desaparece sola si la oportunidad no tiene ese dato, y el `gap`
+     evita tener que compensar margenes tarjeta por tarjeta. */
+  display: flex; flex-direction: column; gap: var(--e-4);
+}
+.oportunidad__cabecera {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-2);
+  margin: 0 0 var(--e-2);
+}
+
+/* El cuerpo va a dos columnas: la narrativa a la izquierda y los datos duros a
+   la derecha. Es lo que corta la altura a la mitad — apilado, una oportunidad
+   con actividades + datos + cobertura ocupaba mas de una pantalla. */
+.oportunidad__cuerpo {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--e-4) var(--e-5);
+  padding-top: var(--e-4); border-top: 1px solid var(--linea);
+}
+.oportunidad__col > .bloque-etiqueta:first-child { margin-top: 0; }
+@media (max-width: 640px) { .oportunidad__cuerpo { grid-template-columns: 1fr; } }
+
+/* Cobertura en fila de chips en vez de lista vertical: el visitante compara
+   de un vistazo lo que entra y lo que no. */
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--e-2); }
+.chip {
+  font-size: var(--t-xs); line-height: var(--lh-xs);
+  padding: 5px var(--e-3) 5px var(--e-2);
+  border-radius: 999px; border: 1px solid transparent;
+}
+.chip::before { font-weight: 700; margin-right: 6px; }
+.chip--si { background: var(--pildora-fondo); color: var(--pildora-texto); }
+.chip--si::before { content: "✓"; }
+.chip--no { background: var(--fondo-alt); color: var(--texto-suave); border-color: var(--linea-fuerte); }
+.chip--no::before { content: "✕"; }
+
+.oportunidad__cobertura > .bloque-etiqueta { margin-top: 0; }
+.oportunidad__pie { margin-top: auto; }
+.oportunidad__estado {
+  font-size: var(--t-xs); line-height: var(--lh-xs);
+  text-transform: uppercase; letter-spacing: .06em; font-weight: 700;
+  padding: 3px var(--e-2); border-radius: 999px;
+}
+.oportunidad__estado--abierta    { background: var(--ieee-yellow); color: #3d3200; }
+/* Azul 700 sobre azul al 12% se hundia en el nocturno (1.95:1): la pildora
+   pasa a la escala del acento, que es la que legible sobre oscuro. */
+.oportunidad__estado--permanente { background: var(--pildora-fondo); color: var(--pildora-texto); }
+.oportunidad__estado--cerrada    { background: var(--fondo-alt); color: var(--texto-suave); }
+
+.oportunidad__titulo {
+  font-size: var(--t-h3); line-height: var(--lh-h3);
+  margin: 0 0 var(--e-2); color: var(--texto-fuerte);
+}
+.oportunidad__resumen { margin: 0 0 var(--e-3); }
+
+/* Ficha de datos compartida por la tarjeta de oportunidad y el popup de
+   evento: mismas etiquetas, misma jerarquia visual. */
+.oportunidad__datos, .evento-modal__datos {
+  margin: 0; display: grid; gap: var(--e-3);
+}
+.evento-modal__datos { margin-top: var(--e-4); }
+.evento-modal__datos > div {
+  padding-left: var(--e-3); border-left: 3px solid var(--linea-fuerte);
+}
+/* Dentro de la tarjeta el filete de cada dato competia con el borde de la
+   columna: aqui basta la etiqueta para separar un dato del siguiente. */
+.oportunidad__datos > div { padding-left: 0; }
+.oportunidad__datos dt, .evento-modal__datos dt {
+  font-size: var(--t-xs); line-height: var(--lh-xs);
+  text-transform: uppercase; letter-spacing: .05em;
+  color: var(--texto-suave); margin-bottom: 2px;
+}
+.oportunidad__datos dd, .evento-modal__datos dd {
+  margin: 0; font-size: var(--t-sm); line-height: 22px; color: var(--texto);
+}
+
+/* Etiqueta de bloque, compartida por la tarjeta de oportunidad y la lista de
+   ponentes del popup de evento. */
+.oportunidad__subtitulo, .bloque-etiqueta {
+  font-size: var(--t-xs); line-height: var(--lh-xs);
+  text-transform: uppercase; letter-spacing: .05em;
+  color: var(--texto-suave); margin: var(--e-4) 0 var(--e-2);
+}
+
+/* Ponentes, panelistas y facilitadores dentro del popup de evento. */
+.evento-modal__ponentes { margin-top: var(--e-3); }
+.lista-personas {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: var(--e-1);
+  font-size: var(--t-sm); line-height: 22px;
+}
+.lista-personas li { padding-left: var(--e-4); position: relative; }
+.lista-personas li::before {
+  content: ""; position: absolute; left: var(--e-1); top: 9px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--ieee-blue);
+}
+.oportunidad__actividades {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: var(--e-1);
+  font-size: var(--t-sm); line-height: 22px;
+}
+.oportunidad__actividades li { padding-left: var(--e-4); position: relative; }
+.oportunidad__actividades li::before {
+  content: ""; position: absolute; left: var(--e-1); top: 9px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--ieee-blue);
+}
+
+.oportunidad__acciones {
+  display: flex; flex-wrap: wrap; gap: var(--e-3);
+  margin: 0;
+}
+.oportunidad__acciones:empty { display: none; }
+.oportunidad .dato-pendiente { margin: var(--e-3) 0 0; }
+
+/* Aviso de acceso restringido: a proposito NO usa `.dato-pendiente` (esa
+   clase es para datos que faltan, en cursiva gris de disculpa). Esto es
+   intencional y factual — el formulario existe, solo que no se publica —
+   asi que lleva un filete propio y color de marca, no el tono de "esto
+   todavia no lo tenemos". */
+.oportunidad__acceso {
+  margin: var(--e-3) 0 0;
+  padding: var(--e-2) 0 0 var(--e-3);
+  border-left: 3px solid var(--ieee-blue);
+  font-size: var(--t-sm); line-height: 21px;
+  color: var(--texto-suave);
+}
+
+/* El historial va a dos tarjetas por fila: son fichas cerradas, se consultan
+   como referencia y no compiten con las convocatorias vigentes. */
+.oportunidades--historial { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 767px) { .oportunidades--historial { grid-template-columns: 1fr; } }
+.oportunidades--historial .oportunidad__cuerpo { grid-template-columns: 1fr; gap: var(--e-3); }
+
+/* Aviso de convocatoria abierta en la portada. */
+.aviso-oportunidad {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-3);
+  margin: 0 0 var(--e-5);
+  padding: var(--e-3) var(--e-4);
+  border-left: 4px solid var(--ieee-yellow);
+  background: var(--fondo-alt);
+  border-radius: var(--radio);
+}
+.aviso-oportunidad > span:not(.badge-categoria) {
+  flex: 1 1 260px; font-size: var(--t-sm); line-height: 22px;
+}
+
+/* =========================================================================
+   12. SISTEMA DE BANDAS (portada)
+   Ocho fondos CSS sobre la paleta nocturna (§1, tokens --nocturno-*), mas
+   una banda clara que entra y sale en cuna diagonal. Viene de la biblioteca
+   de referencia "IEEE UP Landing" y alimenta SOLO a `index.html`.
+
+   REGLA DE SCOPING (para no filtrar a las 15 paginas interiores, que siguen
+   claras): cualquier override oscuro de un componente existente
+   (.evento-card, .lista-simple, .persona-card, .promoted, .boxed, .btn,
+   .aviso-oportunidad...) se escribe `.banda .componente`, NUNCA
+   `.componente` a secas. Como `.banda` solo aparece en la portada, el
+   componente conserva su version clara en cualquier otra pagina por
+   construccion, sin condicionales ni clases de pagina.
+
+   COMO SE ARMA CADA FORMATO
+   El fondo decorativo vive en `::before` (y `::after` cuando hace falta un
+   anillo delineado o un blob difuminado, que un `background-image` no puede
+   expresar). El contenido real vive en `> .container`, a z-index:1: el
+   fundido de §12.2 enmascara SOLO la capa decorativa, el texto nunca pierde
+   opacidad.
+   ========================================================================= */
+
+/* --- 12.0 LA PORTADA ES UNA SOLA PIEZA ----------------------------------
+   Antes cada banda traia su propio fondo opaco y su `overflow:hidden`, con
+   lo que toda figura quedaba recortada DENTRO de su seccion: el resultado
+   se leia como recortes pegados uno debajo de otro, sin continuidad
+   vertical. Ahora manda el contenedor:
+
+     · `.portada` pone la base `--nocturno` y la trama de franjas a 115°
+       CONTINUA de punta a punta (el "textura de franjas 115° continua" de
+       la referencia). Ninguna banda vuelve a dibujar esa base.
+     · Los anillos `.portada__anillo` viven en el contenedor, no en las
+       bandas, asi que CRUZAN los limites entre secciones y las cosen.
+     · Las bandas quedan transparentes: solo aportan su halo local. Las dos
+       unicas con superficie propia son --wedge y --orbital (el CTA, "el
+       unico punto donde el azul sube a campo pleno").
+
+   Consecuencia practica: no hay costura horizontal que disimular, y por eso
+   desaparecieron los modificadores de fundido que habia aqui antes. */
+/* `.portada` es el lienzo de la home; `.lienzo` el de las paginas
+   interiores. Comparten todo: misma base, misma trama continua y las mismas
+   figuras a escala de pagina. Se mantienen como dos nombres porque la home
+   lo abre ella misma (por delante del hero) y las interiores lo reciben de
+   `base.html`, pero el estilo es uno solo. */
+.portada, .lienzo {
+  position: relative;
+  background: var(--nocturno);
+  overflow: hidden;
+  isolation: isolate;
+}
+.portada::before, .lienzo::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 118px),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .018) 0 46px, transparent 46px 260px);
+}
+
+/* Anillos delineados a escala de PAGINA: cada uno mide ~60vw y esta anclado
+   a un porcentaje del alto total, de modo que su curva entra en una seccion
+   y sale en la siguiente. Son la principal senal de que todo esto es una
+   sola superficie. Alternan lado, como pide el sistema. */
+.portada__anillo {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: 62vw; aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 140, 220, .18);
+}
+.portada__anillo--1 { top: 6%; right: -22vw; }
+.portada__anillo--2 { top: 34%; left: -26vw; border-color: rgba(127, 196, 232, .13); width: 70vw; }
+.portada__anillo--3 { top: 62%; right: -18vw; border-color: rgba(0, 140, 220, .15); }
+.portada__anillo--4 { top: 84%; left: -20vw; border-color: rgba(127, 196, 232, .1); width: 54vw; }
+
+/* Halos difusos, tambien a escala de pagina y alternando lado. */
+.portada__halo {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: 58vw; aspect-ratio: 1; border-radius: 50%;
+}
+.portada__halo--1 { top: 12%; left: -18vw; background: radial-gradient(circle, rgba(0, 98, 155, .30), rgba(0, 98, 155, 0) 68%); }
+.portada__halo--2 { top: 44%; right: -20vw; background: radial-gradient(circle, rgba(1, 80, 127, .26), rgba(1, 80, 127, 0) 68%); }
+.portada__halo--3 { top: 74%; left: -16vw; background: radial-gradient(circle, rgba(0, 110, 175, .22), rgba(0, 110, 175, 0) 68%); }
+/* La portada trae sus propias figuras dentro de `.portada`: las del lienzo
+   de `base.html` se apagan ahi para no superponer dos juegos. */
+.page-home > #content.lienzo > .portada__anillo,
+.page-home > #content.lienzo > .portada__halo { display: none; }
+/* El contenido real por encima de las figuras. */
+.lienzo > *:not(.portada__anillo):not(.portada__halo) { position: relative; z-index: 1; }
+
+/* --- 12.0b Banda -------------------------------------------------------
+   `overflow: hidden` es obligatorio: cada banda recorta SU decoracion. Sin
+   el, el arco de `.banda--arc::after` (que nace en top:-55%) se derramaba
+   hacia arriba y cruzaba la banda clara anterior, ensuciandola con una
+   curva que no le pertenecia. La continuidad vertical NO depende de que
+   las figuras se derramen entre secciones — la dan la base compartida y
+   los anillos de `.portada`, que viven por detras. */
+.banda {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: transparent;   /* la base la pone `.portada` */
+  color: #fff;
+  padding-block: var(--seccion-y);
+}
+.banda::before, .banda::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+}
+/* Ninguna capa de banda termina en una linea horizontal: se disuelve por
+   arriba y por abajo, asi que lo que ve el ojo entre dos secciones es el
+   nocturno compartido de `.portada`, no un borde. Es lo que evita el efecto
+   de "recortes pegados". El contenido (`> .container`) no se enmascara. */
+.banda::before {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--fade-banda), #000 calc(100% - var(--fade-banda)), transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 var(--fade-banda), #000 calc(100% - var(--fade-banda)), transparent 100%);
+}
+.banda > .container { position: relative; z-index: 1; }
+
+/* --- 12.1 Tipografia del sistema --------------------------------------- */
+.antetitulo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: var(--t-xs); font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--acento);
+  margin-bottom: var(--e-3);
+}
+.antetitulo::before { content: ""; width: 22px; height: 2px; background: var(--acento); flex: none; }
+/* En banda clara el acento celeste no contrasta: se cambia por azul IEEE.
+   OJO: el `background` va SOLO en el ::before (el guion). Aplicarlo tambien
+   al <p> pintaba una barra azul de ancho completo que tapaba el texto. */
+.banda--claro .antetitulo { color: var(--marca-texto); }
+.banda--claro .antetitulo::before { background: var(--ieee-blue); }
+
+.banda__titulo {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: clamp(32px, 3.6vw, 52px); line-height: 1.04;
+  font-weight: 800; letter-spacing: -.03em;
+  color: #fff; margin: 0 0 var(--e-3);
+}
+.banda--claro .banda__titulo { color: var(--claro-texto); }
+
+.banda__intro {
+  font-size: var(--t-body); line-height: 1.7; font-weight: 300;
+  color: var(--blanco-72); max-width: 42em; margin: 0;
+}
+.banda--claro .banda__intro { color: var(--claro-suave); }
+
+.banda__titulo--sm { font-size: clamp(22px, 2.4vw, 32px); }
+
+.banda__cabecera {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: var(--e-5); flex-wrap: wrap;
+  padding-bottom: var(--e-3);
+}
+.banda__cabecera .banda__titulo { margin-bottom: 0; }
+.banda__regla { height: 1px; background: var(--hairline); margin-bottom: var(--e-4); }
+.banda--claro .banda__regla { height: 2px; background: var(--claro-texto); }
+
+/* Un segundo bloque dentro de la misma banda (p. ej. "Nos veras en" bajo
+   Ecosistema): se separa con aire, no con otra banda, para no multiplicar
+   secciones por cada subtema. */
+.banda__subseccion { margin-top: var(--seccion-y); }
+.banda__subseccion .banda__regla { margin-bottom: var(--e-4); }
+
+.cifra { display: flex; flex-direction: column; gap: 6px; }
+.cifra__num {
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: clamp(28px, 3vw, 44px); font-weight: 800; letter-spacing: -.03em; line-height: 1;
+  color: var(--acento);
+}
+.cifra__etiqueta { font-size: var(--t-xs); font-weight: 600; letter-spacing: .14em; color: var(--blanco-62); }
+
+/* --- 12.1b Botones unicos del sistema ----------------------------------
+   Dos formas solamente, en vez de las variantes .btn-primary/secondary/
+   yellow que usa el resto del sitio: sobre fondo oscuro esas tres pierden
+   contraste o se confunden entre si. */
+.btn-solido, .btn-ghost {
+  display: inline-block;
+  padding: 18px clamp(20px, 2.4vw, 34px);
+  font-family: var(--fuente-display); font-stretch: 75%;
+  font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  border-radius: var(--radio);
+  text-decoration: none;
+  transition: background-color var(--anim-rapida), border-color var(--anim-rapida), color var(--anim-rapida);
+}
+.btn-solido { background: #fff; color: var(--ieee-blue); border: 2px solid #fff; }
+.btn-solido:hover, .btn-solido:focus-visible { background: var(--acento); border-color: var(--acento); color: var(--acento-texto); text-decoration: none; }
+.btn-ghost { background: transparent; color: #fff; border: 2px solid var(--linea-clara); }
+.btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--acento); color: var(--acento); text-decoration: none; }
+.banda--claro .btn-solido { background: var(--ieee-blue); color: #fff; border-color: var(--ieee-blue); }
+.banda--claro .btn-solido:hover { background: var(--ieee-blue-700); border-color: var(--ieee-blue-700); color: #fff; }
+.banda--claro .btn-ghost { color: var(--claro-texto); border-color: rgba(0, 17, 41, .35); }
+.banda--claro .btn-ghost:hover { border-color: var(--ieee-blue); color: var(--marca-texto); }
+
+/* --- 12.2 Ocho formatos -------------------------------------------------
+   01 Ribbons, 02 Orbital, 03 Soft Orbs, 04 Wedge, 05 Grid Mesh,
+   06 Concentric (oscuro y claro), 08 Ruled Arc. (07 Aurora Mesh queda fuera:
+   la portada no lo usa y hubiera exigido markup solo para el barrido de
+   brillo.) */
+
+/* 01 · Diagonal Ribbons — el fondo de portada. */
+.banda--ribbons::before {
+  background-image:
+    radial-gradient(circle at 40% 30%, rgba(0, 98, 155, .35), rgba(0, 98, 155, 0) 60%),
+    radial-gradient(circle at 32% 118%, rgba(0, 98, 155, .28), rgba(0, 98, 155, 0) 62%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 118px),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .018) 0 46px, transparent 46px 260px),
+    radial-gradient(120% 130% at 78% 62%, #024a78 0%, var(--nocturno-800) 38%, var(--nocturno-700) 72%, var(--nocturno) 100%);
+}
+
+/* 02 · Orbital — dos discos translucidos cruzados + anillo fino.
+   Junto a 04 y 05, uno de los TRES unicos formatos con base opaca: la
+   referencia lo reserva para el CTA, "el unico punto donde el azul sube a
+   campo pleno". */
+.banda--orbital::before {
+  background-image:
+    /* Corte diagonal de la referencia SOLO por la derecha. El tramo oscuro
+       que llevaba a la izquierda (0-26% al 92%) se retira a peticion: ahi
+       cae el titular y la mancha lo apagaba en vez de sostenerlo. */
+    linear-gradient(118deg, rgba(0, 13, 34, 0) 0 70%, rgba(0, 13, 34, .75) 100%),
+    /* Disco superior izquierdo, sangrando por el borde. */
+    radial-gradient(circle at 12% 6%, rgba(0, 110, 175, .65), rgba(0, 98, 155, .2) 58%, rgba(0, 98, 155, 0) 74%),
+    /* Disco inferior derecho, cruzado con el anterior. */
+    radial-gradient(circle at 90% 96%, rgba(0, 88, 145, .55), rgba(0, 70, 120, .12) 60%, rgba(0, 70, 120, 0) 76%),
+    linear-gradient(150deg, var(--nocturno-700) 0%, var(--nocturno-500) 48%, var(--nocturno-800) 100%);
+}
+/* Anillo fino de 1.5px, en la posicion de la referencia. */
+.banda--orbital::after {
+  inset: auto; left: 34%; top: -22%; width: 34%; aspect-ratio: 1;
+  border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .12);
+}
+
+/* 03 · Soft Orbs — halo TRANSLUCIDO a la izquierda + orbe a la deriva.
+   Sin base opaca: deja ver el `--nocturno` de la pagina, que es lo que
+   hace que esta banda y la de al lado se lean como una sola pieza. */
+.banda--orbs::before {
+  background-image:
+    radial-gradient(140% 120% at 18% 88%, rgba(1, 80, 127, .55) 0%, rgba(0, 36, 80, .35) 40%, rgba(0, 11, 29, 0) 75%);
+}
+.banda--orbs::after {
+  inset: auto; left: -14%; bottom: -46%; width: 56%; aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 110, 175, .42), rgba(0, 110, 175, .05) 65%, rgba(0, 110, 175, 0) 78%);
+  animation: drift 19s ease-in-out infinite;
+}
+
+/* 04 · Wedge — cuna diagonal de luz. Translucida: la cuna se lee como una
+   luz que cruza la pagina, no como un rectangulo de otro color pegado. */
+.banda--wedge::before {
+  background-image:
+    linear-gradient(104deg, rgba(0, 13, 34, 0) 0 62%, rgba(0, 13, 34, .5) 62.3% 100%),
+    linear-gradient(104deg, rgba(255, 255, 255, .06) 0 38%, rgba(255, 255, 255, 0) 38.4%),
+    linear-gradient(160deg, rgba(0, 36, 80, .75) 0%, rgba(1, 66, 110, .55) 55%, rgba(0, 23, 57, .35) 100%);
+}
+
+/* 05 · Grid Mesh — reticula tecnica, halo a la DERECHA y anillo de acento
+   al mismo lado; la vineta oscura entra por la esquina opuesta. */
+.banda--grid::before {
+  background-image:
+    radial-gradient(75% 80% at 20% 100%, rgba(0, 11, 29, .8), rgba(0, 11, 29, 0) 60%),
+    radial-gradient(60% 70% at 72% 20%, rgba(0, 98, 155, .42), rgba(0, 98, 155, 0) 70%),
+    linear-gradient(rgba(120, 180, 220, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 180, 220, .07) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+}
+.banda--grid::after {
+  inset: auto; right: 6%; top: 12%; width: 20%; aspect-ratio: 1;
+  border-radius: 50%; border: 1px solid rgba(0, 140, 220, .4);
+}
+
+/* 06 · Concentric — anillos concentricos, formal y simetrico. En oscuro va
+   TRANSLUCIDO (sin base propia); la variante clara de abajo es la que si
+   pinta su superficie, porque ahi el fondo cambia de verdad. */
+.banda--concentric::before {
+  background-image:
+    linear-gradient(90deg, rgba(0, 15, 42, .92) 0%, rgba(0, 15, 42, .18) 55%, rgba(0, 15, 42, .85) 100%),
+    radial-gradient(circle at 50% 50%, rgba(0, 98, 155, .45), rgba(0, 98, 155, 0) 45%),
+    repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .1) 0 1.5px, transparent 1.5px 64px);
+}
+.banda--claro.banda--concentric::before {
+  background-image:
+    linear-gradient(90deg, rgba(244, 246, 248, .95) 0%, rgba(244, 246, 248, .2) 55%, rgba(244, 246, 248, .92) 100%),
+    radial-gradient(circle at 50% 50%, rgba(0, 98, 155, .14), rgba(0, 98, 155, 0) 45%),
+    repeating-radial-gradient(circle at 50% 50%, rgba(0, 40, 85, .12) 0 1.5px, transparent 1.5px 64px);
+}
+
+/* Variantes claras de otros dos formatos, para que las bandas claras de la
+   portada NO se repitan entre si: la de Grupos usa los anillos concentricos
+   y la de Directiva la reticula tecnica con el arco delineado. */
+.banda--claro.banda--grid::before {
+  background-image:
+    radial-gradient(80% 90% at 82% 8%, rgba(0, 98, 155, .16), rgba(0, 98, 155, 0) 68%),
+    linear-gradient(rgba(0, 40, 85, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 40, 85, .07) 1px, transparent 1px);
+  background-size: 100% 100%, 56px 56px, 56px 56px;
+}
+.banda--claro.banda--grid::after {
+  inset: auto; right: -6%; top: -18%; width: 34%; aspect-ratio: 1;
+  border-radius: 50%; border: 1.5px solid rgba(0, 98, 155, .22);
+}
+
+/* 08 · Ruled Arc — filetes verticales + arco delineado sangrando por la
+   derecha, con el scrim entrando por la izquierda. Translucido: los ocho
+   filetes se leen sobre el mismo nocturno que el resto de la pagina. */
+.banda--arc::before {
+  background-image:
+    linear-gradient(90deg, rgba(0, 11, 29, .92), rgba(0, 11, 29, 0) 42%),
+    repeating-linear-gradient(90deg, rgba(127, 196, 232, .09) 0 1px, transparent 1px 12.5%);
+}
+.banda--arc::after {
+  inset: auto; right: -24%; top: -55%; width: 72%; aspect-ratio: 1;
+  border-radius: 50%; border: 2px solid rgba(0, 140, 220, .24);
+  background: radial-gradient(circle at 40% 72%, rgba(0, 98, 155, .3), rgba(0, 98, 155, 0) 68%);
+}
+
+/* --- 12.3 Banda clara ---------------------------------------------------
+   La unica pausa clara del sistema: entra y sale en cuna diagonal de ~115°,
+   como una cuchillada en vez de una linea recta. */
+/* Isla clara. `.banda--claro` la usa la portada; `.seccion-clara` es la
+   misma pieza para las paginas interiores, que no montan bandas.
+   Redeclaran los tokens de superficie en su propio ambito, asi que TODO lo
+   que cae dentro (tarjetas, listas, filetes, textos) vuelve a su version
+   clara sin una sola regla `.componente` duplicada.
+
+   CUANDO USAR CADA FONDO — la alternancia no es decorativa:
+     · OSCURO para lo que se MIRA: portadas, rejillas de fotos, cifras,
+       llamadas a la accion. La foto gana contraste y la pagina se siente
+       de una pieza.
+     · CLARO para lo que se LEE de corrido: fichas largas, formularios,
+       listados densos. El texto oscuro sobre claro cansa menos la vista en
+       lecturas sostenidas, que es justo lo que pide una pagina como
+       Oportunidades o Nosotros.
+   Asi el cambio de fondo le dice al visitante que cambio el tipo de tarea,
+   no solo que cambio la seccion. */
+.banda--claro, .seccion-clara {
+  --fondo: var(--claro-fondo);
+  --fondo-alt: #FFFFFF;
+  --texto: #333333;
+  --texto-fuerte: var(--claro-texto);
+  --texto-suave: var(--claro-tenue);
+  --marca-texto: var(--ieee-blue);
+  --pildora-fondo: var(--ieee-blue-08);
+  --pildora-texto: var(--ieee-blue-700);
+  --linea: rgba(0, 98, 155, .12);
+  --linea-fuerte: rgba(0, 98, 155, .22);
+  --velo: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 98, 155, .04) 100%);
+
+  background: var(--claro-fondo);
+  color: var(--claro-texto);
+  margin-block: calc(var(--wedge) * -0.65);
+  clip-path: polygon(0 var(--wedge), 100% 0, 100% calc(100% - var(--wedge)), 0 100%);
+  padding-block: calc(var(--wedge) + var(--seccion-y) * .55);
+}
+/* En las interiores la isla arranca pegada a la cabecera oscura: sin margen
+   negativo arriba, para que la cuna se lea contra el `.page-head`. */
+.seccion-clara { position: relative; margin-top: 0; }
+.seccion-clara > .container { position: relative; z-index: 1; }
+/* Anillos concentricos tenues, la misma figura que la banda clara de la
+   portada, para que las dos islas claras del sitio sean la misma pieza. */
+.seccion-clara::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(0, 98, 155, .10), rgba(0, 98, 155, 0) 45%),
+    repeating-radial-gradient(circle at 50% 50%, rgba(0, 40, 85, .09) 0 1.5px, transparent 1.5px 64px);
+}
+@media (max-width: 767px) { .banda--claro, .seccion-clara { --wedge: 34px; } }
+
+/* --- 12.4 Filas y tarjetas con acento al hover ---------------------------
+   El patron de datos del sistema: filete `--hairline`, fondo azul tenue y
+   borde superior de acento al pasar el mouse/foco. */
+.banda__fila {
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--e-4);
+  padding: 22px 8px;
+  border-bottom: 1px solid var(--hairline);
+  transition: background-color var(--anim-rapida);
+}
+.banda__fila:last-child { border-bottom: 0; }
+.banda__fila:hover, .banda__fila:focus-within { background: rgba(0, 98, 155, .22); }
+.banda--claro .banda__fila { border-bottom-color: rgba(0, 17, 41, .16); }
+.banda--claro .banda__fila:hover { background: rgba(0, 98, 155, .08); }
+
+.banda__tarjeta {
+  padding: var(--e-5) var(--e-4);
+  border-top: 2px solid transparent;
+  border-bottom: 1px solid var(--hairline);
+  transition: background-color var(--anim-rapida), border-color var(--anim-rapida);
+}
+.banda__tarjeta:hover, .banda__tarjeta:focus-within { background: rgba(0, 98, 155, .18); border-top-color: var(--acento); }
+
+/* --- 12.5 Grilla de cifras ------------------------------------------------ */
+.cifras-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--hairline);
+}
+.cifras-grid > .cifra { padding: var(--e-4) var(--e-4); border-left: 1px solid var(--hairline); }
+.cifras-grid > .cifra:first-child { border-left: 0; padding-left: 0; }
+@media (max-width: 640px) {
+  .cifras-grid { grid-template-columns: 1fr; }
+  .cifras-grid > .cifra { border-left: 0; border-top: 1px solid var(--hairline); padding-left: 0; }
+  .cifras-grid > .cifra:first-child { border-top: 0; }
+}
+
+/* --- 12.6 Overrides oscuros de componentes compartidos -------------------
+   `.lista-simple`, `.eventos-widget`, `.aviso-oportunidad` y `.badge-
+   categoria` estan pensados para fondo claro (§7): aqui SOLO se redefinen
+   por debajo de `.banda`, para que las paginas interiores (donde estos
+   mismos componentes se ven en su version clara) no hereden nada de esto.
+   `.evento-card` y `.promoted` NO estan aqui a proposito: ya son fichas de
+   foto con su propio degradado oscuro, legibles sobre cualquier fondo. */
+
+.banda .lista-simple > li { background: none; border-bottom: 1px solid var(--hairline); }
+.banda .lista-simple__titulo { color: #fff; }
+.banda .lista-simple__titulo:hover { color: var(--acento); }
+.banda .lista-simple__fecha { color: var(--blanco-62); }
+.banda .lista-simple__cat { color: var(--blanco-62); }
+
+.banda .eventos-widget__boton { background: none; border-bottom: 1px solid var(--hairline); padding: var(--e-3) var(--e-2); }
+.banda .eventos-widget__boton:hover { background: rgba(0, 98, 155, .22); }
+.banda .eventos-widget__fecha .fa, .banda .eventos-widget__loc .fa { color: var(--acento); }
+.banda .eventos-widget__mes, .banda .eventos-widget__pais { color: var(--blanco-62); }
+.banda .eventos-widget__titulo { color: #fff; }
+.banda .eventos-widget__boton:hover .eventos-widget__titulo { color: var(--acento); }
+/* En la portada el widget ya no vive en una barra lateral estrecha: se
+   compacta a una fila por evento, con fecha y lugar en linea. */
+.banda .eventos-widget--fila .eventos-widget__item { margin: 0; }
+.banda .eventos-widget--fila .eventos-widget__fila { margin-bottom: var(--e-1); gap: var(--e-5); }
+.banda .eventos-widget--fila .eventos-widget__titulo { font-size: var(--t-h5); }
+
+.banda .aviso-oportunidad {
+  background: rgba(0, 98, 155, .16);
+  border-left-color: var(--acento);
+  color: #fff;
+}
+.banda .badge-categoria { background: var(--acento); color: var(--acento-texto); }
+
+/* =========================================================================
+   13. IDENTIDAD POR GRUPO DE AFINIDAD (WIE · CIS · SIGHT)
+   Los tres grupos son marcas IEEE con paleta propia, asi que sus paginas
+   salen del nocturno del resto del sitio y pasan a base CLARA con los
+   degradados de cada marca — tomados literalmente de la biblioteca
+   "Fondos IEEE WIE CIS SIGHT".
+
+   El chrome (barra negra, nav, pie) NO cambia: es lo que mantiene la
+   institucionalidad IEEE alrededor de la identidad del grupo, igual que un
+   passe-partout. Lo que cambia es el lienzo.
+
+   REGLA DE CONTRASTE, medida marca por marca: el color `--g-ink` es el
+   UNICO seguro para texto sobre el papel de cada marca (13.8 / 11.0 / 8.5).
+   Los colores vivos (c1/c2) bajan a 1.5-2.3 en CIS y SIGHT, asi que se usan
+   SOLO como decoracion: manchas difusas, filetes y rellenos. Nunca texto.
+   ========================================================================= */
+.page-grupo-wie {
+  --g-paper: #FFFFFF; --g-ink: #4A1259;
+  --g-c1: #772583; --g-c2: #D21E96; --g-c3: #FF78C8; --g-c4: #FFC800;
+}
+.page-grupo-cis {
+  --g-paper: #FFFFFF; --g-ink: #10405C;
+  --g-c1: #00D2FF; --g-c2: #6EB4D2; --g-c3: #C8F5FF; --g-c4: #508CB4;
+}
+.page-grupo-sight {
+  --g-paper: #FCF7F2; --g-ink: #7A3312;
+  --g-c1: #FF824B; --g-c2: #FFC350; --g-c3: #FF5A82; --g-c4: #BE64DC;
+}
+
+/* Re-encendido de los tokens de superficie, igual que hace `.seccion-clara`,
+   pero con la tinta de la marca en vez del azul IEEE. */
+.page-grupo #content.lienzo,
+.page-grupo .page-head {
+  --fondo: var(--g-paper);
+  --fondo-alt: rgba(255, 255, 255, .72);
+  --texto: #33302E;
+  --texto-fuerte: var(--g-ink);
+  --texto-suave: rgba(51, 48, 46, .68);
+  --marca-texto: var(--g-ink);
+  --pildora-fondo: color-mix(in srgb, var(--g-c1) 14%, transparent);
+  --pildora-texto: var(--g-ink);
+  --linea: color-mix(in srgb, var(--g-ink) 14%, transparent);
+  --linea-fuerte: color-mix(in srgb, var(--g-ink) 26%, transparent);
+  --velo: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, color-mix(in srgb, var(--g-c1) 6%, transparent) 100%);
+  --acento: var(--g-ink);
+}
+
+/* --- Lienzo: formato 01 Diagonal Ribbons de la marca --------------------
+   Dos manchas muy difusas (c1 arriba-izquierda, c2 abajo-derecha), las
+   franjas a 115° en blanco y en negro, y el velo de papel que las apaga
+   hacia la izquierda para que el texto siempre caiga sobre campo limpio. */
+.page-grupo #content.lienzo {
+  background: var(--g-paper);
+  color: var(--texto);
+}
+.page-grupo #content.lienzo::before {
+  background-image:
+    linear-gradient(90deg, var(--g-paper) 0%, color-mix(in srgb, var(--g-paper) 0%, transparent) 52%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .55) 0 2px, rgba(255, 255, 255, 0) 2px 118px),
+    repeating-linear-gradient(115deg, rgba(0, 0, 0, .05) 0 46px, rgba(0, 0, 0, 0) 46px 260px),
+    radial-gradient(ellipse 75% 60% at 8% 4%, color-mix(in srgb, var(--g-c1) 62%, transparent) 0%, transparent 72%),
+    radial-gradient(ellipse 75% 60% at 94% 92%, color-mix(in srgb, var(--g-c2) 52%, transparent) 0%, transparent 72%);
+}
+/* Grano: la capa que da el acabado de papel impreso en vez de degradado
+   digital plano. Es la misma textura de la biblioteca de la marca. */
+.page-grupo #content.lienzo::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: .16; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23n%29'/%3E%3C/svg%3E");
+}
+/* Los anillos azules del lienzo nocturno no pertenecen a estas marcas. */
+.page-grupo .portada__anillo, .page-grupo .portada__halo { display: none; }
+
+/* --- Cabecera: formato 02 Orbital de la marca --------------------------- */
+.page-grupo .page-head {
+  background: var(--g-paper);
+  color: var(--texto);
+  border-bottom: 1px solid var(--linea-fuerte);
+}
+.page-grupo .page-head::before {
+  background-image:
+    linear-gradient(118deg, var(--g-paper) 0 24%, transparent 30%, transparent 70%, color-mix(in srgb, var(--g-paper) 80%, transparent) 100%),
+    radial-gradient(circle at 82% 118%, color-mix(in srgb, var(--g-c2) 60%, transparent) 0%, transparent 62%),
+    radial-gradient(circle at 96% 8%, color-mix(in srgb, var(--g-c1) 34%, transparent) 0%, transparent 58%);
+}
+/* Disco delineado, la figura orbital de la referencia. */
+.page-grupo .page-head::after {
+  right: 8%; top: -70%; width: 38%;
+  border: 1.5px solid color-mix(in srgb, var(--g-c1) 30%, transparent);
+}
+.page-grupo .page-head h1 { color: var(--g-ink); }
+.page-grupo .page-head .lead { color: rgba(51, 48, 46, .78); }
+.page-grupo #breadcrumbs, .page-grupo #breadcrumbs a { color: var(--g-ink); }
+.page-grupo #breadcrumbs a:hover { color: var(--g-c1); }
+
+/* --- Acentos de marca en los componentes -------------------------------
+   El filete de la cabecera de bloque, el borde superior de las tarjetas y
+   la placa del logo toman el color vivo del grupo: es donde la marca se ve
+   sin poner en riesgo la lectura. */
+.page-grupo .boxed::before { background: var(--g-c2); }
+.page-grupo .bloque-lateral { border-top-color: var(--g-c2); }
+/* La placa del logo lleva una IMAGEN, asi que puede ir en el color vivo.
+   El avatar lleva INICIALES en blanco: sobre el c1 de CIS (#00D2FF) o el de
+   SIGHT (#FF824B) caian a 1.8:1 y 2.5:1. Va en la tinta de la marca, que es
+   el unico color de cada paleta con contraste suficiente. */
+.page-grupo .grupo-card__logo-chip { background: var(--g-c1); }
+.page-grupo .persona-card__avatar { background: var(--g-ink); }
+.page-grupo .persona-card { border-top-color: var(--g-c2); }
+.page-grupo .lista-nav li a:hover,
+.page-grupo .lista-nav li a:focus-visible {
+  background: color-mix(in srgb, var(--g-c1) 10%, transparent);
+  box-shadow: inset 3px 0 0 var(--g-c2);
+}
+.page-grupo .btn-primary {
+  background: var(--g-ink); border-color: var(--g-ink); color: #fff; box-shadow: none;
+}
+.page-grupo .btn-primary:hover, .page-grupo .btn-primary:focus {
+  background: var(--g-c1); border-color: var(--g-c1); color: #fff;
+}
+.page-grupo .btn-secondary {
+  background: transparent; border-color: var(--g-ink); color: var(--g-ink); box-shadow: none;
+}
+.page-grupo .btn-secondary:hover, .page-grupo .btn-secondary:focus { background: var(--g-ink); color: #fff; }
+.page-grupo .badge-categoria--eyebrow { background: var(--g-ink); }
+
+/* --- 13.1 La pagina del grupo es UNA superficie continua -----------------
+   La cabecera y el cuerpo tenian cada uno su propio degradado de marca y se
+   encontraban en una linea horizontal dura, con dos rosas distintos
+   chocando. Aqui la cabecera se queda SIN fondo propio: deja pasar el
+   lienzo de la marca, que ya cubre toda la pagina. Una sola mancha, sin
+   costura, y el titular cae sobre la parte mas saturada. */
+.page-grupo .page-head {
+  background: transparent;
+  border-bottom: 0;
+  padding-block: var(--e-7) var(--e-6);
+  margin-bottom: 0;
+}
+.page-grupo .page-head::before,
+.page-grupo .page-head::after { content: none; }
+
+/* El lienzo concentra el color arriba (donde va el titular) y se abre a
+   papel limpio hacia abajo, que es donde se lee de corrido. */
+.page-grupo #content.lienzo::before {
+  background-image:
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--g-paper) 82%, transparent) 46%, var(--g-paper) 72%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .5) 0 2px, rgba(255, 255, 255, 0) 2px 118px),
+    repeating-linear-gradient(115deg, rgba(0, 0, 0, .04) 0 46px, rgba(0, 0, 0, 0) 46px 260px),
+    radial-gradient(ellipse 62% 42% at 88% 2%, color-mix(in srgb, var(--g-c2) 55%, transparent) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 38% at 6% 0%, color-mix(in srgb, var(--g-c1) 42%, transparent) 0%, transparent 72%);
+  background-repeat: no-repeat;
+}
+/* Un anillo delineado de marca, sangrando por la derecha: la misma figura
+   que cose las secciones en el resto del sitio. */
+.page-grupo #content.lienzo > .seccion-figura {
+  position: absolute; z-index: 0; pointer-events: none;
+  right: -10%; top: -12%; width: 46%; aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--g-c1) 26%, transparent);
+}
+
+/* Masthead: la placa del logo y el titulo en una fila que no deja el hueco
+   de antes — el texto arranca junto a la placa y ocupa el resto. */
+.grupo-masthead { display: flex; align-items: center; gap: var(--e-5); flex-wrap: wrap; }
+.grupo-masthead .grupo-card__logo-chip { flex: none; margin-bottom: 0; width: 168px; height: 62px; }
+.grupo-masthead__texto { flex: 1 1 420px; min-width: 0; }
+.page-grupo .grupo-masthead__texto h1 { font-size: clamp(26px, 3vw, 42px); margin-bottom: var(--e-2); }
+.page-grupo .grupo-masthead__texto .lead { max-width: 56ch; }
+
+/* El cuerpo arranca con aire propio, ya sin depender del margen de
+   `.page-head` (que ahora es 0 para no cortar el degradado). */
+.page-grupo .container.seccion { padding-block: var(--e-6) var(--e-8); }
+
+/* --- 12.7 Fila de dos columnas del Ecosistema IEEE ----------------------
+   "Dónde estuvimos" y "dónde estaremos" son la misma idea en dos tiempos, y
+   leerlas en paralelo deja ver de un golpe el recorrido y lo que viene. La
+   izquierda pesa más porque lleva el historial completo. */
+.eco-fila {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: var(--e-5) var(--e-8);
+  align-items: start;
+}
+.eco-fila__col { min-width: 0; }
+/* Filete que separa las dos columnas: el mismo hairline del sistema. */
+@media (min-width: 992px) {
+  .eco-fila__col + .eco-fila__col {
+    padding-left: var(--e-6);
+    border-left: 1px solid var(--hairline);
+    margin-left: calc(var(--e-8) * -0.5);
+  }
+}
+@media (max-width: 991px) { .eco-fila { grid-template-columns: 1fr; } }
+
+/* Foto + texto corto del Ecosistema IEEE. La foto va arriba, sin recorte
+   agresivo, y el texto debajo sobre el mismo campo nocturno: una sola pieza
+   en vez de una banda con degradado propio compitiendo con la banda madre. */
+.eco-foto { margin: 0; }
+.eco-foto img {
+  display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+  border: 1px solid var(--hairline);
+}
+.eco-foto figcaption { padding-top: var(--e-4); }
+.eco-foto figcaption p {
+  font-size: var(--t-h5); line-height: 26px; font-weight: 300;
+  color: var(--blanco-72);
+  margin: 0 0 var(--e-4);
+}
+
+/* --- 12.8 Aire alrededor de las cuñas diagonales ------------------------
+   La banda clara se solapa con sus vecinas (`margin-block` negativo) y las
+   cruza con una diagonal. Sin este aire extra, la diagonal pasaba por
+   encima del antetítulo y del titular de la sección siguiente y los dejaba
+   como recortados: hacía falta reservar el alto de la cuña, no solo el
+   ritmo normal de sección. Se aplica en los dos sentidos, porque la cuña
+   entra por arriba y sale por abajo. */
+.banda--claro + .banda,
+.seccion-clara + .banda,
+.banda--claro + .seccion-clara,
+.banda + .seccion-clara {
+  padding-top: calc(var(--seccion-y) + var(--wedge));
+}
+.banda:has(+ .banda--claro),
+.banda:has(+ .seccion-clara) {
+  padding-bottom: calc(var(--seccion-y) + var(--wedge) * .8);
+}
+/* El pie va después del CTA y también recibe su diagonal. */
+.banda--claro + footer#colophon,
+.seccion-clara + footer#colophon { padding-top: calc(58px + var(--wedge)); }
+

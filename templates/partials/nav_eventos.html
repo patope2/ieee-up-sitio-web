@@ -1,0 +1,27 @@
+{# Barra lateral de las paginas de Eventos.
+
+   YA NO lleva la lista "Categorias": era la tercera copia de las mismas seis
+   opciones en una sola pantalla (ver la nota de nav_eventos_tabs.html, que
+   es ahora el unico control de categorias). En su lugar la barra aporta algo
+   que no esta en ningun otro sitio de la pagina: que viene despues. #}
+{% set proximos_lat = eventos | selectattr('estado', 'equalto', 'Próximo') | list %}
+{% if proximos_lat %}
+<h2 class="boxed"><span>Próximos</span></h2>
+<ul class="lista-nav">
+  {% for ev in proximos_lat[:4] %}
+  <li>
+    <a href="{{ rel }}eventos.html#modal-{{ ev.slug }}">
+      {{ ev.titulo|truncate(48, true, '…') }}
+      <span class="lista-nav__meta">{{ ev.fecha_legible }}</span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<h2 class="boxed"{% if proximos_lat %} style="margin-top:50px"{% endif %}><span>Únete</span></h2>
+<div class="bloque-lateral">
+  <h4>Forma parte de IEEE UP</h4>
+  <p>Los eventos son abiertos a la comunidad UP. Súmate a la Rama para participar en su organización.</p>
+  <a class="btn btn-yellow btn-block" href="{{ rel }}{{ sitio.cta.url }}">{{ sitio.cta.titulo }}</a>
+</div>

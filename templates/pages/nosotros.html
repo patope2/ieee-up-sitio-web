@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block title %}Nosotros - {{ sitio.nombre_corto }}{% endblock %}
+{% block description %}Quiénes somos, nuestro propósito y el organigrama 2026 de IEEE UP.{% endblock %}
+{% block body_class %}page-nosotros{% endblock %}
+
+{% block content %}
+
+{# Esta página alterna fondo por TIPO de contenido, no por capricho:
+     · oscuro para lo que se mira y quiere peso institucional (el propósito,
+       la trayectoria y los logros);
+     · claro para lo que se lee y se compara de corrido (las personas y el
+       organigrama, que son listas largas de nombres y cargos).
+   La retícula 8+4 se disuelve aquí: con barra lateral no hay forma de que el
+   fondo cambie por sección, porque las dos columnas comparten fila. #}
+
+<div class="page-head">
+  <div class="container">
+    <p id="breadcrumbs"><a href="{{ rel }}index.html">Inicio</a> / Nosotros</p>
+    <h1>Nosotros</h1>
+    <p class="lead">
+      {{ sitio.nombre }} es la comunidad estudiantil de tecnología e innovación
+      de la Universidad del Pacífico, parte de la red global de IEEE. Reunimos
+      a estudiantes de distintas carreras alrededor de talleres, visitas
+      técnicas, competencias y proyectos con impacto real.
+    </p>
+  </div>
+</div>
+
+{# --- 1. PROPÓSITO — oscuro, continuo con la cabecera ------------------- #}
+<section class="banda banda--wedge">
+  <div class="container">
+    <div class="banda__cabecera">
+      <div>
+        <p class="antetitulo">POR QUÉ EXISTIMOS</p>
+        <h2 class="banda__titulo">Propósito</h2>
+      </div>
+    </div>
+    <div class="banda__regla"></div>
+    <div class="ideas">
+      {% for bloque in sitio.proposito %}
+      <div class="reveal">
+        <h4>{{ bloque.titulo }}</h4>
+        <p>{{ bloque.texto }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# --- 2. LAS PERSONAS Y LA ESTRUCTURA — claro, para lectura ------------- #}
+<section class="seccion-clara">
+  <div class="container">
+
+    <h2 class="boxed"><span>Mesa Directiva 2026</span></h2>
+    <ul class="personas-grid personas-grid--directiva">
+      {% for persona in organigrama.directorio | selectattr('mesa', 'defined') | list %}
+      <li>{% include "partials/persona_card.html" %}</li>
+      {% endfor %}
+    </ul>
+
+    <h2 class="boxed" style="margin-top:50px"><span>Grupos de Afinidad</span></h2>
+    <ul class="rejilla rejilla--3">
+      {% for grupo in organigrama.grupos %}
+      <li class="reveal">
+        <div class="grupo-card">
+          <span class="grupo-card__logo-chip"><img src="{{ rel }}{{ grupo.logo }}" alt="{{ grupo.nombre }}" class="grupo-card__logo"></span>
+          <h3>{{ grupo.nombre }}</h3>
+          <p class="grupo-card__mision">{{ grupo.mision }}</p>
+          <p><a class="btn btn-secondary btn-block" href="{{ rel }}grupo-{{ grupo.slug }}.html">Ver el grupo</a></p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <h2 class="boxed" style="margin-top:50px"><span>Direcciones de Área</span></h2>
+    <p class="texto-medido">Innovación, Desarrollo e Investigación (IDI) son las áreas que producen buena
+      parte de nuestras competencias y talleres; su trabajo se ve reflejado en
+      <a href="{{ rel }}eventos.html">Eventos</a> y en <a href="{{ rel }}proyectos.html">Proyectos</a>,
+      no en una sección propia.</p>
+    <ul class="areas-grid">
+      {% for area in organigrama.areas %}
+      <li class="reveal">
+        <div class="area-card">
+          <h3>{{ area.nombre }}</h3>
+          {% for nombre in area.directores %}
+          <p class="area-card__director">{{ nombre }}</p>
+          {% endfor %}
+          {% if area.get('encargada') %}
+          <p class="area-card__director">Encargada: {{ area.encargada }}</p>
+          {% endif %}
+          {% if area.equipo %}
+          <details class="equipo-base">
+            <summary>Equipo ({{ area.equipo|length }})</summary>
+            <ul>
+              {% for m in area.equipo %}<li>{{ m }}</li>{% endfor %}
+            </ul>
+          </details>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+</section>
+
+{# --- 3. TRAYECTORIA Y LOGROS — oscuro, tratamiento de prestigio -------- #}
+<section class="banda banda--arc">
+  <div class="container">
+    <div class="banda__cabecera">
+      <div>
+        <p class="antetitulo">RECORRIDO</p>
+        <h2 class="banda__titulo">Trayectoria</h2>
+      </div>
+    </div>
+    <div class="banda__regla"></div>
+    <ul class="linea-tiempo">
+      {% for hito in organigrama.trayectoria %}
+      <li><strong>{{ hito.anio }}</strong>{{ hito.texto }}</li>
+      {% endfor %}
+    </ul>
+
+    {% if logros %}
+    <div class="banda__subseccion">
+      <p class="antetitulo">RECONOCIMIENTOS</p>
+      <h3 class="banda__titulo banda__titulo--sm">Logros</h3>
+      <div class="banda__regla"></div>
+      <ul class="rejilla rejilla--2">
+        {% for ev in logros %}
+        <li>
+          <article class="evento-card evento-card--estatico reveal">
+            <div class="evento-card__cuerpo">
+              <span class="badge-categoria--eyebrow badge-categoria--logro">Logro</span>
+              <h3 class="evento-card__titulo">{{ ev.titulo }}</h3>
+              <p class="evento-card__meta"><span><i class="fa fa-calendar" aria-hidden="true"></i>{{ ev.fecha_legible }}</span></p>
+              <p class="evento-card__resultado">{{ ev.logro_obtenido }}</p>
+            </div>
+          </article>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{# --- 4. CIERRE ---------------------------------------------------------- #}
+<section class="banda banda--orbital">
+  <div class="container">
+    <p class="antetitulo">ÚNETE</p>
+    <h2 class="banda__titulo" style="max-width:18ch">Forma parte de IEEE UP</h2>
+    <p class="banda__intro" style="max-width:48ch">
+      Súmate a la Rama y participa en la organización de sus eventos y proyectos.
+    </p>
+    <p style="display:flex; gap:14px; flex-wrap:wrap; margin-top:var(--e-4)">
+      <a class="btn-solido" href="{{ rel }}{{ sitio.cta.url }}">{{ sitio.cta.titulo }}</a>
+      <a class="btn-ghost" href="{{ rel }}contacto.html">Contacto</a>
+    </p>
+  </div>
+</section>
+
+{% endblock %}
