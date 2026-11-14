@@ -1,0 +1,55 @@
+name: Desplegar sitio a GitHub Pages
+
+# Hosting principal del sitio (www.ieee-up.org). Igual que el workflow de
+# Azure: build.py genera HTML plano en dist/, se verifica, y dist/ se publica
+# tal cual. El dominio propio se configura en Settings > Pages del repo.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Generar el sitio (dist/)
+        run: python build.py
+
+      - name: Verificar el sitio (marca IEEE, enlaces, accesibilidad)
+        run: python tools/verificar.py
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

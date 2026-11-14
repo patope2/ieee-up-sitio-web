@@ -6,12 +6,12 @@ name: Desplegar sitio a Azure Static Web Apps
 # Python casero como este — asi que el paso de build se hace a mano aqui
 # (instalar dependencias, correr build.py) y a la accion de deploy se le
 # dice `skip_app_build: true` para que solo suba lo que ya esta en dist/.
+#
+# DESACTIVADO (nov 2026): la suscripcion Azure for Students quedo deshabilitada
+# y el sitio paso a GitHub Pages (ver github-pages.yml). Queda solo manual
+# para poder volver a Azure si la suscripcion se reactiva.
 on:
-  push:
-    branches: [main]
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build_and_deploy:
